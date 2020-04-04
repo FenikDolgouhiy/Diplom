@@ -64,7 +64,7 @@
                 <Button Uid="0" Margin="0,15" Background="{x:Null}" BorderBrush="{x:Null}" Click="Button_Click_MainMenu">
                     <Grid Width="180">
                         <materialDesign:PackIcon Kind="CalendarText"  VerticalAlignment="Center"/>
-                        <TextBlock  HorizontalAlignment="Center" Text="РОЗКЛАД" FontFamily="Palatino Linotype" FontWeight="Normal"/>
+                        <TextBlock  HorizontalAlignment="Center" Text="РОЗPКЛАД" FontFamily="Palatino Linotype" FontWeight="Normal"/>
                     </Grid>
                 </Button>
 
