@@ -23,16 +23,11 @@ namespace Dashboard1
         public MainWindow()
         {
             InitializeComponent();
-
-            Consumo consumo = new Consumo();
-            DataContext = new ConsumoViewModel(consumo);
         }
-
         private void WindowClose_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
-
         private void WindowMaximize_Click(object sender, RoutedEventArgs e)
         {
             if (WindowState == WindowState.Maximized)
@@ -44,7 +39,6 @@ namespace Dashboard1
                 WindowState = WindowState.Maximized;
             }
         }
-
         private void WindowMinimize_Click(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
@@ -54,37 +48,37 @@ namespace Dashboard1
             DragMove();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            int index = int.Parse(((Button)e.Source).Uid);
+        //private void Button_Click(object sender, RoutedEventArgs e)
+        //{
+        //    int index = int.Parse(((Button)e.Source).Uid);
 
-            GridCursor.Margin = new Thickness(10 + (150 * index), 0, 0, 0);
+        //    GridCursor.Margin = new Thickness(10 + (150 * index), 0, 0, 0);
 
-            switch (index)
-            {
-                case 0:
-                    GridMainSecond.Background = Brushes.Aquamarine;
-                    break;
-                case 1:
-                    GridMainSecond.Background = Brushes.Beige;
-                    break;
-                case 2:
-                    GridMainSecond.Background = Brushes.CadetBlue;
-                    break;
-                case 3:
-                    GridMainSecond.Background = Brushes.DarkBlue;
-                    break;
-                case 4:
-                    GridMainSecond.Background = Brushes.Firebrick;
-                    break;
-                case 5:
-                    GridMainSecond.Background = Brushes.Gainsboro;
-                    break;
-                case 6:
-                    GridMainSecond.Background = Brushes.HotPink;
-                    break;
-            }
-        }
+        //    switch (index)
+        //    {
+        //        case 0:
+        //            GridMainSecond.Background = Brushes.Aquamarine;
+        //            break;
+        //        case 1:
+        //            GridMainSecond.Background = Brushes.Beige;
+        //            break;
+        //        case 2:
+        //            GridMainSecond.Background = Brushes.CadetBlue;
+        //            break;
+        //        case 3:
+        //            GridMainSecond.Background = Brushes.DarkBlue;
+        //            break;
+        //        case 4:
+        //            GridMainSecond.Background = Brushes.Firebrick;
+        //            break;
+        //        case 5:
+        //            GridMainSecond.Background = Brushes.Gainsboro;
+        //            break;
+        //        case 6:
+        //            GridMainSecond.Background = Brushes.HotPink;
+        //            break;
+        //    }
+        //}
 
         private void Button_Click_MainMenu(object sender, RoutedEventArgs e)
         {
@@ -114,34 +108,6 @@ namespace Dashboard1
                     GridMain.Background = Brushes.HotPink;
                     break;
             }
-        }
-    }
-
-    internal class ConsumoViewModel
-    {
-        public List<Consumo> Consumo { get; private set; }
-
-        public ConsumoViewModel(Consumo consumo)
-        {
-            Consumo = new List<Consumo>();
-            Consumo.Add(consumo);
-        }
-    }
-
-    internal class Consumo
-    {
-        public string Titulo { get; private set; }
-        public int Porcentagem { get; private set; }
-
-        public Consumo()
-        {
-            Titulo = "Consumo Atual";
-            Porcentagem = CalcularPorcentagem();
-        }
-
-        private int CalcularPorcentagem()
-        {
-            return 47; //Calculo da porcentagem de consumo
         }
     }
 }

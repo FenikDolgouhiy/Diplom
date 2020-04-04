@@ -28,7 +28,7 @@
 
 
         <Grid x:Name="GridMain" Grid.Column="1" Grid.Row="1" Background="#FFCFCFCF">
-            <Grid Height="80" VerticalAlignment="Top">
+            <!--<Grid Height="80" VerticalAlignment="Top">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0">
                     <Button Uid="0" Width="150" Content="СПЕЦИАЛЬНОСТИ" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2A6AAA" Click="Button_Click" FontSize="12"/>
                     <Button Uid="1" Width="150" Content="ГРУППЫ" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2A6AAA" Click="Button_Click" FontSize="12"/>
@@ -40,10 +40,10 @@
             </Grid>
             <Grid x:Name="GridMainSecond" Background="Gray" Margin="0,80,0,0">
 
-            </Grid>
+            </Grid>-->
         </Grid>
 
-    <Grid Grid.Row="1" Background="#B26193BD">
+        <Grid Grid.Row="1" Background="#B26193BD">
             <Grid.RowDefinitions>
                 <RowDefinition Height="120"/>
                 <RowDefinition Height="*"/>
@@ -52,7 +52,7 @@
                 <DropShadowEffect BlurRadius="20" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1"/>
             </Grid.Effect>
 
-            <Grid Background="#FF2A6AAA">
+            <Grid Grid.Row="0" Background="#FF2A6AAA">
                 <Image Source="pack://application:/occt.png" Height="80" VerticalAlignment="Top" Margin="0,10"></Image>
                 <TextBlock Text="ОККТ ОДЭКУ" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,10" FontFamily="WS Simple Gallifreyan" Foreground="White" FontSize="16"/>
                 <Grid.Effect>
@@ -64,7 +64,7 @@
                 <Button Uid="0" Margin="0,15" Background="{x:Null}" BorderBrush="{x:Null}" Click="Button_Click_MainMenu">
                     <Grid Width="180">
                         <materialDesign:PackIcon Kind="CalendarText"  VerticalAlignment="Center"/>
-                        <TextBlock  HorizontalAlignment="Center" Text="РОЗPКЛАД" FontFamily="Palatino Linotype" FontWeight="Normal"/>
+                        <TextBlock  HorizontalAlignment="Center" Text="РОЗКЛАД" FontFamily="Palatino Linotype" FontWeight="Normal"/>
                     </Grid>
                 </Button>
 
