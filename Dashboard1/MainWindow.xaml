@@ -9,8 +9,7 @@
         mc:Ignorable="d" Height="600" Width="1024" 
         ResizeMode="CanResizeWithGrip" 
         WindowStartupLocation="CenterScreen" 
-        WindowStyle="None" 
-        SizeToContent="WidthAndHeight">
+        WindowStyle="None" SizeToContent="WidthAndHeight" MinWidth="1024" MinHeight="600">
 
     <Window.Resources>
     </Window.Resources>
@@ -28,6 +27,7 @@
 
 
         <Grid x:Name="GridMain" Grid.Column="1" Grid.Row="1" Background="#FFCFCFCF">
+            
             <!--<Grid Height="80" VerticalAlignment="Top">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0">
                     <Button Uid="0" Width="150" Content="СПЕЦИАЛЬНОСТИ" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2A6AAA" Click="Button_Click" FontSize="12"/>

@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace Dashboard1
 {
-    /// <summary>
-    /// Interação lógica para MainWindow.xam
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -82,32 +79,7 @@ namespace Dashboard1
 
         private void Button_Click_MainMenu(object sender, RoutedEventArgs e)
         {
-            int index = int.Parse(((Button)e.Source).Uid);
 
-            switch (index)
-            {
-                case 0:
-                    GridMain.Background = Brushes.Aquamarine;
-                    break;
-                case 1:
-                    GridMain.Background = Brushes.Beige;
-                    break;
-                case 2:
-                    GridMain.Background = Brushes.CadetBlue;
-                    break;
-                case 3:
-                    GridMain.Background = Brushes.DarkBlue;
-                    break;
-                case 4:
-                    GridMain.Background = Brushes.Firebrick;
-                    break;
-                case 5:
-                    GridMain.Background = Brushes.Gainsboro;
-                    break;
-                case 6:
-                    GridMain.Background = Brushes.HotPink;
-                    break;
-            }
         }
     }
 }
