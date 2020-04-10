@@ -8,7 +8,7 @@ using Dashboard1.Utils;
 
 namespace Dashboard1.ViewModel
 {
-    class LoadOfTeachersViewModel : ViewModelBase, INavigationAware
+    public class LoadOfTeachersViewModel : ViewModelBase, INavigationAware
     {
         internal LoadOfTeachersViewModel(NavigationManager navManager) : base(navManager)
         {
