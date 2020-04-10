@@ -18,7 +18,7 @@ namespace Dashboard1.View
     /// <summary>
     /// Логика взаимодействия для Lists.xaml
     /// </summary>
-    public partial class Lists : Page
+    public partial class Lists : UserControl
     {
         public Lists()
         {

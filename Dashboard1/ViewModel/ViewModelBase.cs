@@ -5,18 +5,27 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Dashboard1.Utils;
 
 namespace Dashboard1.ViewModel
 {
     public class ViewModelBase : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        protected NavigationManager NavManager { get; private set; }
 
-        protected virtual void OnPropertyChanged(string propertyName = null)
+        internal ViewModelBase(NavigationManager navManager)
         {
-            var handler = PropertyChanged;
-            if (handler != null)
-                handler.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            NavManager = navManager;
         }
+
+        #region INotifyPropertyChanged
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName]string prop = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+        }
+
+        #endregion
     }
 }

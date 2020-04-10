@@ -6,11 +6,15 @@
         xmlns:local="clr-namespace:Dashboard1"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
         xmlns:MetroChart="clr-namespace:De.TorstenMandelkow.MetroChart;assembly=De.TorstenMandelkow.MetroChart"
+        xmlns:viewModel="clr-namespace:Dashboard1.ViewModel"
+        xmlns:view="clr-namespace:Dashboard1.View"
         mc:Ignorable="d" Height="600" Width="1024" 
         ResizeMode="CanResizeWithGrip" 
         WindowStartupLocation="CenterScreen" 
-        WindowStyle="None" SizeToContent="WidthAndHeight" MinWidth="1024" MinHeight="600">
-
+        WindowStyle="None" SizeToContent="WidthAndHeight" MinWidth="1024" MinHeight="600"
+        d:DataContext="{d:DesignInstance viewModel:MainViewModel}">
+        
+        
     <Window.Resources>
     </Window.Resources>
 
@@ -27,20 +31,8 @@
 
 
         <Grid x:Name="GridMain" Grid.Column="1" Grid.Row="1" Background="#FFCFCFCF">
-            
-            <!--<Grid Height="80" VerticalAlignment="Top">
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0">
-                    <Button Uid="0" Width="150" Content="СПЕЦИАЛЬНОСТИ" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2A6AAA" Click="Button_Click" FontSize="12"/>
-                    <Button Uid="1" Width="150" Content="ГРУППЫ" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2A6AAA" Click="Button_Click" FontSize="12"/>
-                    <Button Uid="2" Width="150" Content="ПРЕДМЕТЫ" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2A6AAA" Click="Button_Click" FontSize="12"/>
-                    <Button Uid="3" Width="150" Content="АУДИТОРИИ" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2A6AAA" Click="Button_Click" FontSize="12"/>
-                    <Button Uid="4" Width="150" Content="ПРЕПОДАВАТЕЛИ" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2A6AAA" Click="Button_Click" FontSize="12"/>
-                </StackPanel>
-                <Grid x:Name="GridCursor" Width="150" Height="5" Background="#FF2196F3" HorizontalAlignment="Left" Margin="10 0"/>
-            </Grid>
-            <Grid x:Name="GridMainSecond" Background="Gray" Margin="0,80,0,0">
-
-            </Grid>-->
+            <ContentControl x:Name="FrameContent"
+                    x:FieldModifier="public"/>
         </Grid>
 
         <Grid Grid.Row="1" Background="#B26193BD">
@@ -82,7 +74,7 @@
                     </Grid>
                 </Button>
 
-                <Button Uid="4" Margin="0,10" BorderBrush="{x:Null}" Background="{x:Null}" Click="Button_Click_MainMenu">
+                <Button Uid="4" Margin="0,10" BorderBrush="{x:Null}" Background="{x:Null}"  Command="{Binding OpenListsCommand}">
                     <Grid Width="180">
                         <materialDesign:PackIcon Kind="FormatListNumbers"  VerticalAlignment="Center"/>
                         <TextBlock HorizontalAlignment="Center" Text="СПИСКИ" FontFamily="Palatino Linotype"/>
