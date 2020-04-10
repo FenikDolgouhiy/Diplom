@@ -11,15 +11,22 @@ namespace Dashboard1.ViewModel
     public class MainViewModel:  ViewModelBase, INavigationAware
     {
         public Command OpenListsCommand { get; }
+        public Command OpenLoadOfTeachersCommand { get; }
 
         internal MainViewModel(NavigationManager navManager) : base(navManager)
         {
             OpenListsCommand = new Command(OpenLists);
+            OpenLoadOfTeachersCommand = new Command(OpenLoadOfTeachers);
         }
         private void OpenLists(object obj)
         {
             base.NavManager.Navigate(NavigationKeys.Lists);
         }
+        private void OpenLoadOfTeachers(object obj)
+        {
+            base.NavManager.Navigate(NavigationKeys.LoadOfTeachers);
+        }
+
 
         #region Implementation of INavigationAware
 

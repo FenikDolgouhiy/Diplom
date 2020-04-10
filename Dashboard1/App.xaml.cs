@@ -18,12 +18,15 @@ namespace Dashboard1
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            var window = new MainWindow();
+            var window = new StartWindow();
 
             var mainNavManager = new NavigationManager(Dispatcher, window.FrameContent);
 
             mainNavManager.Register<ListsViewModel, Lists>
                 (new ListsViewModel(mainNavManager), NavigationKeys.Lists);
+
+            mainNavManager.Register<LoadOfTeachersViewModel, LoadOfTeachers>
+                (new LoadOfTeachersViewModel(mainNavManager), NavigationKeys.LoadOfTeachers);
 
             mainNavManager.Navigate(NavigationKeys.Lists);
             window.Show();
