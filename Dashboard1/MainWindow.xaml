@@ -31,7 +31,7 @@
             <DataGrid HorizontalAlignment="Left" Name ="dataGridTeachers" Height="442" Margin="28,95,0,0" VerticalAlignment="Top" Width="723"/>
             <Button Content="импорт из Excel" HorizontalAlignment="Left" Margin="28,32,0,0" VerticalAlignment="Top" Width="140" Height="41" Click="Button_Click"/>
             <TextBox HorizontalAlignment="Left" Height="46" Margin="199,491,0,0"  Name="txtFilePath" TextWrapping="Wrap" VerticalAlignment="Top" Width="312"/>
-            <Button Content="Удалить элемент" HorizontalAlignment="Left" Margin="199,32,0,0" VerticalAlignment="Top" Width="143" Height="41" Click="Button_Click_1"/>
+            <Button Content="Добавить в базу" HorizontalAlignment="Left" Margin="199,32,0,0" VerticalAlignment="Top" Width="143" Height="41" Click="Button_Click_1"/>
             <!--<Grid Height="80" VerticalAlignment="Top">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0">
                     <Button Uid="0" Width="150" Content="СПЕЦИАЛЬНОСТИ" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2A6AAA" Click="Button_Click" FontSize="12"/>

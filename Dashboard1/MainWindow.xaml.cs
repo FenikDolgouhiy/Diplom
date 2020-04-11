@@ -27,15 +27,19 @@ namespace Dashboard1
     {
         IFirebaseConfig config = new FirebaseConfig
         {
-            AuthSecret = "uC0CsEplISAWck5RU5PEhGoM24xrUHdzH8DGzi7c ",
-            BasePath = "https://fir-diplom.firebaseio.com/ "
+            AuthSecret = "KRgcq6RJREaLwFzPdmETvLxjm1OSxZBOPY3ONSXb ",
+            BasePath = "https://fir-dipp.firebaseio.com/"
         };
         IFirebaseClient client;
         public MainWindow()
         {
             InitializeComponent();
             client = new FireSharp.FirebaseClient(config);
-            InitializeComponent();
+
+            if (client != null)
+            {
+                MessageBox.Show("Подключение к Базе Данных было успешным");
+            }
         }
         private void WindowClose_Click(object sender, RoutedEventArgs e)
         {
@@ -235,7 +239,7 @@ namespace Dashboard1
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             ExcelToFirebase();
-
+            MessageBox.Show("Данные были успешно загружены");
         }
     }
 }
