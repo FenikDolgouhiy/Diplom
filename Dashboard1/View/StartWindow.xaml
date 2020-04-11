@@ -11,14 +11,13 @@
         mc:Ignorable="d" Height="600" Width="1024" 
         ResizeMode="CanResizeWithGrip" 
         WindowStartupLocation="CenterScreen" 
-        WindowStyle="None" SizeToContent="WidthAndHeight" MinWidth="1024" MinHeight="600"
-        d:DataContext="{d:DesignInstance viewModel:MainViewModel}">
-        
-        
+        WindowStyle="None" SizeToContent="WidthAndHeight" MinWidth="1024" MinHeight="600">
+    
+    
     <Window.Resources>
     </Window.Resources>
 
-
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="230"/>

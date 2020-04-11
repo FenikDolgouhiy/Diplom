@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Dashboard1.Utils;
+using Dashboard1.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +22,8 @@ namespace Dashboard1
         public StartWindow()
         {
             InitializeComponent();
+
+            DataContext = new MainViewModel();
         }
         private void WindowClose_Click(object sender, RoutedEventArgs e)
         {

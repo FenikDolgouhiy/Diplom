@@ -13,11 +13,12 @@ namespace Dashboard1.ViewModel
         public Command OpenListsCommand { get; }
         public Command OpenLoadOfTeachersCommand { get; }
 
-        internal MainViewModel(NavigationManager navManager) : base(navManager)
+        public MainViewModel() 
         {
             OpenListsCommand = new Command(OpenLists);
             OpenLoadOfTeachersCommand = new Command(OpenLoadOfTeachers);
         }
+
         private void OpenLists(object obj)
         {
             base.NavManager.Navigate(NavigationKeys.Lists);
