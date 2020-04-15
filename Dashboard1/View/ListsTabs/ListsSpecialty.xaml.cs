@@ -12,20 +12,18 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Dashboard1.ViewModel;
-using Dashboard1.Utils;
-using Dashboard1.View.ListsTabs;
 
-namespace Dashboard1.View
+namespace Dashboard1.View.ListsTabs
 {
     /// <summary>
-    /// Логика взаимодействия для Lists.xaml
+    /// Логика взаимодействия для ListsSpecialty.xaml
     /// </summary>
-    public partial class Lists : UserControl
+    public partial class ListsSpecialty : UserControl
     {
-        public Lists()
+        public ListsSpecialty()
         {
             InitializeComponent();
+           
         }
     }
 }

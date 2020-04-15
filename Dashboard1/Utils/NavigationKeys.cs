@@ -13,5 +13,8 @@ namespace Dashboard1.Utils
         public const string Manual = "ManualViewModel";
         public const string Replacements = "ReplacementsViewModel";
         public const string Timetable = "TimetableViewModel";
+
+        public const string ListsSpecialty = "ListsSpecialtyViewModel";
+
     }
 }

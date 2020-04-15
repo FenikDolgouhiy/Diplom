@@ -10,10 +10,14 @@ namespace Dashboard1.ViewModel
 {
     public class ListsViewModel : ViewModelBase, INavigationAware
     {
-
+        public Command OpenListsSpecialtyCommand { get; }
         internal ListsViewModel(NavigationManager navManager) : base(navManager)
         {
-           
+            OpenListsSpecialtyCommand = new Command(OpenListsSpecialty);
+        }
+        private void OpenListsSpecialty(object obj)
+        {
+            base.NavManager.Navigate(NavigationKeys.ListsSpecialty);
         }
         #region Implementation of INavigationAware
         public void OnNavigatingFrom()

@@ -59,12 +59,16 @@
     <Compile Include="Utils\INavigationManager.cs" />
     <Compile Include="Utils\NavigationKeys.cs" />
     <Compile Include="Utils\NavigationManager.cs" />
+    <Compile Include="ViewModel\ListsSpecialtyViewModel.cs" />
     <Compile Include="ViewModel\ListsViewModel.cs" />
     <Compile Include="ViewModel\LoadOfTeachersViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="View\Lists.xaml.cs">
       <DependentUpon>Lists.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ListsTabs\ListsSpecialty.xaml.cs">
+      <DependentUpon>ListsSpecialty.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LoadOfTeachers.xaml.cs">
       <DependentUpon>LoadOfTeachers.xaml</DependentUpon>
@@ -78,6 +82,10 @@
     <Compile Include="View\Timetable.xaml.cs">
       <DependentUpon>Timetable.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\ListsTabs\ListsSpecialty.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\LoadOfTeachers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
