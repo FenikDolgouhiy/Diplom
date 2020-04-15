@@ -29,7 +29,7 @@ namespace Dashboard1.Utils
             this.executeAction = executeAction
                 ?? throw new ArgumentNullException("Переменная не может быть null.", nameof(executeAction));
         }
-
+        
         private readonly Action<object> executeAction;
     }
 }
