@@ -59,6 +59,7 @@
     <Compile Include="Utils\INavigationManager.cs" />
     <Compile Include="Utils\NavigationKeys.cs" />
     <Compile Include="Utils\NavigationManager.cs" />
+    <Compile Include="Utils\NavigationUtils.cs" />
     <Compile Include="ViewModel\ListsSpecialtyViewModel.cs" />
     <Compile Include="ViewModel\ListsViewModel.cs" />
     <Compile Include="ViewModel\LoadOfTeachersViewModel.cs" />

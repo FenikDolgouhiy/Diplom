@@ -22,6 +22,8 @@
                 <Grid x:Name="GridCursor" Width="150" Height="5" Background="#FF2196F3" HorizontalAlignment="Left" Margin="10 0"/>
             </Grid>
         <Grid x:Name="GridMainSecond" Background="BlanchedAlmond" Margin="0,80,0,0">
+            <ContentControl x:Name="ContentTabs"
+                    x:FieldModifier="public"/>
         </Grid>
     </Grid>
 </UserControl>

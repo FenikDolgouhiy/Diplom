@@ -11,16 +11,9 @@ namespace Dashboard1.ViewModel
 {
     public class ViewModelBase : INotifyPropertyChanged
     {
-        public NavigationManager NavManager { get; set; }
-
         public ViewModelBase()
         {
 
-        }
-
-        public ViewModelBase(NavigationManager navManager)
-        {
-            NavManager = navManager;
         }
 
         #region INotifyPropertyChanged

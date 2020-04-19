@@ -10,10 +10,6 @@ namespace Dashboard1.ViewModel
 {
     public class LoadOfTeachersViewModel : ViewModelBase, INavigationAware
     {
-        internal LoadOfTeachersViewModel(NavigationManager navManager) : base(navManager)
-        {
-
-        }
 
         #region Implementation of INavigationAware
         public void OnNavigatingFrom()

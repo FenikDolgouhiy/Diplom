@@ -26,6 +26,10 @@ namespace Dashboard1.View
         public Lists()
         {
             InitializeComponent();
+            var manager = new NavigationManager(Dispatcher, ContentTabs);
+            manager.Register<ListsSpecialtyViewModel, ListsSpecialty>(new ListsSpecialtyViewModel(), NavigationKeys.ListsSpecialty);
+
+            NavigationUtils.Register(NavigationUtils.NavigationPanel.LISTS, manager);
         }
     }
 }

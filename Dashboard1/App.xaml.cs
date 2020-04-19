@@ -17,25 +17,18 @@ namespace Dashboard1
     /// </summary>
     public partial class App : Application
     {
-        public static NavigationManager NavigationManager;
-
         protected override void OnStartup(StartupEventArgs e)
         {
             var window = new StartWindow();
+            var startWindowManager = new NavigationManager(Dispatcher, window.FrameContent);
 
-            NavigationManager = new NavigationManager(Dispatcher, window.FrameContent);
+            startWindowManager.Register<ListsViewModel, Lists>(new ListsViewModel(), NavigationKeys.Lists);
+            startWindowManager.Register<LoadOfTeachersViewModel, LoadOfTeachers>
+                (new LoadOfTeachersViewModel(), NavigationKeys.LoadOfTeachers);
 
-            NavigationManager.Register<ListsViewModel, Lists>
-                (new ListsViewModel(NavigationManager), NavigationKeys.Lists);
+            NavigationUtils.Register(NavigationUtils.NavigationPanel.START_WINDOW, startWindowManager);
 
-            NavigationManager.Register<LoadOfTeachersViewModel, LoadOfTeachers>
-                (new LoadOfTeachersViewModel(NavigationManager), NavigationKeys.LoadOfTeachers);
-
-            NavigationManager.Register<ListsSpecialtyViewModel, ListsSpecialty>
-                (new ListsSpecialtyViewModel(NavigationManager), NavigationKeys.ListsSpecialty);
-
-            NavigationManager.Navigate(NavigationKeys.Lists);
-            (window.DataContext as MainViewModel).NavManager = NavigationManager;
+            startWindowManager.Navigate(NavigationKeys.Lists);
             window.Show();
         }
     }
