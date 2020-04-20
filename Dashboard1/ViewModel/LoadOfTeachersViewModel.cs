@@ -24,9 +24,9 @@ namespace Dashboard1.ViewModel
         {
             ImportFromExcelCommand = new Command(ImportFromExcel);
         }
-        private void ImportFromExcel(object obj)
+        private async void ImportFromExcel(object obj)
         {
-            var loads = dbOperations.ImportTeacherLoadsFromExcel();
+            var loads = await dbOperations.ImportTeacherLoadsFromExcel();
             if (loads != null)
             {
                 LoadList = loads;

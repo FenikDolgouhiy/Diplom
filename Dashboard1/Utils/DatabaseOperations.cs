@@ -16,21 +16,24 @@ namespace Dashboard1.Utils
 {
     public class DatabaseOperations
     {
-        public List<LoadDTO> ImportTeacherLoadsFromExcel()
+        public async Task<List<LoadDTO>> ImportTeacherLoadsFromExcel()
         {
-            List<LoadDTO> result = null;
-            var dialog = new OpenFileDialog
+            return await Task.Run(() =>
             {
-                Filter = "Таблицы Excel'97 (*.xls)|*.xls|Taблицы Excel'2007 (*.xlsx)|*.xlsx|All files (*.*)|*.*"
-            };
-            if (dialog.ShowDialog() == true)
-            {
-                using (var connection = InitiateLoadModelMappings(new ExcelQueryFactory(dialog.FileName)))
+                List<LoadDTO> result = null;
+                var dialog = new OpenFileDialog
                 {
-                    result = (from load in connection.Worksheet<LoadDTO>("Лист1") select load).ToList();
+                    Filter = "Таблицы Excel'97 (*.xls)|*.xls|Taблицы Excel'2007 (*.xlsx)|*.xlsx|All files (*.*)|*.*"
+                };
+                if (dialog.ShowDialog() == true)
+                {
+                    using (var connection = InitiateLoadModelMappings(new ExcelQueryFactory(dialog.FileName)))
+                    {
+                        result = (from load in connection.Worksheet<LoadDTO>("Лист1") select load).ToList();
+                    }
                 }
-            }
-            return result;
+                return result;
+            });
         }
 
         private static ExcelQueryFactory InitiateLoadModelMappings(ExcelQueryFactory excelQueryFactory)
