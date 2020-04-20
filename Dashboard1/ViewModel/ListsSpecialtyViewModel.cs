@@ -10,10 +10,6 @@ namespace Dashboard1.ViewModel
 {
     public class ListsSpecialtyViewModel: ViewModelBase, INavigationAware
     {
-        internal ListsSpecialtyViewModel(NavigationManager navManager) : base(navManager)
-        {
-
-        }
         #region Implementation of INavigationAware
         public void OnNavigatingFrom()
         {

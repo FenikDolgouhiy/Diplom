@@ -21,11 +21,11 @@ namespace Dashboard1.ViewModel
 
         private void OpenLists(object obj)
         {
-            base.NavManager.Navigate(NavigationKeys.Lists);
+            NavigationUtils.GetNavigationManager(NavigationUtils.NavigationPanel.START_WINDOW).Navigate(NavigationKeys.Lists);
         }
         private void OpenLoadOfTeachers(object obj)
         {
-            base.NavManager.Navigate(NavigationKeys.LoadOfTeachers);
+            NavigationUtils.GetNavigationManager(NavigationUtils.NavigationPanel.START_WINDOW).Navigate(NavigationKeys.LoadOfTeachers);
         }
 
 
