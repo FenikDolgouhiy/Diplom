@@ -1,4 +1,6 @@
-﻿using Dashboard1.View;
+﻿using Dashboard1.Model;
+using Dashboard1.View;
+using LinqToExcel;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -14,33 +16,35 @@ namespace Dashboard1.Utils
 {
     public class DatabaseOperations
     {
-        LoadOfTeachers lof = new LoadOfTeachers();
-        public void ImportExelToDG()
+        public List<LoadDTO> ImportTeacherLoadsFromExcel()
         {
-            
-            OpenFileDialog opf = new OpenFileDialog();
-            opf.Filter = "Таблицы Excel'97 (*.xls)|*.xls|Taблицы Excel'2007 (*.xlsx)|*.xlsx|All files (*.*)|*.*";
-            opf.ShowDialog();
-            DataTable tb = new DataTable();
-            string filename = opf.FileName;
-            if (filename == "")
-                return;
-            string ConStr = String.Format(
-                            "Provider=Microsoft.ACE.OLEDB.12.0;extended properties=\"excel 8.0;\";data source={0}", filename);
-            System.Data.DataSet ds = new System.Data.DataSet("EXCEL");
-            OleDbConnection cn = new OleDbConnection(ConStr);
-            cn.Open();
-            DataTable schemaTable = cn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, new object[] { null, null, null, "TABLE" });
-            string sheet1 = (string)schemaTable.Rows[0].ItemArray[2];
-            string select = String.Format("SELECT * FROM [{0}]", sheet1);
-            OleDbDataAdapter ad = new OleDbDataAdapter(select, cn);
-            ad.Fill(ds);
-            DataTable t = ds.Tables[0];
-            cn.Close();
-           
-            this.lof.datagridTeachLoad.ItemsSource = t.DefaultView;
+            List<LoadDTO> result = null;
+            var dialog = new OpenFileDialog
+            {
+                Filter = "Таблицы Excel'97 (*.xls)|*.xls|Taблицы Excel'2007 (*.xlsx)|*.xlsx|All files (*.*)|*.*"
+            };
+            if (dialog.ShowDialog() == true)
+            {
+                using (var connection = InitiateLoadModelMappings(new ExcelQueryFactory(dialog.FileName)))
+                {
+                    result = (from load in connection.Worksheet<LoadDTO>("Лист1") select load).ToList();
+                }
+            }
+            return result;
         }
-       
-    }
 
+        private static ExcelQueryFactory InitiateLoadModelMappings(ExcelQueryFactory excelQueryFactory)
+        {
+            excelQueryFactory.AddMapping<LoadDTO>(x => x.Id, "ID");
+            excelQueryFactory.AddMapping<LoadDTO>(x => x.Teacher, "Преподаватель");
+            excelQueryFactory.AddMapping<LoadDTO>(x => x.Subject, "Предмет");
+            excelQueryFactory.AddMapping<LoadDTO>(x => x.Group, "Группа");
+            excelQueryFactory.AddMapping<LoadDTO>(x => x.TotalHours, "Всего часов");
+            excelQueryFactory.AddMapping<LoadDTO>(x => x.Weeks, "Недель");
+            excelQueryFactory.AddMapping<LoadDTO>(x => x.HoursPerWeek, "Часов в неделю");
+            excelQueryFactory.AddMapping<LoadDTO>(x => x.DaysOfPractice, "Кол-во недель практики");
+            return excelQueryFactory;
+        }
+
+    }
 }

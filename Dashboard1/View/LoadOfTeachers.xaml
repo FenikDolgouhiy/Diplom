@@ -10,7 +10,11 @@
              d:DataContext="{d:DesignInstance viewModel:LoadOfTeachersViewModel}">
 
     <Grid Background="Bisque">
-        <DataGrid Name="datagridTeachLoad" HorizontalAlignment="Left" Height="330" Margin="43,77,0,0" VerticalAlignment="Top" Width="688" />
+        <DataGrid Name="datagridTeachLoad"
+                  HorizontalAlignment="Left" 
+                  Height="330" Margin="43,77,0,0" 
+                  VerticalAlignment="Top" Width="688"
+                  ItemsSource="{Binding LoadList}"/>
         <Button Command="{Binding ImportFromExcelCommand}" Content="Загрузить таблицу из Excel" HorizontalAlignment="Left" Margin="58,27,0,0" VerticalAlignment="Top" Width="207" />
         <TextBox Name="txtFilePath" HorizontalAlignment="Left" Height="23" Margin="43,407,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="283"/>
 
