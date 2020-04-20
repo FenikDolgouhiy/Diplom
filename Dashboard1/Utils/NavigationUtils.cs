@@ -8,6 +8,10 @@ namespace Dashboard1.Utils
 
         public static void Register(NavigationPanel navigationPanel, INavigationManager manager)
         {
+            if (_panels.ContainsKey(navigationPanel))
+            {
+                _panels.Remove(navigationPanel);
+            }
             _panels.Add(navigationPanel, manager);
         }
 
