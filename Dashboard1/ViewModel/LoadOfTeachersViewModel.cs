@@ -20,7 +20,7 @@ namespace Dashboard1.ViewModel
             }
         }
 
-        internal LoadOfTeachersViewModel(NavigationManager navManager) : base(navManager)
+        internal LoadOfTeachersViewModel()
         {
             ImportFromExcelCommand = new Command(ImportFromExcel);
         }
