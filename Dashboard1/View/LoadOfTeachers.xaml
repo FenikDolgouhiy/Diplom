@@ -15,6 +15,7 @@
                   Height="330" Margin="43,77,0,0" 
                   VerticalAlignment="Top" Width="688"
                   ItemsSource="{Binding LoadList}"/>
+        <Button Command="{Binding ImportFromDGToFBCommand}" Content="Загрузить в Базу Данных" HorizontalAlignment="Left" Margin="277,29,307,389" VerticalAlignment="Top"/>
         <Button Command="{Binding ImportFromExcelCommand}" Content="Загрузить таблицу из Excel" HorizontalAlignment="Left" Margin="58,27,0,0" VerticalAlignment="Top" Width="207" />
         <TextBox Name="txtFilePath" HorizontalAlignment="Left" Height="23" Margin="43,407,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="283"/>
 

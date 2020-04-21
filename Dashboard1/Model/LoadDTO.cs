@@ -8,13 +8,13 @@ namespace Dashboard1.Model
 {
     public class LoadDTO
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string Teacher { get; set; }
         public string Subject { get; set; }
         public string Group { get; set; }
-        public int TotalHours { get; set; }
-        public int Weeks { get; set; }
-        public int HoursPerWeek { get; set; }
-        public int DaysOfPractice { get; set; }
+        public string TotalHours { get; set; }
+        public string Weeks { get; set; }
+        public string HoursPerWeek { get; set; }
+        public string DaysOfPractice { get; set; }
     }
 }
