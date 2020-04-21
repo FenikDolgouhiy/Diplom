@@ -62,7 +62,11 @@
     <Compile Include="Utils\NavigationKeys.cs" />
     <Compile Include="Utils\NavigationManager.cs" />
     <Compile Include="Utils\NavigationUtils.cs" />
-    <Compile Include="ViewModel\ListsSpecialtyViewModel.cs" />
+    <Compile Include="ViewModel\ListsTabsViewModels\ListsCabinetsViewModel.cs" />
+    <Compile Include="ViewModel\ListsTabsViewModels\ListsGroupsViewModel.cs" />
+    <Compile Include="ViewModel\ListsTabsViewModels\ListsSpecialtyViewModel.cs" />
+    <Compile Include="ViewModel\ListsTabsViewModels\ListsSubjectsViewModel.cs" />
+    <Compile Include="ViewModel\ListsTabsViewModels\ListsTeachersViewModel.cs" />
     <Compile Include="ViewModel\ListsViewModel.cs" />
     <Compile Include="ViewModel\LoadOfTeachersViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
@@ -70,8 +74,20 @@
     <Compile Include="View\Lists.xaml.cs">
       <DependentUpon>Lists.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ListsTabs\ListsCabinets.xaml.cs">
+      <DependentUpon>ListsCabinets.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ListsTabs\ListsGroups.xaml.cs">
+      <DependentUpon>ListsGroups.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ListsTabs\ListsSpecialty.xaml.cs">
       <DependentUpon>ListsSpecialty.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ListsTabs\ListsSubjects.xaml.cs">
+      <DependentUpon>ListsSubjects.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ListsTabs\ListsTeachers.xaml.cs">
+      <DependentUpon>ListsTeachers.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LoadOfTeachers.xaml.cs">
       <DependentUpon>LoadOfTeachers.xaml</DependentUpon>
@@ -85,7 +101,23 @@
     <Compile Include="View\Timetable.xaml.cs">
       <DependentUpon>Timetable.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\ListsTabs\ListsCabinets.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ListsTabs\ListsGroups.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ListsTabs\ListsSpecialty.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ListsTabs\ListsSubjects.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ListsTabs\ListsTeachers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

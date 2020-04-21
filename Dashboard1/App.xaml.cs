@@ -22,7 +22,8 @@ namespace Dashboard1
             var window = new StartWindow();
             var startWindowManager = new NavigationManager(Dispatcher, window.FrameContent);
 
-            startWindowManager.Register<ListsViewModel, Lists>(new ListsViewModel(), NavigationKeys.Lists);
+            startWindowManager.Register<ListsViewModel, Lists>
+                (new ListsViewModel(), NavigationKeys.Lists);
             startWindowManager.Register<LoadOfTeachersViewModel, LoadOfTeachers>
                 (new LoadOfTeachersViewModel(), NavigationKeys.LoadOfTeachers);
 
