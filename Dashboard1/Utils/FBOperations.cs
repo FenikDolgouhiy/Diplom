@@ -31,52 +31,33 @@ namespace Dashboard1.Utils
                 MessageBox.Show("Подключения к Базе данных успешно");
             }
         }
-        public async Task ExportDGToFB(List<LoadDTO> teachLoad)
+        public async Task ExportDGToFB(List<LoadDTO> loadList)
         {
-            DataGrid dataGridTeachers = new DataGrid();
-            dataGridTeachers.ItemsSource = teachLoad;
-            
-            if (dataGridTeachers != null)
+            if (loadList != null)
             {
-                for (int j = 0; j < dataGridTeachers.Columns.Count; j++)
+                for (int i = 0; i < loadList.Count; i++)
                 {
-                    int i = 0;
-                    var id = new DataGridCellInfo(dataGridTeachers.Items[j], dataGridTeachers.Columns[i]);
-                    var idcontent = id.Column.GetCellContent(id.Item) as TextBlock;
-
-                    var teach = new DataGridCellInfo(dataGridTeachers.Items[j], dataGridTeachers.Columns[i + 1]);
-                    var teachcontent = teach.Column.GetCellContent(teach.Item) as TextBlock;
-
-                    var sub = new DataGridCellInfo(dataGridTeachers.Items[j], dataGridTeachers.Columns[i + 2]);
-                    var subcontent = sub.Column.GetCellContent(sub.Item) as TextBlock;
-
-                    var gr = new DataGridCellInfo(dataGridTeachers.Items[j], dataGridTeachers.Columns[i + 3]);
-                    var grcontent = gr.Column.GetCellContent(gr.Item) as TextBlock;
-
-                    var ch = new DataGridCellInfo(dataGridTeachers.Items[j], dataGridTeachers.Columns[i + 4]);
-                    var chcontent = ch.Column.GetCellContent(ch.Item) as TextBlock;
-
-                    var week = new DataGridCellInfo(dataGridTeachers.Items[j], dataGridTeachers.Columns[i + 5]);
-                    var weekcontent = week.Column.GetCellContent(week.Item) as TextBlock;
-
-                    var hpw = new DataGridCellInfo(dataGridTeachers.Items[j], dataGridTeachers.Columns[i + 6]);
-                    var hpwcontent = hpw.Column.GetCellContent(hpw.Item) as TextBlock;
-
-                    var cpw = new DataGridCellInfo(dataGridTeachers.Items[j], dataGridTeachers.Columns[i + 7]);
-                    var cpwcontent = cpw.Column.GetCellContent(cpw.Item) as TextBlock;
+                    var id = loadList[i].Id;
+                    var teacher = loadList[i].Teacher;
+                    var subject = loadList[i].Subject;
+                    var group = loadList[i].Group;
+                    var totalhours = loadList[i].TotalHours;
+                    var weekcontent = loadList[i].Weeks;
+                    var hourperweek = loadList[i].HoursPerWeek;
+                    var daysofpractice = loadList[i].DaysOfPractice;
 
                     var loadDTO = new LoadDTO
                     {
-                        Id = idcontent.Text,
-                        Teacher = teachcontent.Text,
-                        Subject = subcontent.Text,
-                        Group = grcontent.Text,
-                        TotalHours = chcontent.Text,
-                        Weeks = weekcontent.Text,
-                        HoursPerWeek = hpwcontent.Text,
-                        DaysOfPractice = cpwcontent.Text
+                        Id = id,
+                        Teacher = teacher,
+                        Subject = subject,
+                        Group = group,
+                        TotalHours = totalhours,
+                        Weeks = weekcontent,
+                        HoursPerWeek = hourperweek,
+                        DaysOfPractice = daysofpractice
                     };
-                    SetResponse responce = await client.SetAsync("NagrNaPrepodov/" + j, loadDTO);
+                    SetResponse responce = await client.SetAsync("TeachersLoad/" + i, loadDTO);
                     LoadDTO result = responce.ResultAs<LoadDTO>();
                     //MessageBox.Show("Data Inserted " + result.IDnagr);
                 }
