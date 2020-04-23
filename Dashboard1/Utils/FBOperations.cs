@@ -22,7 +22,6 @@ namespace Dashboard1.Utils
             BasePath = "https://fir-dipp.firebaseio.com/"
         };
         IFirebaseClient client;
-        
         public FBOperations()
         {
             client = new FireSharp.FirebaseClient(config);
@@ -30,6 +29,33 @@ namespace Dashboard1.Utils
             {
                 MessageBox.Show("Подключения к Базе данных успешно");
             }
+        }
+
+        public async Task<List<LoadDTO>> ExportFromFBToDG()
+        {
+            List<LoadDTO> result = new List<LoadDTO>();
+            for (int i = 0; ; i++)
+            {
+                FirebaseResponse responce = await client.GetAsync("TeachersLoad/" + i);
+                
+                LoadDTO obj = responce.ResultAs<LoadDTO>();
+                if (obj == null)
+                {
+                    break;
+                }
+                result.Add(new LoadDTO
+                {
+                    Id = obj.Id,
+                    Teacher = obj.Teacher,
+                    Subject = obj.Subject,
+                    Group = obj.Group,
+                    TotalHours = obj.TotalHours,
+                    Weeks = obj.Weeks,
+                    HoursPerWeek = obj.HoursPerWeek,
+                    DaysOfPractice = obj.DaysOfPractice
+                });
+            }
+            return result;
         }
         public async Task ExportDGToFB(List<LoadDTO> loadList)
         {

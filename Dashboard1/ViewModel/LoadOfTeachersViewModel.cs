@@ -9,10 +9,17 @@ namespace Dashboard1.ViewModel
     {
         public Command ImportFromExcelCommand { get; }
         public Command ImportFromDGToFBCommand { get; }
+
         public DatabaseOperations dbOperations = new DatabaseOperations();
         public FBOperations fbOperations = new FBOperations();
 
         List<LoadDTO> _loadList = new List<LoadDTO>();
+        internal LoadOfTeachersViewModel()
+        {
+            ImportFromExcelCommand = new Command(ImportFromExcel);
+            ImportFromDGToFBCommand = new Command(ImportFromDGToFB);
+            UploadFromFB();
+        }
         public List<LoadDTO> LoadList
         {
             get { return _loadList; }
@@ -22,10 +29,14 @@ namespace Dashboard1.ViewModel
                 OnPropertyChanged("LoadList");
             }
         }
-        internal LoadOfTeachersViewModel()
+        public List<LoadDTO> UploadList
         {
-            ImportFromExcelCommand = new Command(ImportFromExcel);
-            ImportFromDGToFBCommand = new Command(ImportFromDGToFB);
+            get { return _loadList; }
+            set
+            {
+                _loadList = value;
+                OnPropertyChanged("LoadList");
+            }
         }
         private async void ImportFromExcel(object obj)
         {
@@ -35,10 +46,16 @@ namespace Dashboard1.ViewModel
                 LoadList = loads;
             }
         }
-        
+        private async void UploadFromFB()
+        {
+            var loads = await fbOperations.ExportFromFBToDG();
+            if (loads != null)
+            {
+                UploadList = loads;
+            }
+        }
         private async void ImportFromDGToFB(object gridExcel)
         {
-            
             await fbOperations.ExportDGToFB(_loadList);
         }
 
