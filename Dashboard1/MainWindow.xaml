@@ -96,7 +96,7 @@
                 <Button Uid="5" Margin="0,50" BorderBrush="{x:Null}" Background="{x:Null}" Height="Auto" Grid.Row="1" Click="Button_Click_MainMenu">
                     <Grid Width="180">
                         <materialDesign:PackIcon Kind="CloudDownload" VerticalAlignment="Center"/>
-                        <TextBlock HorizontalAlignment="Center" Text="ЗАГРУЗИТЬ" FontFamily="Palatino Linotype"/>
+                        <TextBlock HorizontalAlignment="Center" Text="Суицид" FontFamily="Palatino Linotype"/>
                     </Grid>
                 </Button>
             </StackPanel>
