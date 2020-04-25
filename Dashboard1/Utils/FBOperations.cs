@@ -63,25 +63,25 @@ namespace Dashboard1.Utils
             {
                 for (int i = 0; i < loadList.Count; i++)
                 {
-                    var id = loadList[i].Id;
-                    var teacher = loadList[i].Teacher;
-                    var subject = loadList[i].Subject;
-                    var group = loadList[i].Group;
-                    var totalhours = loadList[i].TotalHours;
-                    var weekcontent = loadList[i].Weeks;
-                    var hourperweek = loadList[i].HoursPerWeek;
-                    var daysofpractice = loadList[i].DaysOfPractice;
+                    //var id = loadList[i].Id;
+                    //var teacher = loadList[i].Teacher;
+                    //var subject = loadList[i].Subject;
+                    //var group = loadList[i].Group;
+                    //var totalhours = loadList[i].TotalHours;
+                    //var weekcontent = loadList[i].Weeks;
+                    //var hourperweek = loadList[i].HoursPerWeek;
+                    //var daysofpractice = loadList[i].DaysOfPractice;
 
                     var loadDTO = new LoadDTO
                     {
-                        Id = id,
-                        Teacher = teacher,
-                        Subject = subject,
-                        Group = group,
-                        TotalHours = totalhours,
-                        Weeks = weekcontent,
-                        HoursPerWeek = hourperweek,
-                        DaysOfPractice = daysofpractice
+                        Id = loadList[i].Id,
+                        Teacher = loadList[i].Teacher,
+                        Subject = loadList[i].Subject,
+                        Group = loadList[i].Group,
+                        TotalHours = loadList[i].TotalHours,
+                        Weeks = loadList[i].Weeks,
+                        HoursPerWeek = loadList[i].HoursPerWeek,
+                        DaysOfPractice = loadList[i].DaysOfPractice
                     };
                     SetResponse responce = await client.SetAsync("TeachersLoad/" + i, loadDTO);
                     LoadDTO result = responce.ResultAs<LoadDTO>();
@@ -89,5 +89,16 @@ namespace Dashboard1.Utils
                 }
             }
         }
+        public async void DeleteSelectedItem(LoadDTO loadDTO)
+        {
+            loadDTO.Id = (Convert.ToInt32(loadDTO.Id) - 1).ToString();
+            FirebaseResponse response = await client.DeleteAsync("TeachersLoad/" + loadDTO.Id);
+        }
+        public async void DeleteAllInfoFromFB()
+        {
+            FirebaseResponse response = await client.DeleteAsync("TeachersLoad");
+            MessageBox.Show("База данных была полностью очищенна");
+        }
+        
     }
  }

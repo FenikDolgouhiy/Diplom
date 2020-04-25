@@ -9,6 +9,10 @@ namespace Dashboard1.ViewModel
     {
         public Command ImportFromExcelCommand { get; }
         public Command ImportFromDGToFBCommand { get; }
+        public Command DeleteTeachLoadIDCommand { get; }
+        public Command DeleteAllCommand { get; }
+        public Command RefreshDBCommand { get; }
+        public LoadDTO SelectedLOF { get; set; }
 
         public DatabaseOperations dbOperations = new DatabaseOperations();
         public FBOperations fbOperations = new FBOperations();
@@ -18,6 +22,10 @@ namespace Dashboard1.ViewModel
         {
             ImportFromExcelCommand = new Command(ImportFromExcel);
             ImportFromDGToFBCommand = new Command(ImportFromDGToFB);
+            DeleteTeachLoadIDCommand = new Command(DeleteTeachLoadID);
+            RefreshDBCommand = new Command(RefreshDB);
+            DeleteAllCommand = new Command(DeleteAll);
+            
             UploadFromFB();
         }
         public List<LoadDTO> LoadList
@@ -46,6 +54,7 @@ namespace Dashboard1.ViewModel
                 LoadList = loads;
             }
         }
+        
         private async void UploadFromFB()
         {
             var loads = await fbOperations.ExportFromFBToDG();
@@ -58,7 +67,32 @@ namespace Dashboard1.ViewModel
         {
             await fbOperations.ExportDGToFB(_loadList);
         }
-
+        private void DeleteTeachLoadID(object obj)
+        {
+            if (MessageBox.Show("Вы действительно хотите удалить данную строку?", "Подтверждение операции", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                if (SelectedLOF != null)
+                {
+                    fbOperations.DeleteSelectedItem(SelectedLOF);
+                }
+            }
+               
+        }
+        private void DeleteAll(object obj)
+        {
+            if (MessageBox.Show("Вы действительно хотите удалить ВСЁ из Базы данных?", "Подтверждение операции", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                fbOperations.DeleteAllInfoFromFB();
+            }
+        }
+        private async void RefreshDB(object obj)
+        {
+            var loads = await fbOperations.ExportFromFBToDG();
+            if (loads != null)
+            {
+                UploadList = loads;
+            }
+        }
         #region Implementation of INavigationAware
         public void OnNavigatingFrom()
         {

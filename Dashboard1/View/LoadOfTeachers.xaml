@@ -12,11 +12,15 @@
     <Grid Background="Bisque">
         <DataGrid Name="datagridTeachLoad"
                   HorizontalAlignment="Left" 
-                  Height="330" Margin="43,77,0,0" 
+                  Height="302" Margin="43,77,0,0" 
                   VerticalAlignment="Top" Width="735"
-                  ItemsSource="{Binding LoadList}"/>
-        <Button Command="{Binding ImportFromDGToFBCommand}" Content="Загрузить в Базу Данных" HorizontalAlignment="Left" Margin="277,29,307,389" VerticalAlignment="Top"/>
+                  ItemsSource="{Binding LoadList}"
+                  SelectedItem="{Binding SelectedLOF, Mode=TwoWay}"/>
+        <Button Command="{Binding DeleteAllCommand}" Content="Очистить БД" Margin="358,399,264,19"/>
+        <Button Command="{Binding RefreshDBCommand}" Content="Обновить БД" Margin="548,399,69,19"/> 
+        <Button Command="{Binding ImportFromDGToFBCommand}" Content="Загрузить в БД" HorizontalAlignment="Left" Margin="277,29,307,389" VerticalAlignment="Top"/>
         <Button Command="{Binding ImportFromExcelCommand}" Content="Загрузить таблицу из Excel" HorizontalAlignment="Left" Margin="58,27,0,0" VerticalAlignment="Top" Width="207" />
+        <Button Command="{Binding DeleteTeachLoadIDCommand}" CommandParameter="{Binding SelectedItems, ElementName=datagridTeachLoad}" Content="Удалить элемент из БД" HorizontalAlignment="Left" Margin="429,29,0,0" VerticalAlignment="Top" Width="146"/>
         <TextBox Name="txtFilePath" HorizontalAlignment="Left" Height="23" Margin="43,407,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="283"/>
 
     </Grid>

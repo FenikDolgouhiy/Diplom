@@ -63,7 +63,6 @@
     <Compile Include="Utils\NavigationKeys.cs" />
     <Compile Include="Utils\NavigationManager.cs" />
     <Compile Include="Utils\NavigationUtils.cs" />
-    <Compile Include="ViewModel\EditLOTViewModel.cs" />
     <Compile Include="ViewModel\ListsSpecialtyViewModel.cs" />
     <Compile Include="ViewModel\ListsViewModel.cs" />
     <Compile Include="ViewModel\LoadOfTeachersViewModel.cs" />
@@ -81,6 +80,9 @@
     <Compile Include="View\Manual.xaml.cs">
       <DependentUpon>Manual.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\MessageWindows\EditLOT.xaml.cs">
+      <DependentUpon>EditLOT.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Replacements.xaml.cs">
       <DependentUpon>Replacements.xaml</DependentUpon>
     </Compile>
@@ -92,6 +94,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\LoadOfTeachers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MessageWindows\EditLOT.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
