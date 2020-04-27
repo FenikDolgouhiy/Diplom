@@ -10,22 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Data;
-using System.Data.OleDb;
 
-namespace Dashboard1.View
+namespace Dashboard1.View.MessageWindows
 {
     /// <summary>
-    /// Логика взаимодействия для LoadOfTeachers.xaml
+    /// Логика взаимодействия для EditLOT.xaml
     /// </summary>
-    public partial class LoadOfTeachers : UserControl
+    public partial class EditLOT : Window
     {
-        public LoadOfTeachers()
+        public EditLOT()
         {
             InitializeComponent();
         }
-        
     }
 }

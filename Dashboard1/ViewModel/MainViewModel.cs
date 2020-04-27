@@ -17,6 +17,7 @@ namespace Dashboard1.ViewModel
         {
             OpenListsCommand = new Command(OpenLists);
             OpenLoadOfTeachersCommand = new Command(OpenLoadOfTeachers);
+
         }
 
         private void OpenLists(object obj)

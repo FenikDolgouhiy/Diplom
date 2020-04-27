@@ -23,7 +23,7 @@ namespace Dashboard1.Utils
                 List<LoadDTO> result = null;
                 var dialog = new OpenFileDialog
                 {
-                    Filter = "Таблицы Excel'97 (*.xls)|*.xls|Taблицы Excel'2007 (*.xlsx)|*.xlsx|All files (*.*)|*.*"
+                    Filter = "Taблицы Excel'2007 (*.xlsx)|Таблицы Excel'97 (*.xls)|*.xls|*.xlsx|All files (*.*)|*.*"
                 };
                 if (dialog.ShowDialog() == true)
                 {
@@ -35,7 +35,6 @@ namespace Dashboard1.Utils
                 return result;
             });
         }
-
         private static ExcelQueryFactory InitiateLoadModelMappings(ExcelQueryFactory excelQueryFactory)
         {
             excelQueryFactory.AddMapping<LoadDTO>(x => x.Id, "ID");
@@ -48,6 +47,5 @@ namespace Dashboard1.Utils
             excelQueryFactory.AddMapping<LoadDTO>(x => x.DaysOfPractice, "Кол-во недель практики");
             return excelQueryFactory;
         }
-
     }
 }
