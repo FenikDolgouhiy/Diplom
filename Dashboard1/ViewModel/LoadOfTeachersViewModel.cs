@@ -11,7 +11,6 @@ namespace Dashboard1.ViewModel
         public Command ImportFromDGToFBCommand { get; }
         public Command DeleteTeachLoadIDCommand { get; }
         public Command DeleteAllCommand { get; }
-        public Command RefreshDBCommand { get; }
         public LoadDTO SelectedLOF { get; set; }
 
         public DatabaseOperations dbOperations = new DatabaseOperations();
@@ -23,7 +22,6 @@ namespace Dashboard1.ViewModel
             ImportFromExcelCommand = new Command(ImportFromExcel);
             ImportFromDGToFBCommand = new Command(ImportFromDGToFB);
             DeleteTeachLoadIDCommand = new Command(DeleteTeachLoadID);
-            RefreshDBCommand = new Command(RefreshDB);
             DeleteAllCommand = new Command(DeleteAll);
             
             UploadFromFB();
@@ -37,16 +35,7 @@ namespace Dashboard1.ViewModel
                 OnPropertyChanged("LoadList");
             }
         }
-        public List<LoadDTO> UploadList
-        {
-            get { return _loadList; }
-            set
-            {
-                _loadList = value;
-                OnPropertyChanged("LoadList");
-            }
-        }
-        private async void ImportFromExcel(object obj)
+        private async void ImportFromExcel(object obj) // загрузка из Excel в DataGrid
         {
             var loads = await dbOperations.ImportTeacherLoadsFromExcel();
             if (loads != null)
@@ -54,45 +43,41 @@ namespace Dashboard1.ViewModel
                 LoadList = loads;
             }
         }
-        
-        private async void UploadFromFB()
+        private async void UploadFromFB() // Загрузка из БД в таблицу
         {
             var loads = await fbOperations.ExportFromFBToDG();
             if (loads != null)
             {
-                UploadList = loads;
+                LoadList = loads;
             }
         }
-        private async void ImportFromDGToFB(object gridExcel)
+        private async void ImportFromDGToFB(object gridExcel) // Загрузка из таблицы в БД
         {
             await fbOperations.ExportDGToFB(_loadList);
         }
-        private void DeleteTeachLoadID(object obj)
+        private void DeleteTeachLoadID(object obj) // Удалить элемент из DataGrid
         {
             if (MessageBox.Show("Вы действительно хотите удалить данную строку?", "Подтверждение операции", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 if (SelectedLOF != null)
                 {
-                    fbOperations.DeleteSelectedItem(SelectedLOF);
+                    var loads = LoadList;
+                    loads.Remove(SelectedLOF);
+                    LoadList = null;
+                    LoadList = loads;
                 }
             }
-               
         }
-        private void DeleteAll(object obj)
+        private void DeleteAll(object obj) // Очистить Firebase
         {
             if (MessageBox.Show("Вы действительно хотите удалить ВСЁ из Базы данных?", "Подтверждение операции", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 fbOperations.DeleteAllInfoFromFB();
+
+                MessageBox.Show("База данных была полностью очищенна");
             }
         }
-        private async void RefreshDB(object obj)
-        {
-            var loads = await fbOperations.ExportFromFBToDG();
-            if (loads != null)
-            {
-                UploadList = loads;
-            }
-        }
+        
         #region Implementation of INavigationAware
         public void OnNavigatingFrom()
         {
