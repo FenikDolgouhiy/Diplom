@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:Dashboard1.View"
              xmlns:viewModel="clr-namespace:Dashboard1.ViewModel"
              mc:Ignorable="d" 
+             
              d:DesignHeight="450" d:DesignWidth="800"
              d:DataContext="{d:DesignInstance viewModel:LoadOfTeachersViewModel}">
 
@@ -15,9 +16,9 @@
                   Height="302" Margin="43,77,0,0" 
                   VerticalAlignment="Top" Width="735"
                   ItemsSource="{Binding LoadList}"
+                  CanUserDeleteRows="False"
                   SelectedItem="{Binding SelectedLOF, Mode=TwoWay}"/>
         <Button Command="{Binding DeleteAllCommand}" Content="Очистить БД" Margin="358,399,264,19"/>
-        <Button Command="{Binding RefreshDBCommand}" Content="Обновить БД" Margin="548,399,69,19"/> 
         <Button Command="{Binding ImportFromDGToFBCommand}" Content="Загрузить в БД" HorizontalAlignment="Left" Margin="277,29,307,389" VerticalAlignment="Top"/>
         <Button Command="{Binding ImportFromExcelCommand}" Content="Загрузить таблицу из Excel" HorizontalAlignment="Left" Margin="58,27,0,0" VerticalAlignment="Top" Width="207" />
         <Button Command="{Binding DeleteTeachLoadIDCommand}" CommandParameter="{Binding SelectedItems, ElementName=datagridTeachLoad}" Content="Удалить элемент из БД" HorizontalAlignment="Left" Margin="429,29,0,0" VerticalAlignment="Top" Width="146"/>

@@ -36,7 +36,7 @@ namespace Dashboard1.Utils
             List<LoadDTO> result = new List<LoadDTO>();
             for (int i = 0; ; i++)
             {
-                FirebaseResponse responce = await client.GetAsync("TeachersLoad/" + i);
+                FirebaseResponse responce = await client.GetAsync("TeachersTest/" + i);
                 
                 LoadDTO obj = responce.ResultAs<LoadDTO>();
                 if (obj == null)
@@ -59,19 +59,9 @@ namespace Dashboard1.Utils
         }
         public async Task ExportDGToFB(List<LoadDTO> loadList)
         {
-            if (loadList != null)
-            {
+            DeleteAllInfoFromFB();
                 for (int i = 0; i < loadList.Count; i++)
                 {
-                    //var id = loadList[i].Id;
-                    //var teacher = loadList[i].Teacher;
-                    //var subject = loadList[i].Subject;
-                    //var group = loadList[i].Group;
-                    //var totalhours = loadList[i].TotalHours;
-                    //var weekcontent = loadList[i].Weeks;
-                    //var hourperweek = loadList[i].HoursPerWeek;
-                    //var daysofpractice = loadList[i].DaysOfPractice;
-
                     var loadDTO = new LoadDTO
                     {
                         Id = loadList[i].Id,
@@ -83,21 +73,20 @@ namespace Dashboard1.Utils
                         HoursPerWeek = loadList[i].HoursPerWeek,
                         DaysOfPractice = loadList[i].DaysOfPractice
                     };
-                    SetResponse responce = await client.SetAsync("TeachersLoad/" + i, loadDTO);
+                    SetResponse responce = await client.SetAsync("TeachersTest/" + i, loadDTO);
                     LoadDTO result = responce.ResultAs<LoadDTO>();
                     //MessageBox.Show("Data Inserted " + result.IDnagr);
                 }
-            }
+            
         }
         public async void DeleteSelectedItem(LoadDTO loadDTO)
         {
             loadDTO.Id = (Convert.ToInt32(loadDTO.Id) - 1).ToString();
-            FirebaseResponse response = await client.DeleteAsync("TeachersLoad/" + loadDTO.Id);
+            FirebaseResponse response = await client.DeleteAsync("TeachersTest/" + loadDTO.Id);
         }
         public async void DeleteAllInfoFromFB()
         {
-            FirebaseResponse response = await client.DeleteAsync("TeachersLoad");
-            MessageBox.Show("База данных была полностью очищенна");
+            FirebaseResponse response = await client.DeleteAsync("TeachersTest");
         }
         
     }
