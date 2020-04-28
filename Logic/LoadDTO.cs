@@ -1,4 +1,4 @@
-﻿namespace Dashboard1.Model
+﻿namespace Logic
 {
     public class LoadDTO
     {
@@ -11,4 +11,5 @@
         public string HoursPerWeek { get; set; }
         public string DaysOfPractice { get; set; }
     }
+
 }

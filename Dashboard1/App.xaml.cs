@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
-using Dashboard1.Utils;
+﻿using Dashboard1.Utils;
 using Dashboard1.View;
 using Dashboard1.ViewModel;
-using Dashboard1.View.ListsTabs;
+
+using System.Windows;
 
 namespace Dashboard1
 {

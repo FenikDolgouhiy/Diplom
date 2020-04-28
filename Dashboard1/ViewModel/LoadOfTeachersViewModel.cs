@@ -1,5 +1,6 @@
 ﻿using Dashboard1.Model;
 using Dashboard1.Utils;
+
 using System.Collections.Generic;
 using System.Windows;
 
@@ -25,13 +26,13 @@ namespace Dashboard1.ViewModel
             DeleteTeachLoadIDCommand = new Command(DeleteTeachLoadID);
             RefreshDBCommand = new Command(RefreshDB);
             DeleteAllCommand = new Command(DeleteAll);
-            
+
             UploadFromFB();
         }
         public List<LoadDTO> LoadList
         {
             get { return _loadList; }
-            private set 
+            private set
             {
                 _loadList = value;
                 OnPropertyChanged("LoadList");
@@ -54,7 +55,7 @@ namespace Dashboard1.ViewModel
                 LoadList = loads;
             }
         }
-        
+
         private async void UploadFromFB()
         {
             var loads = await fbOperations.ExportFromFBToDG();
@@ -76,7 +77,7 @@ namespace Dashboard1.ViewModel
                     fbOperations.DeleteSelectedItem(SelectedLOF);
                 }
             }
-               
+
         }
         private void DeleteAll(object obj)
         {

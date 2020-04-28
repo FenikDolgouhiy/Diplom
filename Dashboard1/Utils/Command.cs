@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Dashboard1.Utils
@@ -29,7 +25,7 @@ namespace Dashboard1.Utils
             this.executeAction = executeAction
                 ?? throw new ArgumentNullException("Переменная не может быть null.", nameof(executeAction));
         }
-        
+
         private readonly Action<object> executeAction;
     }
 }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dashboard1.ViewModel;
-using Dashboard1.Utils;
+﻿using Dashboard1.Utils;
 
 namespace Dashboard1.ViewModel
 {
@@ -55,7 +49,7 @@ namespace Dashboard1.ViewModel
 
         public void OnNavigatingTo(object arg)
         {
-            
+
         }
 
         #endregion

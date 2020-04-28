@@ -1,16 +1,12 @@
 ﻿using Dashboard1.Model;
-using Dashboard1.View;
-using Dashboard1.ViewModel;
+
 using FireSharp.Config;
 using FireSharp.Interfaces;
-using FireSharp.Response;
+
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace Dashboard1.Utils
 {
@@ -72,6 +68,6 @@ namespace Dashboard1.Utils
             await client.DeleteAsync("TeachersLoad");
             MessageBox.Show("База данных была полностью очищенна");
         }
-        
+
     }
- }
+}
