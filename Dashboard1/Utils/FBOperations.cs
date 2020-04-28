@@ -34,26 +34,24 @@ namespace Dashboard1.Utils
         public async Task<List<LoadDTO>> ExportFromFBToDG()
         {
             List<LoadDTO> result = new List<LoadDTO>();
-            for (int i = 0; ; i++)
+            var response = await client.GetAsync("TeachersLoad/");
+            var list = response.ResultAs<List<LoadDTO>>();
+            if (list != null)
             {
-                FirebaseResponse responce = await client.GetAsync("TeachersLoad/" + i);
-                
-                LoadDTO obj = responce.ResultAs<LoadDTO>();
-                if (obj == null)
+                foreach (var item in list)
                 {
-                    break;
+                    result.Add(new LoadDTO
+                    {
+                        Id = item.Id,
+                        Teacher = item.Teacher,
+                        Subject = item.Subject,
+                        Group = item.Group,
+                        TotalHours = item.TotalHours,
+                        Weeks = item.Weeks,
+                        HoursPerWeek = item.HoursPerWeek,
+                        DaysOfPractice = item.DaysOfPractice
+                    });
                 }
-                result.Add(new LoadDTO
-                {
-                    Id = obj.Id,
-                    Teacher = obj.Teacher,
-                    Subject = obj.Subject,
-                    Group = obj.Group,
-                    TotalHours = obj.TotalHours,
-                    Weeks = obj.Weeks,
-                    HoursPerWeek = obj.HoursPerWeek,
-                    DaysOfPractice = obj.DaysOfPractice
-                });
             }
             return result;
         }
@@ -61,42 +59,17 @@ namespace Dashboard1.Utils
         {
             if (loadList != null)
             {
-                for (int i = 0; i < loadList.Count; i++)
-                {
-                    //var id = loadList[i].Id;
-                    //var teacher = loadList[i].Teacher;
-                    //var subject = loadList[i].Subject;
-                    //var group = loadList[i].Group;
-                    //var totalhours = loadList[i].TotalHours;
-                    //var weekcontent = loadList[i].Weeks;
-                    //var hourperweek = loadList[i].HoursPerWeek;
-                    //var daysofpractice = loadList[i].DaysOfPractice;
-
-                    var loadDTO = new LoadDTO
-                    {
-                        Id = loadList[i].Id,
-                        Teacher = loadList[i].Teacher,
-                        Subject = loadList[i].Subject,
-                        Group = loadList[i].Group,
-                        TotalHours = loadList[i].TotalHours,
-                        Weeks = loadList[i].Weeks,
-                        HoursPerWeek = loadList[i].HoursPerWeek,
-                        DaysOfPractice = loadList[i].DaysOfPractice
-                    };
-                    SetResponse responce = await client.SetAsync("TeachersLoad/" + i, loadDTO);
-                    LoadDTO result = responce.ResultAs<LoadDTO>();
-                    //MessageBox.Show("Data Inserted " + result.IDnagr);
-                }
+                await client.SetAsync("TeachersLoad/", loadList);
             }
         }
         public async void DeleteSelectedItem(LoadDTO loadDTO)
         {
             loadDTO.Id = (Convert.ToInt32(loadDTO.Id) - 1).ToString();
-            FirebaseResponse response = await client.DeleteAsync("TeachersLoad/" + loadDTO.Id);
+            await client.DeleteAsync("TeachersLoad/" + loadDTO.Id);
         }
         public async void DeleteAllInfoFromFB()
         {
-            FirebaseResponse response = await client.DeleteAsync("TeachersLoad");
+            await client.DeleteAsync("TeachersLoad");
             MessageBox.Show("База данных была полностью очищенна");
         }
         
