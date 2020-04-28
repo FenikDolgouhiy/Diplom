@@ -12,12 +12,13 @@
         ResizeMode="CanResizeWithGrip" 
         WindowStartupLocation="CenterScreen" 
         WindowStyle="None" SizeToContent="WidthAndHeight" MinWidth="1024" MinHeight="600">
-    
-    
+
+
     <Window.Resources>
+        <FontFamily x:Key="Robotoo">Roboto</FontFamily>
     </Window.Resources>
 
-    
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="230"/>
@@ -51,39 +52,39 @@
                 </Grid.Effect>
             </Grid>
 
-            <StackPanel Grid.Row="1">
-                <Button Uid="0" Margin="0,15" Background="{x:Null}" BorderBrush="{x:Null}" Click="Button_Click_MainMenu">
+            <StackPanel Grid.Row="1" >
+                <Button Uid="0" Margin="0,15" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Roboto" FontWeight="Normal">
                     <Grid Width="180">
                         <materialDesign:PackIcon Kind="CalendarText"  VerticalAlignment="Center"/>
-                        <TextBlock  HorizontalAlignment="Center" Text="РОЗКЛАД" FontFamily="Palatino Linotype" FontWeight="Normal"/>
+                        <TextBlock  HorizontalAlignment="Center" Text="РОЗКЛАД" FontFamily="{DynamicResource Robotoo}"/>
                     </Grid>
                 </Button>
 
-                <Button Uid="1" Margin="0,10" Background="{x:Null}" BorderBrush="{x:Null}" Click="Button_Click_MainMenu">
+                <Button Uid="1" Margin="0,10" Background="{x:Null}" BorderBrush="{x:Null}">
                     <Grid Width="180">
                         <materialDesign:PackIcon Kind="CalendarClock" VerticalAlignment="Center"/>
-                        <TextBlock HorizontalAlignment="Center" Text="ЗМІНИ" FontFamily="Palatino Linotype"/>
+                        <TextBlock HorizontalAlignment="Center" Text="ЗМІНИ"/>
                     </Grid>
                 </Button>
 
                 <Button Uid="3" Margin="0,10" Background="{x:Null}" BorderBrush="{x:Null}" Command="{Binding OpenLoadOfTeachersCommand}">
                     <Grid Width="180">
                         <materialDesign:PackIcon Kind="ContentPaste" VerticalAlignment="Center"/>
-                        <TextBlock HorizontalAlignment="Center" Text="НАВАНТАЖЕННЯ" FontFamily="Palatino Linotype"/>
+                        <TextBlock HorizontalAlignment="Center" Text="НАВАНТАЖЕННЯ" FontFamily="Roboto" FontWeight="Normal"/>
                     </Grid>
                 </Button>
 
                 <Button Uid="4" Margin="0,10" BorderBrush="{x:Null}" Background="{x:Null}"  Command="{Binding OpenListsCommand}">
                     <Grid Width="180">
                         <materialDesign:PackIcon Kind="FormatListNumbers"  VerticalAlignment="Center"/>
-                        <TextBlock HorizontalAlignment="Center" Text="СПИСКИ" FontFamily="Palatino Linotype"/>
+                        <TextBlock HorizontalAlignment="Center" Text="СПИСКИ"/>
                     </Grid>
                 </Button>
 
-                <Button Uid="5" Margin="0,50" BorderBrush="{x:Null}" Background="{x:Null}" Height="Auto" Grid.Row="1" Click="Button_Click_MainMenu">
+                <Button Uid="5" Margin="0,50" BorderBrush="{x:Null}" Background="{x:Null}" Height="Auto" Grid.Row="1">
                     <Grid Width="180">
                         <materialDesign:PackIcon Kind="CloudDownload" VerticalAlignment="Center"/>
-                        <TextBlock HorizontalAlignment="Center" Text="ЗАГРУЗИТЬ" FontFamily="Palatino Linotype"/>
+                        <TextBlock HorizontalAlignment="Center" Text="ЗАГРУЗИТЬ"/>
                     </Grid>
                 </Button>
             </StackPanel>

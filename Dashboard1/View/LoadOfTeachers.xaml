@@ -19,9 +19,9 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Margin="50,0">
-            <Button Command="{Binding ImportFromDGToFBCommand}" Content="Загрузить в БД" HorizontalAlignment="Left"/>
-            <Button Command="{Binding ImportFromExcelCommand}" Content="Загрузить таблицу из Excel" HorizontalAlignment="Center"/>
-            <Button Command="{Binding DeleteTeachLoadIDCommand}" CommandParameter="{Binding SelectedItems, ElementName=datagridTeachLoad}" Content="Удалить элемент из БД" HorizontalAlignment="Right"/>
+            <Button Command="{Binding ImportFromDGToFBCommand}" Content="Загрузить в БД" HorizontalAlignment="Left" FontWeight="Normal"/>
+            <Button Command="{Binding ImportFromExcelCommand}" Content="Загрузить таблицу из Excel" HorizontalAlignment="Center" FontWeight="Normal"/>
+            <Button Command="{Binding DeleteTeachLoadIDCommand}" CommandParameter="{Binding SelectedItems, ElementName=datagridTeachLoad}" Content="Удалить элемент из БД" HorizontalAlignment="Right" FontWeight="Normal"/>
         </Grid>
         <Grid Grid.Row="1">
             <DataGrid
@@ -32,8 +32,8 @@
         </Grid>
 
         <Grid Grid.Row="2" Margin="50,0">
-            <Button Command="{Binding DeleteAllCommand}" Content="Очистить БД"  HorizontalAlignment="Left"/>
-            <Button Command="{Binding RefreshDBCommand}" Content="Обновить БД"  HorizontalAlignment="Right"/>
+            <Button Command="{Binding DeleteAllCommand}" Content="Очистить БД"  HorizontalAlignment="Left" FontWeight="Normal"/>
+            <Button Command="{Binding RefreshDBCommand}" Content="Обновить БД"  HorizontalAlignment="Right" FontWeight="Normal"/>
         </Grid>
     </Grid>
 </UserControl>

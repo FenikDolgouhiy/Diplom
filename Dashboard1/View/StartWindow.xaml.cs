@@ -22,7 +22,6 @@ namespace Dashboard1
         public StartWindow()
         {
             InitializeComponent();
-
             DataContext = new MainViewModel();
         }
         private void WindowClose_Click(object sender, RoutedEventArgs e)
@@ -48,42 +47,7 @@ namespace Dashboard1
         {
             DragMove();
         }
-
-        //private void Button_Click(object sender, RoutedEventArgs e)
-        //{
         //    int index = int.Parse(((Button)e.Source).Uid);
-
         //    GridCursor.Margin = new Thickness(10 + (150 * index), 0, 0, 0);
-
-        //    switch (index)
-        //    {
-        //        case 0:
-        //            GridMainSecond.Background = Brushes.Aquamarine;
-        //            break;
-        //        case 1:
-        //            GridMainSecond.Background = Brushes.Beige;
-        //            break;
-        //        case 2:
-        //            GridMainSecond.Background = Brushes.CadetBlue;
-        //            break;
-        //        case 3:
-        //            GridMainSecond.Background = Brushes.DarkBlue;
-        //            break;
-        //        case 4:
-        //            GridMainSecond.Background = Brushes.Firebrick;
-        //            break;
-        //        case 5:
-        //            GridMainSecond.Background = Brushes.Gainsboro;
-        //            break;
-        //        case 6:
-        //            GridMainSecond.Background = Brushes.HotPink;
-        //            break;
-        //    }
-        //}
-
-        private void Button_Click_MainMenu(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
