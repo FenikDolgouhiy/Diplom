@@ -60,6 +60,7 @@
     <Compile Include="Utils\FBOperations.cs" />
     <Compile Include="Utils\INavigationAware.cs" />
     <Compile Include="Utils\INavigationManager.cs" />
+    <Compile Include="Utils\LoadListsTabs.cs" />
     <Compile Include="Utils\NavigationKeys.cs" />
     <Compile Include="Utils\NavigationManager.cs" />
     <Compile Include="Utils\NavigationUtils.cs" />
@@ -187,7 +188,7 @@
       <Version>1.11.0</Version>
     </PackageReference>
     <PackageReference Include="MaterialDesignThemes">
-      <Version>3.1.0</Version>
+      <Version>3.1.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Bcl">
       <Version>1.1.10</Version>

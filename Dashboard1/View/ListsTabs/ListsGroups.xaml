@@ -8,7 +8,34 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              d:DataContext="{d:DesignInstance viewModel:ListsGroupsViewModel}">
-    <Grid Background="DarkMagenta">
-            
+    <Grid Background="Gray">
+        <DataGrid x:Name="dataGridGroups" 
+              HorizontalAlignment="Left" 
+              Margin="178,24,0,0" 
+              VerticalAlignment="Top"
+              Width="120"
+              Height="384"
+              CanUserDeleteRows="False"
+              ItemsSource="{Binding GroupList}"
+              AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding}" 
+                     Foreground="Black" Width="100" Header="Groups" IsReadOnly="false" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid x:Name="dataGridSubjects" 
+              HorizontalAlignment="Left" 
+              Margin="525,24,0,0" 
+              VerticalAlignment="Top"
+              Width="120"
+              Height="384"
+              CanUserDeleteRows="False"
+              ItemsSource="{Binding SubjectList}"
+              AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding}" 
+                     Foreground="Black" Width="100" Header="Subjects" IsReadOnly="false" />
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>
