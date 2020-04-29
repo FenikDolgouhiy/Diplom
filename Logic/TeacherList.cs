@@ -8,7 +8,7 @@
         public Subjects[] subjects; //массив предметов
         public int possibilitiesCount = 0;   //суммарное количество возможностей. Для сортировки
         public bool[,,] TOpp = new bool[5, 6, 2];
-        public TeacherList(int subjectsCount, string teacherName, string opportunitiesString) //конструктор
+        public TeacherList(int subjectsCount, string teacherName, string opportunitiesString) 
         {
             this.subjectsCount = subjectsCount;
             this.teacherName = teacherName;

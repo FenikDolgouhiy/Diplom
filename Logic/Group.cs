@@ -1,11 +1,11 @@
 ﻿namespace Logic
 {
-    public class Group //массив групп. На будущее
+    public class Group //массив групп.
     {
-        public string Name;
-        public int Weeks;
-        public int Practice;
-        public Rozklad[,] TimeTable = new Rozklad[5, 6];
+        public string Name;//имя группы
+        public int Weeks;//Количество недель
+        public int Practice;//Недели практик. Временно бесполезны
+        public Rozklad[,] TimeTable = new Rozklad[5, 6];//Таблица расписания
 
         public Group()
         {

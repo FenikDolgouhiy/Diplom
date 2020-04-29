@@ -12,7 +12,7 @@ namespace TestConsole
     {
         static void Main()
         {
-
+            //ЗАГРУЗКА ТЕСТОВЫХ ДАННЫХ ИЗ ЭКСЕЛЯ
             Excel.Application excelApp = new Excel.Application
             {
                 Visible = true
@@ -71,11 +71,11 @@ namespace TestConsole
             myvalues = (System.Array)SRange.Cells.Value2;
             string[] G_Weeks = myvalues.OfType<object>().Select(o => o.ToString()).ToArray();//НЕДЕЛЬ8
 
-            for (int i = 0; i < P_Opps.Length; i++)
+            for (int i = 0; i < P_Opps.Length; i++) //Вывод для проверки 
             {
                 Console.WriteLine(P_Prepods[i] + " " + P_Opps[i]);
             }
-            int Number_of_prep = P_Prepods.Length;
+            int Number_of_prep = P_Prepods.Length;//Количество преподавателей для инициализации 
 
             TeacherList[] Prep_okkt; //список преподов
             Prep_okkt = new TeacherList[Number_of_prep];
@@ -83,7 +83,7 @@ namespace TestConsole
             Console.OutputEncoding = Encoding.UTF8;
 
 
-
+            //Дальше идёт инициализация основных объектов данными из массивов.
             Group[] okkt = new Group[G_Groups.Length];
             for (int i = 0; i < G_Groups.Length; i++)
             {
@@ -106,7 +106,7 @@ namespace TestConsole
                 }
             }
             TeacherList temp; //список преподов для сортировки
-            for (int i = 0; i < Prep_okkt.Length - 1; i++)
+            for (int i = 0; i < Prep_okkt.Length - 1; i++)//Сортировка по убыванию свободных мест
             {
                 for (int j = i + 1; j < Prep_okkt.Length; j++)
                 {
@@ -118,8 +118,8 @@ namespace TestConsole
                     }
                 }
             }
-            {
-                for (int i = 0; i < okkt.Length - 1; i++)
+            
+                for (int i = 0; i < okkt.Length - 1; i++)//Сортировка групп по количеству часов. Почему-то не работает (наверное(я не знаю))
                 {
                     for (int j = i + 1; j < okkt.Length; j++)
                     {
@@ -150,7 +150,7 @@ namespace TestConsole
                         Console.WriteLine("Предмет " + Prep_okkt[i].subjects[j].Subject + " " + Prep_okkt[i].subjects[j].hoursSum + " " + Prep_okkt[i].subjects[j].hoursPerWeek + " ");
                     }
                 }
-                for (int i = 0; i < okkt.Length; i++)
+                for (int i = 0; i < okkt.Length; i++)//Создание расписания погруппно
                 {
                     okkt[i] = AdeptMech.CreatRoz(ref Prep_okkt, okkt[i]);
                 }
@@ -175,7 +175,7 @@ namespace TestConsole
                     }
                 }
                 Console.ReadKey();
-            }
+            
         }
     }
 }

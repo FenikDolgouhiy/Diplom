@@ -8,7 +8,7 @@
         public int Weeks; //недель 
         public int hoursPerWeek; //часов в неделю
 
-        public Subjects(string pred, int sum, int weeks, string group, Group[] P) //конструктор
+        public Subjects(string pred, int sum, int weeks, string group, Group[] P) 
         {
             Subject = pred;
             hoursSum = sum;
@@ -23,12 +23,12 @@
             }
         }
 
-        public static int SubjectsCount(string subject, string[] subjectsList)
+        public static int SubjectsCount(string teacher, string[] TeacherList)//Подсчёт количества предметов у преподавателя
         {
             int counter = 0;
-            for (int i = 0; i < subjectsList.Length; i++)
+            for (int i = 0; i < TeacherList.Length; i++)
             {
-                if (subject == subjectsList[i])
+                if (teacher == TeacherList[i])
                     counter++;
             }
             return counter;
