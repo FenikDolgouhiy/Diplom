@@ -45,7 +45,7 @@
             </Grid.Effect>
 
             <Grid Grid.Row="0" Background="#FF2A6AAA">
-                <Image Source="pack://application:/occt.png" Height="80" VerticalAlignment="Top" Margin="0,10"></Image>
+                <Image Source="../Resources/occt.png" Height="80" VerticalAlignment="Top" Margin="0,10"></Image>
                 <TextBlock Text="ОККТ ОДЄКУ" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,10" FontFamily="Roboto" Foreground="White" FontSize="16"/>
                 <Grid.Effect>
                     <DropShadowEffect BlurRadius="20" Color="#FF5D87B0" RenderingBias="Quality" ShadowDepth="1"/>
