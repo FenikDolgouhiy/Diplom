@@ -71,6 +71,8 @@
     <Compile Include="ViewModel\ListsViewModel.cs" />
     <Compile Include="ViewModel\LoadOfTeachersViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\ManualViewModel.cs" />
+    <Compile Include="ViewModel\TimetableViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="View\Lists.xaml.cs">
       <DependentUpon>Lists.xaml</DependentUpon>
@@ -95,12 +97,6 @@
     </Compile>
     <Compile Include="View\Manual.xaml.cs">
       <DependentUpon>Manual.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\MessageWindows\EditLOT.xaml.cs">
-      <DependentUpon>EditLOT.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Replacements.xaml.cs">
-      <DependentUpon>Replacements.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Timetable.xaml.cs">
       <DependentUpon>Timetable.xaml</DependentUpon>
@@ -129,7 +125,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\MessageWindows\EditLOT.xaml">
+    <Page Include="View\Manual.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -146,14 +142,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\Lists.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Manual.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Replacements.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

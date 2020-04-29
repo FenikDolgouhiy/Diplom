@@ -18,7 +18,7 @@ namespace Dashboard1.View
     /// <summary>
     /// Логика взаимодействия для Timetable.xaml
     /// </summary>
-    public partial class Timetable : Page
+    public partial class Timetable : UserControl
     {
         public Timetable()
         {

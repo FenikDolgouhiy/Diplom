@@ -26,6 +26,10 @@ namespace Dashboard1
                 (new ListsViewModel(), NavigationKeys.Lists);
             startWindowManager.Register<LoadOfTeachersViewModel, LoadOfTeachers>
                 (new LoadOfTeachersViewModel(), NavigationKeys.LoadOfTeachers);
+            startWindowManager.Register<TimetableViewModel, Timetable>
+                (new TimetableViewModel(), NavigationKeys.Timetable);
+            startWindowManager.Register<ManualViewModel, Manual>
+                (new ManualViewModel(), NavigationKeys.Manual);
 
             NavigationUtils.Register(NavigationUtils.NavigationPanel.START_WINDOW, startWindowManager);
 
