@@ -2,8 +2,8 @@
 {
     public class Rozklad //массив расписания 
     {
-        public Lesson EvenWeek; //пара на чётную неделю
-        public Lesson OddWeek;  //пар на нечетную неделю
+        public Lesson EvenWeek = new Lesson(); //пара на чётную неделю
+        public Lesson OddWeek = new Lesson();  //пар на нечетную неделю
 
         public static bool IsTrue(int k, string subject, Rozklad[,] timeTable) //условие для проверки количества пар по предмету в день
         {
@@ -13,7 +13,9 @@
                 if (timeTable[k, j].EvenWeek.Subject == subject || timeTable[k, j].OddWeek.Subject == subject)
                     counter++;
             }
-            return counter >= 2;
+             if (counter >= 2)
+                    return false;
+             else return true;
         }
 
         public static bool IsHalf(ref int k, ref int l, TeacherList Prep, Rozklad[,] timeTable, ref int pH) //условие для проверки количества пар по предмету в день

@@ -145,7 +145,7 @@ namespace Logic
                         }
                     }
                 }
-                PermutateArr(ref Gr, N);
+                PermutateArr(ref Gr, N);// Перестановка массива в случае 
                 if (id == 60)
                 {
                     Console.WriteLine("Группа Зависла " + OK.Name);
@@ -160,7 +160,18 @@ namespace Logic
         }
         static public int GroupHours(TeacherList[] teachers, string groupName)
         {
-            return teachers.SelectMany(teacher => teacher.subjects).Sum(subject => subject.hoursPerWeek);
+            int GrHrs = 0;
+                for (int i = 0; i < teachers.Length; i++)
+                {
+                    for (int j = 0; j < teachers[i].subjects.Length; j++)
+                    {
+                        if (teachers[i].subjects[j].Group  == groupName)
+                        {
+                            GrHrs += teachers[i].subjects[j].hoursPerWeek;
+                        }
+                    }
+                }
+                return GrHrs;
         }
         static int Num_TOpp(bool[,,] TOpp)
         {

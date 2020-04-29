@@ -18,7 +18,7 @@ namespace TestConsole
                 Visible = true
             };
 
-            string path = @"D:\Downloads\data.xlsx";
+            string path = @"C:\OAO\data.xlsx";
 
             Excel.Workbook workbook = excelApp.Workbooks.Open(path, Type.Missing, true, Type.Missing, Type.Missing,
             Type.Missing, Type.Missing, Type.Missing, Type.Missing,

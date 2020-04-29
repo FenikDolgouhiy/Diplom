@@ -14,9 +14,18 @@
             this.teacherName = teacherName;
             subjects = new Subjects[this.subjectsCount];
 
-            for (int dayOfTheMonth = 0; dayOfTheMonth < 30; dayOfTheMonth++)
+            for (int i = 0, j = 0, k = 0; k < 30; k++, j++)
             {
-                this.opportunities[dayOfTheMonth / 7, dayOfTheMonth % 7] = opportunitiesString[dayOfTheMonth] == '+';
+                if (j == 6)
+                    {
+                        i++;
+                        j = 0;
+                    }
+                    if (opportunitiesString[k] == '+')
+                    {
+                        opportunities[i, j] = true;
+                    }
+                    else opportunities[i, j] = false;
             }
 
             CountOpp();
