@@ -53,5 +53,19 @@ namespace Dashboard1.Utils
                     res.Add(x);
             return res;
         }
+        public async Task<List<TeachersWeekLoad>> ReturnTeachers()
+        {
+            List<TeachersWeekLoad> teachersWeeks = new List<TeachersWeekLoad>();
+            var responce = await client.GetAsync("TeachersLoad/");
+            var list = responce.ResultAs<List<LoadDTO>>();
+            if (list != null)
+                foreach (var item in list)
+                    teachersWeeks.Add(new TeachersWeekLoad {Teacher = item.Teacher });
+
+
+            var res = teachersWeeks.GroupBy(a => a.Teacher).Select(g => g.First()).ToList();
+            return res;
+
+        }
     }
 }

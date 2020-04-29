@@ -55,6 +55,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Model\LoadDTO.cs" />
+    <Compile Include="Model\TeachersWeekLoad.cs" />
     <Compile Include="Utils\Command.cs" />
     <Compile Include="Utils\DatabaseOperations.cs" />
     <Compile Include="Utils\FBOperations.cs" />
