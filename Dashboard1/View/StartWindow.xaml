@@ -36,7 +36,7 @@
         </Grid.RowDefinitions>
 
 
-        <Grid x:Name="GridMain" Grid.Column="1" Grid.Row="1" Background="{DynamicResource SecondaryAccentForegroundBrush}">
+        <Grid x:Name="GridMain" Grid.Column="1" Grid.Row="1" Background="{DynamicResource MaterialDesignBackground}">
             <ContentControl x:Name="FrameContent"
                     x:FieldModifier="public"/>
         </Grid>
@@ -47,43 +47,49 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.Effect>
-                <DropShadowEffect BlurRadius="20" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1"/>
+                <DropShadowEffect BlurRadius="15" Color="#FF5D87B0" RenderingBias="Quality" ShadowDepth="1"/>
             </Grid.Effect>
 
-            <Grid Grid.Row="0" Background="{DynamicResource PrimaryHueMidBrush}">
-                <Image Source="../Resources/occt.png" Height="80" VerticalAlignment="Top" Margin="0,10"></Image>
+            <Grid Grid.Row="0" Background="{DynamicResource PrimaryHueMidBrush}" >
+                <Image Source="../Resources/occt.png" Height="80" VerticalAlignment="Top" Margin="0,10">
+                    <Image.Effect>
+                        <DropShadowEffect BlurRadius="20" Color="#FF5D87B0" RenderingBias="Quality" ShadowDepth="1"/>
+                    </Image.Effect>
+                </Image>
                 <TextBlock Text="ОККТ ОДЄКУ" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,10" Foreground="White"/>
                 <Grid.Effect>
                     <DropShadowEffect BlurRadius="20" Color="#FF5D87B0" RenderingBias="Quality" ShadowDepth="1"/>
                 </Grid.Effect>
             </Grid>
 
-            <StackPanel Grid.Row="1" >
+            <StackPanel Grid.Row="1">
                 <Button Margin="0,15" Background="{x:Null}" BorderBrush="{x:Null}" Command="{Binding OpenTimetableCommand}">
-                    <Grid Width="180">
-                        <materialDesign:PackIcon Kind="CalendarText"  VerticalAlignment="Center"/>
-                        <TextBlock  HorizontalAlignment="Center" Text="РОЗКЛАД"/>
+                    <Grid Width="180" >
+                        <materialDesign:PackIcon Kind="CalendarText"  VerticalAlignment="Center" Foreground="#FFE3F2FD"/>
+                        <TextBlock  HorizontalAlignment="Center" Text="РОЗКЛАД"  Foreground="#FFE3F2FD">
+                        </TextBlock>
                     </Grid>
                 </Button>
 
                 <Button Margin="0,10" Background="{x:Null}" BorderBrush="{x:Null}" Command="{Binding OpenManualCommand}">
                     <Grid Width="180">
-                        <materialDesign:PackIcon Kind="CalendarClock" VerticalAlignment="Center"/>
-                        <TextBlock HorizontalAlignment="Center" Text="ІНСТРУКЦІЯ"/>
+                        <materialDesign:PackIcon Kind="CalendarClock" VerticalAlignment="Center" Foreground="#FFE3F2FD"/>
+                        <TextBlock HorizontalAlignment="Center" Text="ІНСТРУКЦІЯ" Foreground="#FFE3F2FD"/>
+                        <TextBlock HorizontalAlignment="Center" Text="ІНСТРУКЦІЯ" Foreground="#FFE3F2FD"/>
                     </Grid>
                 </Button>
 
                 <Button Margin="0,10" Background="{x:Null}" BorderBrush="{x:Null}" Command="{Binding OpenLoadOfTeachersCommand}">
                     <Grid Width="180">
-                        <materialDesign:PackIcon Kind="ContentPaste" VerticalAlignment="Center"/>
-                        <TextBlock HorizontalAlignment="Center" Text="НАВАНТАЖЕННЯ"/>
+                        <materialDesign:PackIcon Kind="ContentPaste" VerticalAlignment="Center" Foreground="#FFE3F2FD"/>
+                        <TextBlock HorizontalAlignment="Center" Text="НАВАНТАЖЕННЯ" Foreground="#FFE3F2FD"/>
                     </Grid>
                 </Button>
 
                 <Button Margin="0,10" BorderBrush="{x:Null}" Background="{x:Null}"  Command="{Binding OpenListsCommand}">
                     <Grid Width="180">
-                        <materialDesign:PackIcon Kind="FormatListNumbers"  VerticalAlignment="Center"/>
-                        <TextBlock HorizontalAlignment="Center" Text="СПИСКИ"/>
+                        <materialDesign:PackIcon Kind="FormatListNumbers"  VerticalAlignment="Center" Foreground="#FFE3F2FD"/>
+                        <TextBlock HorizontalAlignment="Center" Text="СПИСКИ" Foreground="#FFE3F2FD"/>
                     </Grid>
                 </Button>
             </StackPanel>
