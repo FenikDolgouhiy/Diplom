@@ -19,24 +19,39 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Margin="50,0">
-            <Button Command="{Binding ImportFromDGToFBCommand}" Content="Загрузить в БД" HorizontalAlignment="Left" FontWeight="Normal"/>
-            <Button Command="{Binding ImportFromExcelCommand}" Content="Загрузить таблицу из Excel" HorizontalAlignment="Center" FontWeight="Normal"/>
-            <Button Command="{Binding DeleteTeachLoadIDCommand}" CommandParameter="{Binding SelectedItems, ElementName=datagridTeachLoad}" Content="Удалить элемент из БД" HorizontalAlignment="Right" FontWeight="Normal"/>
+        <Grid Grid.Row="0" Margin="100,0">
+            <Button Command="{Binding ImportFromExcelCommand}" HorizontalAlignment="Left">
+                <Grid Width="130">
+                    <materialDesign:PackIcon Kind="FileImport" HorizontalAlignment="Left"/>
+                    <TextBlock HorizontalAlignment="Right" Text="ІМПОРТ З EXEL"/>
+                </Grid>
+            </Button>
+            <Button Command="{Binding DeleteTeachLoadIDCommand}" CommandParameter="{Binding SelectedItems, ElementName=datagridTeachLoad}" HorizontalAlignment="Right">
+                <Grid Width="150">
+                    <materialDesign:PackIcon Kind="DeleteForeverOutline" HorizontalAlignment="Left"/>
+                    <TextBlock HorizontalAlignment="Right" Text="ВИДАЛИТИ РЯДОК"/>
+                </Grid>
+            </Button>
         </Grid>
         <Grid Grid.Row="1">
             <DataGrid
                   Name="datagridTeachLoad"
                   HorizontalAlignment="Center"
                   ItemsSource="{Binding LoadList}"
-                  SelectedItem="{Binding SelectedLOF, Mode=TwoWay}"/>
+                  SelectedItem="{Binding SelectedLOF, Mode=TwoWay}" Width="800"/>
         </Grid>
 
-        <Grid Grid.Row="2" Margin="50,0">
-            <Button Command="{Binding DeleteAllCommand}" HorizontalAlignment="Center">
-                <Grid Width="180">
-                    <materialDesign:PackIcon Kind="CloudDownload" VerticalAlignment="Center"/>
-                    <TextBlock HorizontalAlignment="Center" Text="ЗАГРУЗИТЬ" FontFamily="Roboto" FontWeight="Regular"/>
+        <Grid Grid.Row="2" Margin="100,0">
+            <Button Command="{Binding DeleteAllCommand}" HorizontalAlignment="Left" Style="{DynamicResource MaterialDesignFlatButton}">
+                <Grid Width="250">
+                    <materialDesign:PackIcon Kind="DeleteAlert" VerticalAlignment="Center"/>
+                    <TextBlock HorizontalAlignment="Center" Text="ОЧИСТИТИ ДАНІ НА СЕРВЕРІ"/>
+                </Grid>
+            </Button>
+            <Button Command="{Binding ImportFromDGToFBCommand}" Style="{DynamicResource MaterialDesignRaisedButton}" HorizontalAlignment="Right">
+                <Grid Width="200">
+                    <materialDesign:PackIcon Kind="CloudDownload" HorizontalAlignment="Left"/>
+                    <TextBlock HorizontalAlignment="Right" Text="ЗАВАНТАЖИТИ НА СЕРВЕР"/>
                 </Grid>
             </Button>
         </Grid>
