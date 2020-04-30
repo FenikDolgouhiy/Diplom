@@ -25,10 +25,6 @@ namespace Dashboard1.Utils
         public FBOperations()
         {
             client = new FireSharp.FirebaseClient(config);
-            if (client != null)
-            {
-                MessageBox.Show("Подключения к Базе данных успешно");
-            }
         }
 
         public async Task<List<LoadDTO>> ExportFromFBToDG()
@@ -61,6 +57,7 @@ namespace Dashboard1.Utils
             {
                 await client.SetAsync("TeachersLoad/", loadList);
             }
+            MessageBox.Show("Данные в Базу данных были загружены");
         }
         public async void DeleteSelectedItem(LoadDTO loadDTO)
         {
@@ -72,6 +69,14 @@ namespace Dashboard1.Utils
             await client.DeleteAsync("TeachersLoad");
             MessageBox.Show("База данных была полностью очищенна");
         }
-        
+        public async Task LoadTeachersListToDb(List<TeachersWeekLoad> teachersWeekLoad)
+        {
+            if (teachersWeekLoad != null)
+            {
+                await client.SetAsync("TeachersWeekLoad/", teachersWeekLoad);
+
+                MessageBox.Show("Данные в Базу данных были загружены");
+            }
+        }
     }
  }

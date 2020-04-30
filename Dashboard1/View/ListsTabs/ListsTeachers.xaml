@@ -9,6 +9,12 @@
              d:DesignHeight="450" d:DesignWidth="800"
              d:DataContext="{d:DesignInstance viewModel:ListsTeachersViewModel}">
     <Grid Background="Brown">
-            
+        <DataGrid
+                  Name="datagridTeachLoad"
+                  HorizontalAlignment="Center"
+                  ItemsSource="{Binding TeachersList}"
+                  CanUserDeleteRows="False"
+                  Margin="81,61,65,102" Width="654"/>
+        <Button Command="{Binding LoadToDBCommand}"  Content="Загрузить в базу" HorizontalAlignment="Left" Margin="84,390,0,0" VerticalAlignment="Top" Width="168"/>
     </Grid>
 </UserControl>

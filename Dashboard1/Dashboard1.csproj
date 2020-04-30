@@ -55,11 +55,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Model\LoadDTO.cs" />
+    <Compile Include="Model\TeachersWeekLoad.cs" />
     <Compile Include="Utils\Command.cs" />
     <Compile Include="Utils\DatabaseOperations.cs" />
     <Compile Include="Utils\FBOperations.cs" />
     <Compile Include="Utils\INavigationAware.cs" />
     <Compile Include="Utils\INavigationManager.cs" />
+    <Compile Include="Utils\LoadListsTabs.cs" />
     <Compile Include="Utils\NavigationKeys.cs" />
     <Compile Include="Utils\NavigationManager.cs" />
     <Compile Include="Utils\NavigationUtils.cs" />
