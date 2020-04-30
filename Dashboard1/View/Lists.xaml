@@ -3,25 +3,29 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
       xmlns:local="clr-namespace:Dashboard1.View"
       xmlns:viewModel="clr-namespace:Dashboard1.ViewModel"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      d:DataContext="{d:DesignInstance viewModel:ListsViewModel}">
+      d:DataContext="{d:DesignInstance viewModel:ListsViewModel}"
+             >
 
-    <Grid Background="AliceBlue">
-
-        <Grid Height="80" VerticalAlignment="Top">
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0">
-                    <Button Width="150" Content="ПРЕПОДАВАТЕЛИ" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2A6AAA"  FontSize="12" Command="{Binding OpenListsTeachersCommand}"/>
-                <Button Width="150" Content="ГРУППЫ" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2A6AAA"  FontSize="12" Command="{Binding OpenListsGroupsCommand}"/>
-                <Button Width="150" Content="ПРЕДМЕТЫ" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2A6AAA"  FontSize="12" Command="{Binding OpenListsSubjectsCommand}"/>
-                <Button Width="150" Content="АУДИТОРИИ" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2A6AAA"  FontSize="12" Command="{Binding OpenListsCabinetsCommand}"/>
-                <Button Width="150" Content="СПЕЦИАЛЬНОСТИ" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2A6AAA"  FontSize="12" Command="{Binding OpenListsSpecialtyCommand}"/>
-                </StackPanel>
-                <Grid x:Name="GridCursor" Width="150" Height="5" Background="#FF2196F3" HorizontalAlignment="Left" Margin="10 0"/>
-            </Grid>
-        <Grid x:Name="GridMainSecond" Background="BlanchedAlmond" Margin="0,80,0,0">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" >
+            <materialDesign:ColorZone Mode="PrimaryMid">
+            <StackPanel Orientation="Horizontal" Margin="5">
+                    <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" IsChecked="True" Content="ВИКЛАДАЧІ"  Command="{Binding OpenListsTeachersCommand}"/>
+                    <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" IsChecked="False" Content="АУДИТОРІЇ" Command="{Binding OpenListsCabinetsCommand}"/>
+                    <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" IsChecked="False" Content="ГРУПИ І ПРЕДМЕТИ" Command="{Binding OpenListsGroupsAndSubjectsCommand}"/>
+            </StackPanel>
+            </materialDesign:ColorZone>
+        </Grid>
+        <Grid x:Name="GridMainSecond" Background="#FFCFCFCF" Grid.Row="1">
             <ContentControl x:Name="ContentTabs"
                     x:FieldModifier="public"/>
         </Grid>

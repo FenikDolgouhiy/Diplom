@@ -10,38 +10,26 @@ namespace Dashboard1.ViewModel
 {
     public class ListsViewModel : ViewModelBase, INavigationAware
     {
-        public Command OpenListsSpecialtyCommand { get; }
+        
         public Command OpenListsTeachersCommand { get; }
-        public Command OpenListsGroupsCommand { get; }
+        public Command OpenListsGroupsAndSubjectsCommand { get; }
         public Command OpenListsCabinetsCommand { get; }
-        public Command OpenListsSubjectsCommand { get; }
+
         internal ListsViewModel()
         {
-            OpenListsSpecialtyCommand = new Command(OpenListsSpecialty);
             OpenListsTeachersCommand = new Command(OpenListsTeachers);
             OpenListsCabinetsCommand = new Command(OpenListsCabinets);
-            OpenListsGroupsCommand = new Command(OpenListsGroups);
-            OpenListsSubjectsCommand = new Command(OpenListsSubjects);
+            OpenListsGroupsAndSubjectsCommand = new Command(OpenListsGroupsAndSubjects);
         }
         private void OpenListsCabinets(object obj)
         {
             NavigationUtils.GetNavigationManager(NavigationUtils.NavigationPanel.LISTS)
                 .Navigate(NavigationKeys.ListsCabinets);
         }
-        private void OpenListsGroups(object obj)
+        private void OpenListsGroupsAndSubjects(object obj)
         {
             NavigationUtils.GetNavigationManager(NavigationUtils.NavigationPanel.LISTS)
-                .Navigate(NavigationKeys.ListsGroups);
-        }
-        private void OpenListsSubjects(object obj)
-        {
-            NavigationUtils.GetNavigationManager(NavigationUtils.NavigationPanel.LISTS)
-                .Navigate(NavigationKeys.ListsSubjects);
-        }
-        private void OpenListsSpecialty(object obj)
-        {
-            NavigationUtils.GetNavigationManager(NavigationUtils.NavigationPanel.LISTS)
-                .Navigate(NavigationKeys.ListsSpecialty);
+                .Navigate(NavigationKeys.ListsGroupsAndSubjects);
         }
         private void OpenListsTeachers(object obj)
         {

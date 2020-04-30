@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Dashboard1.ViewModel.ListsTabsViewModels
 {
-    class ListsSubjectsViewModel : ViewModelBase, INavigationAware
+    class ListsGroupsAndSubjectsViewModel: ViewModelBase, INavigationAware
     {
         #region Implementation of INavigationAware
         public void OnNavigatingFrom()

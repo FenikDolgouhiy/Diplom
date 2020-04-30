@@ -4,14 +4,20 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Dashboard1"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="16"
+        FontFamily="{materialDesign:MaterialDesignFont}"
         xmlns:MetroChart="clr-namespace:De.TorstenMandelkow.MetroChart;assembly=De.TorstenMandelkow.MetroChart"
         xmlns:viewModel="clr-namespace:Dashboard1.ViewModel"
         xmlns:view="clr-namespace:Dashboard1.View"
         mc:Ignorable="d" Height="600" Width="1024" 
         ResizeMode="CanResizeWithGrip" 
         WindowStartupLocation="CenterScreen" 
-        WindowStyle="None" SizeToContent="WidthAndHeight" MinWidth="1024" MinHeight="600">
+        WindowStyle="None" SizeToContent="WidthAndHeight" MinWidth="1024" MinHeight="600"
+        >
 
 
     <Window.Resources>
@@ -30,12 +36,12 @@
         </Grid.RowDefinitions>
 
 
-        <Grid x:Name="GridMain" Grid.Column="1" Grid.Row="1" Background="#FFCFCFCF">
+        <Grid x:Name="GridMain" Grid.Column="1" Grid.Row="1" Background="{DynamicResource SecondaryAccentForegroundBrush}">
             <ContentControl x:Name="FrameContent"
                     x:FieldModifier="public"/>
         </Grid>
 
-        <Grid Grid.Row="1" Background="#B26193BD">
+        <Grid Grid.Row="1" Background="{DynamicResource PrimaryHueLightBrush}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="120"/>
                 <RowDefinition Height="*"/>
@@ -44,9 +50,9 @@
                 <DropShadowEffect BlurRadius="20" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1"/>
             </Grid.Effect>
 
-            <Grid Grid.Row="0" Background="#FF2A6AAA">
+            <Grid Grid.Row="0" Background="{DynamicResource PrimaryHueMidBrush}">
                 <Image Source="../Resources/occt.png" Height="80" VerticalAlignment="Top" Margin="0,10"></Image>
-                <TextBlock Text="ОККТ ОДЄКУ" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,10" FontFamily="Roboto" Foreground="White" FontSize="16"/>
+                <TextBlock Text="ОККТ ОДЄКУ" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,10" Foreground="White"/>
                 <Grid.Effect>
                     <DropShadowEffect BlurRadius="20" Color="#FF5D87B0" RenderingBias="Quality" ShadowDepth="1"/>
                 </Grid.Effect>
@@ -56,34 +62,34 @@
                 <Button Margin="0,15" Background="{x:Null}" BorderBrush="{x:Null}" Command="{Binding OpenTimetableCommand}">
                     <Grid Width="180">
                         <materialDesign:PackIcon Kind="CalendarText"  VerticalAlignment="Center"/>
-                        <TextBlock  HorizontalAlignment="Center" Text="РОЗКЛАД" FontFamily="Roboto" FontWeight="Regular"/>
+                        <TextBlock  HorizontalAlignment="Center" Text="РОЗКЛАД"/>
                     </Grid>
                 </Button>
 
                 <Button Margin="0,10" Background="{x:Null}" BorderBrush="{x:Null}" Command="{Binding OpenManualCommand}">
                     <Grid Width="180">
                         <materialDesign:PackIcon Kind="CalendarClock" VerticalAlignment="Center"/>
-                        <TextBlock HorizontalAlignment="Center" Text="ІНСТРУКЦІЯ" FontFamily="Roboto" FontWeight="Regular"/>
+                        <TextBlock HorizontalAlignment="Center" Text="ІНСТРУКЦІЯ"/>
                     </Grid>
                 </Button>
 
                 <Button Margin="0,10" Background="{x:Null}" BorderBrush="{x:Null}" Command="{Binding OpenLoadOfTeachersCommand}">
                     <Grid Width="180">
                         <materialDesign:PackIcon Kind="ContentPaste" VerticalAlignment="Center"/>
-                        <TextBlock HorizontalAlignment="Center" Text="НАВАНТАЖЕННЯ" FontFamily="Roboto" FontWeight="Regular"/>
+                        <TextBlock HorizontalAlignment="Center" Text="НАВАНТАЖЕННЯ"/>
                     </Grid>
                 </Button>
 
                 <Button Margin="0,10" BorderBrush="{x:Null}" Background="{x:Null}"  Command="{Binding OpenListsCommand}">
                     <Grid Width="180">
                         <materialDesign:PackIcon Kind="FormatListNumbers"  VerticalAlignment="Center"/>
-                        <TextBlock HorizontalAlignment="Center" Text="СПИСКИ" FontFamily="Roboto" FontWeight="Regular"/>
+                        <TextBlock HorizontalAlignment="Center" Text="СПИСКИ"/>
                     </Grid>
                 </Button>
             </StackPanel>
         </Grid>
 
-        <Grid x:Name="GridBarraTitulo" Grid.ColumnSpan="2" Background="#FF124272" MouseDown="GridBarraTitulo_MouseDown">
+        <Grid x:Name="GridBarraTitulo" Grid.ColumnSpan="2" Background="{DynamicResource PrimaryHueDarkBrush}" MouseDown="GridBarraTitulo_MouseDown" >
             <Grid.Effect>
                 <DropShadowEffect BlurRadius="20" Color="#FF5D87B0" RenderingBias="Quality" ShadowDepth="1"/>
             </Grid.Effect>

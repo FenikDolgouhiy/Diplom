@@ -16,14 +16,13 @@ using System.Windows.Shapes;
 namespace Dashboard1.View.ListsTabs
 {
     /// <summary>
-    /// Логика взаимодействия для ListsSpecialty.xaml
+    /// Логика взаимодействия для ListsGroups.xaml
     /// </summary>
-    public partial class ListsSpecialty : UserControl
+    public partial class ListsGroupsAndSubjects : UserControl
     {
-        public ListsSpecialty()
+        public ListsGroupsAndSubjects()
         {
             InitializeComponent();
-           
         }
     }
 }

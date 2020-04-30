@@ -28,11 +28,9 @@ namespace Dashboard1.View
         {
             InitializeComponent();
             var manager = new NavigationManager(Dispatcher, ContentTabs);
-            manager.Register<ListsSpecialtyViewModel, ListsSpecialty>(new ListsSpecialtyViewModel(), NavigationKeys.ListsSpecialty);
             manager.Register<ListsTeachersViewModel, ListsTeachers>(new ListsTeachersViewModel(), NavigationKeys.ListsTeachers);
             manager.Register<ListsCabinetsViewModel, ListsCabinets>(new ListsCabinetsViewModel(), NavigationKeys.ListsCabinets);
-            manager.Register<ListsGroupsViewModel, ListsGroups>(new ListsGroupsViewModel(), NavigationKeys.ListsGroups);
-            manager.Register<ListsSubjectsViewModel, ListsSubjects>(new ListsSubjectsViewModel(), NavigationKeys.ListsSubjects);
+            manager.Register<ListsGroupsAndSubjectsViewModel, ListsGroupsAndSubjects>(new ListsGroupsAndSubjectsViewModel(), NavigationKeys.ListsGroupsAndSubjects);
             NavigationUtils.Register(NavigationUtils.NavigationPanel.LISTS, manager);
         }
     }
