@@ -33,7 +33,7 @@ namespace Dashboard1
 
             NavigationUtils.Register(NavigationUtils.NavigationPanel.START_WINDOW, startWindowManager);
 
-            startWindowManager.Navigate(NavigationKeys.Lists);
+            startWindowManager.Navigate(NavigationKeys.Manual);
             window.Show();
         }
     }

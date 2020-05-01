@@ -32,6 +32,7 @@ namespace Dashboard1.View
             manager.Register<ListsCabinetsViewModel, ListsCabinets>(new ListsCabinetsViewModel(), NavigationKeys.ListsCabinets);
             manager.Register<ListsGroupsAndSubjectsViewModel, ListsGroupsAndSubjects>(new ListsGroupsAndSubjectsViewModel(), NavigationKeys.ListsGroupsAndSubjects);
             NavigationUtils.Register(NavigationUtils.NavigationPanel.LISTS, manager);
+            manager.Navigate(NavigationKeys.ListsTeachers);
         }
     }
 }
