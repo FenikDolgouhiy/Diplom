@@ -73,7 +73,8 @@ namespace TestConsole
             string[] G_Weeks = myvalues.OfType<object>().Select(o => o.ToString()).ToArray();//НЕДЕЛЬ8
             */
             DBLoad a = new DBLoad();
-             a.UploadFromFB();
+            Console.OutputEncoding = Encoding.UTF8;
+            a.UploadFromFB();
              Console.ReadKey();
              Console.WriteLine("Загрузка завершена. Элементов списка " + a.UploadList.Count);
              string[] N_Prepods = new string[a.UploadList.Count];
@@ -124,11 +125,11 @@ namespace TestConsole
             TeacherList[] Prep_okkt; //список преподов
             Prep_okkt = new TeacherList[Number_of_prep];
 
-            Console.OutputEncoding = Encoding.UTF8;
+            
 
 
             //Дальше идёт инициализация основных объектов данными из массивов.
-            Group[] okkt = new Group[G_Groups.Length];
+            /*Group[] okkt = new Group[G_Groups.Length];
             for (int i = 0; i < G_Groups.Length; i++)
             {
                 okkt[i] = new Group(G_Groups[i], Convert.ToInt32(G_Weeks[i]), Convert.ToInt32(G_Practice[i]));
@@ -217,7 +218,7 @@ namespace TestConsole
                             else Console.WriteLine(k + ". " + okkt[d].TimeTable[i, k].EvenWeek.Subject + " " + okkt[d].TimeTable[i, k].EvenWeek.Teacher + "|" + okkt[d].TimeTable[i, k].OddWeek.Subject + " " + okkt[d].TimeTable[i, k].OddWeek.Teacher);
                         }
                     }
-                }
+                }*/
                 Console.ReadKey();
             
         }

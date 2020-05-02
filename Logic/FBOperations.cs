@@ -10,6 +10,7 @@ using FireSharp.Response;
 
 namespace Logic
 {
+    
     public class FBOperations
     {
         IFirebaseConfig config = new FirebaseConfig
@@ -21,70 +22,65 @@ namespace Logic
         public FBOperations()
         {
             client = new FireSharp.FirebaseClient(config);
-            if (client != null)
-            {
-                Console.WriteLine("Подключения к Базе данных успешно");
-            }
         }
 
         public async Task<List<LoadDTO>> ExportFromFBToDG()
         {
             List<LoadDTO> result = new List<LoadDTO>();
-            for (int i = 0; ; i++)
+            var response = await client.GetAsync("TeachersLoad/");
+            var list = response.ResultAs<List<LoadDTO>>();
+            if (list != null)
             {
-                Console.WriteLine(i);
-                FirebaseResponse responce = await client.GetAsync("TeachersLoad/" + i);
-
-                LoadDTO obj = responce.ResultAs<LoadDTO>();
-                if (obj == null)
+                foreach (var item in list)
                 {
-
-                    break;
+                    result.Add(new LoadDTO
+                    {
+                        Id = item.Id,
+                        Teacher = item.Teacher,
+                        Subject = item.Subject,
+                        Group = item.Group,
+                        TotalHours = item.TotalHours,
+                        Weeks = item.Weeks,
+                        HoursPerWeek = item.HoursPerWeek,
+                        DaysOfPractice = item.DaysOfPractice
+                    });
                 }
-                result.Add(new LoadDTO
-                {
-
-                    Id = obj.Id,
-                    Teacher = obj.Teacher,
-                    Subject = obj.Subject,
-                    Group = obj.Group,
-                    TotalHours = obj.TotalHours,
-                    Weeks = obj.Weeks,
-                    HoursPerWeek = obj.HoursPerWeek,
-                    DaysOfPractice = obj.DaysOfPractice
-                });
             }
-            Console.WriteLine("Загрузка Завершена.Нажмите Любую клавишу");
             return result;
+        }
+
+        public async Task LoadTeachersListToDb(List<TeachersOpp> teachersWeekLoad)
+        {
+            if (teachersWeekLoad != null)
+            {
+                await client.SetAsync("TeachersWeekLoad/", teachersWeekLoad);
+
+                Console.WriteLine ("Данные в Базу данных были загружены");
+            }
         }
 
         public async Task<List<TeachersOpp>> ExportTeachersOpp()
         {
-            List<TeachersOpp> result = new List<TeachersOpp>();
-            for (int i = 0; ; i++)
+            List<TeachersOpp> result = new List<TeachersOpp> ();
+            var response = await client.GetAsync("TeachersWeekLoad/");
+            var list = response.ResultAs<List<TeachersOpp>>();
+            if (list != null)
             {
-                Console.WriteLine(i);
-                FirebaseResponse responce = await client.GetAsync("TeachersWeekLoad/" + i);
-
-                TeachersOpp obj = responce.ResultAs<TeachersOpp>();
-                if (obj == null)
+                foreach (var item in list)
                 {
+                    result.Add(new TeachersOpp
+                    {
 
-                    break;
+                        Teacher = item.Teacher,
+                        Monday = item.Monday,
+                        Tuesday = item.Tuesday,
+                        Wednesday = item.Wednesday,
+                        Thursday = item.Thursday,
+                        Friday = item.Friday
+
+                    }); ;
                 }
-                result.Add(new TeachersOpp
-                {
-
-                    Teacher = obj.Teacher,
-                    Monday = obj.Monday,
-                    Tuesday = obj.Tuesday,
-                    Wednesday = obj.Wednesday,
-                    Thursday = obj.Thursday,
-                    Friday = obj.Friday
-
-                }); ;
             }
-            Console.WriteLine("Загрузка Завершена.Нажмите Любую клавишу");
             return result;
         }
     }
