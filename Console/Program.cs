@@ -13,6 +13,7 @@ namespace TestConsole
         static void Main()
         {
             //ЗАГРУЗКА ТЕСТОВЫХ ДАННЫХ ИЗ ЭКСЕЛЯ
+            /*
             Excel.Application excelApp = new Excel.Application
             {
                 Visible = true
@@ -70,7 +71,50 @@ namespace TestConsole
             SRange = sheet.UsedRange.Columns[3];
             myvalues = (System.Array)SRange.Cells.Value2;
             string[] G_Weeks = myvalues.OfType<object>().Select(o => o.ToString()).ToArray();//НЕДЕЛЬ8
-
+            */
+            DBLoad a = new DBLoad();
+             a.UploadFromFB();
+             Console.ReadKey();
+             Console.WriteLine("Загрузка завершена. Элементов списка " + a.UploadList.Count);
+             string[] N_Prepods = new string[a.UploadList.Count];
+             string[] N_Groups  = new string[a.UploadList.Count];
+             string[] N_Predms = new string[a.UploadList.Count];
+             string[] N_PerWeek = new string[a.UploadList.Count];
+             string[] N_Weeks = new string[a.UploadList.Count];
+             string[] N_Total = new string[a.UploadList.Count];
+             for (int i = 0; i < a.UploadList.Count; i++)
+             {
+                 N_Prepods[i] = a.UploadList[i].Teacher;
+                 N_Groups[i] = a.UploadList[i].Group;
+                 N_Predms[i] = a.UploadList[i].Subject;
+                 N_PerWeek[i] = a.UploadList[i].HoursPerWeek;
+                 N_Weeks[i] = a.UploadList[i].Weeks;
+                 N_Total[i] = a.UploadList[i].TotalHours;
+                 Console.Write(N_Prepods[i]  + " ");
+                 Console.Write(N_Groups[i]  + " ");
+                 Console.Write(N_Predms[i] + " ");
+                 Console.Write(N_PerWeek[i]  + " ");
+                 Console.Write(N_Weeks[i]  + " ");
+                 Console.Write(N_Total[i]  + " ");
+                 Console.WriteLine();
+             }
+            a.UploadTeachersOpp();
+            Console.ReadKey();
+            Console.WriteLine("Загрузка завершена. Элементов списка " + a.TeachersOppList.Count);
+            string[] P_Prepods = new string[a.TeachersOppList.Count];
+            string[] P_Opps = new string[a.TeachersOppList.Count];
+            for (int i = 0; i < a.TeachersOppList.Count; i++)
+            {
+                P_Prepods[i] = a.TeachersOppList[i].Teacher;
+                P_Opps[i] = a.TeachersOppList[i].Monday +
+                            a.TeachersOppList[i].Tuesday +
+                            a.TeachersOppList[i].Wednesday +
+                            a.TeachersOppList[i].Thursday +
+                            a.TeachersOppList[i].Friday;
+                Console.Write(P_Prepods[i] + " ");
+                Console.Write(P_Opps[i] + " ");
+                Console.WriteLine();
+            }
             for (int i = 0; i < P_Opps.Length; i++) //Вывод для проверки 
             {
                 Console.WriteLine(P_Prepods[i] + " " + P_Opps[i]);

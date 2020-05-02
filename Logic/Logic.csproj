@@ -89,6 +89,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdeptMech.cs" />
+    <Compile Include="DBLoad.cs" />
+    <Compile Include="FBOperations.cs" />
     <Compile Include="Group.cs" />
     <Compile Include="Lesson.cs" />
     <Compile Include="LoadDTO.cs" />
@@ -96,6 +98,7 @@
     <Compile Include="TeacherList.cs" />
     <Compile Include="Rozklad.cs" />
     <Compile Include="Subjects.cs" />
+    <Compile Include="TeachersOpp.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
