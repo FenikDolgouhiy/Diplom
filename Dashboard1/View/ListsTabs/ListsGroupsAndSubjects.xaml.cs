@@ -16,7 +16,8 @@ using System.Windows.Shapes;
 namespace Dashboard1.View.ListsTabs
 {
     /// <summary>
-    /// Логика взаимодействия для ListsGroups.xaml
+    /// 
+    /// Логика взаимодействия для ListsGroupsAndSubjects.xaml
     /// </summary>
     public partial class ListsGroupsAndSubjects : UserControl
     {

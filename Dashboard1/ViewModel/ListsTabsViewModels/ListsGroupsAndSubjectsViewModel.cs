@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Dashboard1.ViewModel.ListsTabsViewModels
 {
-    class ListsGroupsAndSubjectsViewModel: ViewModelBase, INavigationAware
+    public class ListsGroupsAndSubjectsViewModel: ViewModelBase, INavigationAware
     {
         private LoadListsTabs loadListsTabs = new LoadListsTabs();
         public List<string> _groupList = new List<string>();
