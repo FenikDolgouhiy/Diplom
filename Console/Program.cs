@@ -75,30 +75,23 @@ namespace TestConsole
             DBLoad a = new DBLoad();
             Console.OutputEncoding = Encoding.UTF8;
             a.UploadFromFB();
-             Console.ReadKey();
-             Console.WriteLine("Загрузка завершена. Элементов списка " + a.UploadList.Count);
-             string[] N_Prepods = new string[a.UploadList.Count];
-             string[] N_Groups  = new string[a.UploadList.Count];
-             string[] N_Predms = new string[a.UploadList.Count];
-             string[] N_PerWeek = new string[a.UploadList.Count];
-             string[] N_Weeks = new string[a.UploadList.Count];
-             string[] N_Total = new string[a.UploadList.Count];
-             for (int i = 0; i < a.UploadList.Count; i++)
-             {
-                 N_Prepods[i] = a.UploadList[i].Teacher;
-                 N_Groups[i] = a.UploadList[i].Group;
-                 N_Predms[i] = a.UploadList[i].Subject;
-                 N_PerWeek[i] = a.UploadList[i].HoursPerWeek;
-                 N_Weeks[i] = a.UploadList[i].Weeks;
-                 N_Total[i] = a.UploadList[i].TotalHours;
-                 Console.Write(N_Prepods[i]  + " ");
-                 Console.Write(N_Groups[i]  + " ");
-                 Console.Write(N_Predms[i] + " ");
-                 Console.Write(N_PerWeek[i]  + " ");
-                 Console.Write(N_Weeks[i]  + " ");
-                 Console.Write(N_Total[i]  + " ");
-                 Console.WriteLine();
-             }
+            Console.ReadKey();
+            Console.WriteLine("Загрузка завершена");
+            string[] N_Prepods = new string[a.UploadList.Count];
+            string[] N_Groups = new string[a.UploadList.Count];
+            string[] N_Subjects = new string[a.UploadList.Count];
+            int[] N_PerWeek = new int[a.UploadList.Count];
+            int[] N_Weeks = new int[a.UploadList.Count];
+            int[] N_Total = new int[a.UploadList.Count];
+            for (int i = 0; i < a.UploadList.Count; i++)
+            {
+                N_Prepods[i] = a.UploadList[i].Teacher;
+                N_Groups[i] = a.UploadList[i].Group;
+                N_Subjects[i] = a.UploadList[i].Subject;
+                N_PerWeek[i] = Convert.ToInt32(a.UploadList[i].HoursPerWeek);
+                N_Weeks[i] = Convert.ToInt32(a.UploadList[i].Weeks);
+                N_Total[i] = Convert.ToInt32(a.UploadList[i].TotalHours);
+            }
             a.UploadTeachersOpp();
             Console.ReadKey();
             Console.WriteLine("Загрузка завершена. Элементов списка " + a.TeachersOppList.Count);
@@ -112,9 +105,6 @@ namespace TestConsole
                             a.TeachersOppList[i].Wednesday +
                             a.TeachersOppList[i].Thursday +
                             a.TeachersOppList[i].Friday;
-                Console.Write(P_Prepods[i] + " ");
-                Console.Write(P_Opps[i] + " ");
-                Console.WriteLine();
             }
             for (int i = 0; i < P_Opps.Length; i++) //Вывод для проверки 
             {
@@ -125,18 +115,26 @@ namespace TestConsole
             TeacherList[] Prep_okkt; //список преподов
             Prep_okkt = new TeacherList[Number_of_prep];
 
-            IEnumerable <String> G_Group = N_Groups.Distinct(); 
-            foreach(var s in G_Group)
+            IEnumerable<String> IE_G_Group = N_Groups.Distinct();
+            string[] G_Groups = IE_G_Group.ToArray();
+            int[] G_Practice = new int[G_Groups.Count()];
+            for (int i = 0; i < G_Practice.Length; i++)
+                G_Practice[i] = 0;
+            int[] G_Weeks = new int[G_Groups.Length];
+            for (int i = 0, j = 0; i < G_Groups.Length && j < N_Groups.Length; j++)
             {
-                Console.WriteLine(s);
+                if (G_Groups[i] == N_Groups[j])
+                {
+                    G_Weeks[i] = N_Weeks[j];
+                    i++;
+                    j = 0;
+                }
             }
-
-
             //Дальше идёт инициализация основных объектов данными из массивов.
-            /*Group[] okkt = new Group[G_Groups.Length];
+            Group[] okkt = new Group[G_Groups.Length];
             for (int i = 0; i < G_Groups.Length; i++)
             {
-                okkt[i] = new Group(G_Groups[i], Convert.ToInt32(G_Weeks[i]), Convert.ToInt32(G_Practice[i]));
+                okkt[i] = new Group(G_Groups[i], G_Weeks[i], G_Practice[i]);
             }
             for (int i = 0; i < Number_of_prep; i++)
             {
@@ -149,7 +147,7 @@ namespace TestConsole
                 {
                     if (Prep_okkt[i].teacherName == N_Prepods[j])
                     {
-                        Prep_okkt[i].subjects[k] = new Subjects(N_Subjects[j], Convert.ToInt32(N_Total[j]), (Convert.ToInt32(N_Total[j]) / Convert.ToInt32(N_PerWeek[j])), N_Groups[j], okkt);
+                        Prep_okkt[i].subjects[k] = new Subjects(N_Subjects[j], N_Total[j], N_Weeks[i], N_Groups[j], okkt);
                         k++;
                     }
                 }
@@ -222,8 +220,8 @@ namespace TestConsole
                             else Console.WriteLine(k + ". " + okkt[d].TimeTable[i, k].EvenWeek.Subject + " " + okkt[d].TimeTable[i, k].EvenWeek.Teacher + "|" + okkt[d].TimeTable[i, k].OddWeek.Subject + " " + okkt[d].TimeTable[i, k].OddWeek.Teacher);
                         }
                     }
-                }*/
-                Console.ReadKey();
+                }
+            Console.ReadKey();
             
         }
     }

@@ -25,11 +25,9 @@ namespace Logic
             var loads = await fbOperations.ExportFromFBToDG();
             if (loads != null)
             {
-                UploadList = loads;
-
-                Console.WriteLine("Список не 0 " + UploadList.Count);
+                UploadList = loads;           
             }
-            Console.WriteLine("Список не 0");
+            Console.WriteLine("Загрузка завершена.");
         }
         public List<LoadDTO> UploadList
         {
@@ -59,10 +57,8 @@ namespace Logic
             if (loads != null)
             {
                 TeachersOppList = loads;
-
-                Console.WriteLine("Список не 0 " + UploadList.Count);
             }
-            Console.WriteLine("Список не 0");
+            Console.WriteLine("Загрузка завершена");
         }
     }
 }
