@@ -3,7 +3,7 @@
 using System;
 using System.Linq;
 using System.Text;
-
+using System.Collections.Generic;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace TestConsole
@@ -125,7 +125,11 @@ namespace TestConsole
             TeacherList[] Prep_okkt; //список преподов
             Prep_okkt = new TeacherList[Number_of_prep];
 
-            
+            IEnumerable <String> G_Group = N_Groups.Distinct(); 
+            foreach(var s in G_Group)
+            {
+                Console.WriteLine(s);
+            }
 
 
             //Дальше идёт инициализация основных объектов данными из массивов.
