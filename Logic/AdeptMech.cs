@@ -217,10 +217,11 @@ namespace Logic
         
         public static void UploadTimetable(Group[] OKKT)
         {
-            List<TimetablesList> timetableOKKT = new List<TimetablesList>(OKKT.Length);
-            TimetablesList temp = new TimetablesList();
+            List<TimetablesList> timetableOKKT = new List<TimetablesList>();
+            TimetablesList temp;
             for(int i=0;i<OKKT.Length;i++)
             {
+                temp = new TimetablesList();
                 temp.Group = OKKT[i].Name;
                 temp.Monday0 = OKKT[i].TotalTimetable[0, 0];
                 temp.Monday1 = OKKT[i].TotalTimetable[0, 1];
@@ -253,9 +254,9 @@ namespace Logic
                 temp.Friday4 = OKKT[i].TotalTimetable[4, 4];
                 temp.Friday5 = OKKT[i].TotalTimetable[4, 5];
                 timetableOKKT.Add(temp);
-                Console.WriteLine("Добавлена группа " + OKKT[i].Name);
 
             }
+
             DBLoad a = new DBLoad();
             a.GroupsTimetableList = timetableOKKT;
             a.ImportTimetableToFB();
