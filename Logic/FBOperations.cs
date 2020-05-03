@@ -22,6 +22,7 @@ namespace Logic
         public FBOperations()
         {
             client = new FireSharp.FirebaseClient(config);
+            Console.WriteLine("Подключения к Базе данных успешно");
         }
 
         public async Task<List<LoadDTO>> ExportFromFBToDG()
@@ -83,6 +84,16 @@ namespace Logic
             }
             return result;
         }
+        public async Task LoadTimetableToFB(List<TimetablesList> GroupsTimetable)
+        {
+            if (GroupsTimetable != null)
+            {
+                await client.SetAsync("GroupsTimetable/", GroupsTimetable);
+
+                Console.WriteLine("Данные в Базу данных были загружены");
+            }
+        }
+
     }
 
 }

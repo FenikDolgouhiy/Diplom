@@ -60,5 +60,20 @@ namespace Logic
             }
             Console.WriteLine("Загрузка завершена");
         }
+        List<TimetablesList> _groupsTimetableList = new List<TimetablesList>();
+        public async void ImportTimetableToFB()
+        {
+            await fbOperations.LoadTimetableToFB(_groupsTimetableList); 
+        }
+        public List<TimetablesList> GroupsTimetableList
+        {
+            get { return _groupsTimetableList; }
+            set
+            {
+
+                _groupsTimetableList = value;
+
+            }
+        }
     }
 }

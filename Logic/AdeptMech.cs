@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace Logic
 {
@@ -212,6 +213,52 @@ namespace Logic
             }
             arr[0] = temp;
 
+        }
+        
+        public static void UploadTimetable(Group[] OKKT)
+        {
+            List<TimetablesList> timetableOKKT = new List<TimetablesList>(OKKT.Length);
+            TimetablesList temp = new TimetablesList();
+            for(int i=0;i<OKKT.Length;i++)
+            {
+                temp.Group = OKKT[i].Name;
+                temp.Monday0 = OKKT[i].TotalTimetable[0, 0];
+                temp.Monday1 = OKKT[i].TotalTimetable[0, 1];
+                temp.Monday2 = OKKT[i].TotalTimetable[0, 2];
+                temp.Monday3 = OKKT[i].TotalTimetable[0, 3];
+                temp.Monday4 = OKKT[i].TotalTimetable[0, 4];
+                temp.Monday5 = OKKT[i].TotalTimetable[0, 5];
+                temp.Tuesday0 = OKKT[i].TotalTimetable[1, 0];
+                temp.Tuesday1 = OKKT[i].TotalTimetable[1, 1];
+                temp.Tuesday2 = OKKT[i].TotalTimetable[1, 2];
+                temp.Tuesday3 = OKKT[i].TotalTimetable[1, 3];
+                temp.Tuesday4 = OKKT[i].TotalTimetable[1, 4];
+                temp.Tuesday5 = OKKT[i].TotalTimetable[1, 5];
+                temp.Wednesday0 = OKKT[i].TotalTimetable[2, 0];
+                temp.Wednesday1 = OKKT[i].TotalTimetable[2, 1];
+                temp.Wednesday2 = OKKT[i].TotalTimetable[2, 2];
+                temp.Wednesday3 = OKKT[i].TotalTimetable[2, 3];
+                temp.Wednesday4 = OKKT[i].TotalTimetable[2, 4];
+                temp.Wednesday5 = OKKT[i].TotalTimetable[2, 5];
+                temp.Thursday0 = OKKT[i].TotalTimetable[3, 0];
+                temp.Thursday1 = OKKT[i].TotalTimetable[3, 1];
+                temp.Thursday2 = OKKT[i].TotalTimetable[3, 2];
+                temp.Thursday3 = OKKT[i].TotalTimetable[3, 3];
+                temp.Thursday4 = OKKT[i].TotalTimetable[3, 4];
+                temp.Thursday5 = OKKT[i].TotalTimetable[3, 5];
+                temp.Friday0 = OKKT[i].TotalTimetable[4, 0];
+                temp.Friday1 = OKKT[i].TotalTimetable[4, 1];
+                temp.Friday2 = OKKT[i].TotalTimetable[4, 2];
+                temp.Friday3 = OKKT[i].TotalTimetable[4, 3];
+                temp.Friday4 = OKKT[i].TotalTimetable[4, 4];
+                temp.Friday5 = OKKT[i].TotalTimetable[4, 5];
+                timetableOKKT.Add(temp);
+
+
+            }
+            DBLoad a = new DBLoad();
+            a.GroupsTimetableList = timetableOKKT;
+            a.ImportTimetableToFB();
         }
     }
 

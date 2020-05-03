@@ -57,6 +57,7 @@ namespace Dashboard1.Utils
             {
                 await client.SetAsync("TeachersLoad/", loadList);
             }
+            Console.WriteLine("Данные успешно загружены");
         }
         public async void DeleteSelectedItem(LoadDTO loadDTO)
         {

@@ -99,6 +99,7 @@
     <Compile Include="Rozklad.cs" />
     <Compile Include="Subjects.cs" />
     <Compile Include="TeachersOpp.cs" />
+    <Compile Include="TimetablesList.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

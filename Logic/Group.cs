@@ -6,7 +6,7 @@
         public int Weeks;//Количество недель
         public int Practice;//Недели практик. Временно бесполезны
         public Rozklad[,] TimeTable = new Rozklad[5, 6];//Таблица расписания
-
+        public string[,] TotalTimetable = new string[5, 6];
         public Group()
         {
             for (int i = 0; i < 5; i++)
