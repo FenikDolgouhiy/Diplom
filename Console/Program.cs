@@ -226,9 +226,9 @@ namespace TestConsole
                         }
                     }
                 }
-            Console.WriteLine("Загрузить данные в бд? (Y/N)");
+            Console.WriteLine("Загрузить данные в бд? (y/n)");
             string ch = Console.ReadLine();
-            if(ch=="Y")
+            if(ch=="y")
             {
                 AdeptMech.UploadTimetable(okkt);
             }

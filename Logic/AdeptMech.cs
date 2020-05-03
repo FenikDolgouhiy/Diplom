@@ -253,7 +253,7 @@ namespace Logic
                 temp.Friday4 = OKKT[i].TotalTimetable[4, 4];
                 temp.Friday5 = OKKT[i].TotalTimetable[4, 5];
                 timetableOKKT.Add(temp);
-
+                Console.WriteLine("Добавлена группа " + OKKT[i].Name);
 
             }
             DBLoad a = new DBLoad();
