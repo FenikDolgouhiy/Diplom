@@ -47,7 +47,7 @@ namespace Logic
                                         OKKT.TimeTable[k, l].OddWeek.Subject == null &&
                                         (Gr[i].TOpp[k, l, 1] && Gr[i].TOpp[k, l, 0]))  //ставим пару предмета в свободный день 
                                     {
-                                        if (IsWindow(k, l, OKKT.TimeTable, 0) == false)
+                                       if (IsWindow(k, l, OKKT.TimeTable, 0) == false)
                                         {
                                             OKKT.TimeTable[k, l].EvenWeek.Subject = Gr[i].subjects[j].Subject;
                                             OKKT.TimeTable[k, l].OddWeek.Subject = Gr[i].subjects[j].Subject;
@@ -174,7 +174,7 @@ namespace Logic
         }
         static public int GroupHours(TeacherList[] teachers, string groupName)//Количество часов по предметам у группы
         {
-            int GrHrs = 0;
+                int GrHrs = 0;
                 for (int i = 0; i < teachers.Length; i++)
                 {
                     for (int j = 0; j < teachers[i].subjects.Length; j++)

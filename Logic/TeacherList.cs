@@ -1,4 +1,5 @@
-﻿namespace Logic
+﻿using System;
+namespace Logic
 {
     public class TeacherList //список преподов
     {
@@ -23,7 +24,7 @@
                     }
                     if (opportunitiesString[k] == '+')
                     {
-                        opportunities[i, j] = true;
+                        opportunities[i, j] = true;                       
                     }
                     else opportunities[i, j] = false;
             }

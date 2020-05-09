@@ -165,16 +165,16 @@ namespace TestConsole
                     }
                 }
             }
-            
+            Group temp2;
                 for (int i = 0; i < okkt.Length - 1; i++)//Сортировка групп по количеству часов. Почему-то не работает (наверное(я не знаю))
                 {
                     for (int j = i + 1; j < okkt.Length; j++)
                     {
                         if (AdeptMech.GroupHours(Prep_okkt, okkt[i].Name) < AdeptMech.GroupHours(Prep_okkt, okkt[j].Name))
                         {
-                            temp = Prep_okkt[i];
-                            Prep_okkt[i] = Prep_okkt[j];
-                            Prep_okkt[j] = temp;
+                            temp2 = okkt[i];
+                            okkt[i] = okkt[j];
+                            okkt[j] = temp2;
                         }
                     }
                 }
