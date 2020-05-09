@@ -47,6 +47,7 @@ namespace Logic
                                         OKKT.TimeTable[k, l].OddWeek.Subject == null &&
                                         (Gr[i].TOpp[k, l, 1] && Gr[i].TOpp[k, l, 0]))  //ставим пару предмета в свободный день 
                                     {
+                                        if (IsWindow(k, l, OKKT.TimeTable, 0) == false)
                                         {
                                             OKKT.TimeTable[k, l].EvenWeek.Subject = Gr[i].subjects[j].Subject;
                                             OKKT.TimeTable[k, l].OddWeek.Subject = Gr[i].subjects[j].Subject;
@@ -60,6 +61,7 @@ namespace Logic
                                     }
                                     else if ((Gr[i].subjects[j].hoursPerWeek > 0) && ((OKKT.TimeTable[k, l].EvenWeek.Subject == null) && (Gr[i].TOpp[k, l, 0] == true)) && ((OKKT.TimeTable[k, l].OddWeek.Subject != null) || (Gr[i].TOpp[k, l, 1] == false) || (Gr[i].subjects[j].hoursPerWeek == 1)))//Пара в числитель
                                     {
+                                        if (IsWindow(k, l, OKKT.TimeTable, 1) == false)
                                         {
                                             OKKT.TimeTable[k, l].EvenWeek.Subject = Gr[i].subjects[j].Subject;
                                             OKKT.TimeTable[k, l].EvenWeek.Teacher = Gr[i].teacherName;
@@ -71,7 +73,7 @@ namespace Logic
                                     }
                                     else if ((Gr[i].subjects[j].hoursPerWeek > 0) && ((OKKT.TimeTable[k, l].OddWeek.Subject == null) && (Gr[i].TOpp[k, l, 1] == true)) && ((OKKT.TimeTable[k, l].EvenWeek.Subject != null) || (Gr[i].TOpp[k, l, 0] == false) || (Gr[i].subjects[j].hoursPerWeek == 1)))//Пара в знаменатель
                                     {
-                                        // if (IsWindow(k, l, OKKT.Test, 2) == false)
+                                        if (IsWindow(k, l, OKKT.TimeTable, 2) == false)
                                         {
                                             OKKT.TimeTable[k, l].OddWeek.Subject = Gr[i].subjects[j].Subject;
                                             OKKT.TimeTable[k, l].OddWeek.Teacher = Gr[i].teacherName;
@@ -260,6 +262,70 @@ namespace Logic
             DBLoad a = new DBLoad();
             a.GroupsTimetableList = timetableOKKT;
             a.ImportTimetableToFB();
+        }
+        static bool IsWindow(int kW, int lW, Rozklad[,] RW, int Cs)
+        {
+            if (Cs == 0)
+            {
+                if (lW == 3 && (RW[kW, 1].OddWeek.Subject != null && RW[kW, 1].EvenWeek.Subject != null) && (RW[kW, 2].OddWeek.Subject == null && RW[kW, 2].EvenWeek.Subject == null))
+                {
+                    return true;
+                }
+                else if (lW == 4 && (RW[kW, 1].OddWeek.Subject == null && RW[kW, 1].EvenWeek.Subject == null) && (RW[kW, 2].OddWeek.Subject != null && RW[kW, 2].EvenWeek.Subject != null) && (RW[kW, 3].OddWeek.Subject == null && RW[kW, 3].EvenWeek.Subject == null))
+                {
+                    return true;
+                }
+                else if (lW == 4 && (RW[kW, 1].OddWeek.Subject != null && RW[kW, 1].EvenWeek.Subject != null) && ((RW[kW, 2].OddWeek.Subject == null && RW[kW, 2].EvenWeek.Subject == null) || (RW[kW, 3].OddWeek.Subject == null && RW[kW, 3].EvenWeek.Subject == null)))
+                {
+                    return true;
+                }
+                else return false;
+            }
+            else if (Cs == 1)
+            {
+                if (lW == 3 && (RW[kW, 1].OddWeek.Subject != null) && (RW[kW, 2].OddWeek.Subject == null))
+                {
+                    return true;
+                }
+                if (lW == 3 && (RW[kW, 1].OddWeek.Subject != null) && (RW[kW, 1].EvenWeek.Subject != null) && (RW[kW, 2].OddWeek.Subject == null) && (RW[kW, 2].EvenWeek.Subject != null))
+                {
+                    return true;
+                }
+                else if (lW == 4 && (RW[kW, 2].OddWeek.Subject != null) && (RW[kW, 3].OddWeek.Subject == null))
+                {
+                    return true;
+                }
+                else if (lW == 4 && (RW[kW, 2].OddWeek.Subject != null) && (RW[kW, 2].EvenWeek.Subject != null) && (RW[kW, 3].OddWeek.Subject == null) && (RW[kW, 3].EvenWeek.Subject != null))
+                {
+                    return true;
+                }
+                else if (lW == 4 && (RW[kW, 1].OddWeek.Subject != null) && ((RW[kW, 2].OddWeek.Subject == null) || (RW[kW, 3].OddWeek.Subject == null)))
+                {
+                    return true;
+                }
+                else return false;
+            }
+            else if (Cs == 2)
+            {
+                if (lW == 3 && RW[kW, 1].EvenWeek.Subject != null && (RW[kW, 2].EvenWeek.Subject == null))
+                {
+                    return true;
+                }
+                else if (lW == 4 && (RW[kW, 2].EvenWeek.Subject != null)  && (RW[kW, 3].EvenWeek.Subject == null))
+                {
+                    return true;
+                }
+                else if (lW == 4 && (RW[kW, 2].EvenWeek.Subject != null) && (RW[kW, 2].OddWeek.Subject != null) && (RW[kW, 3].EvenWeek.Subject == null) && (RW[kW, 3].OddWeek.Subject != null))
+                {
+                    return true;
+                }
+                else if (lW == 4 && (RW[kW, 1].EvenWeek.Subject != null) && ((RW[kW, 2].EvenWeek.Subject == null) || (RW[kW, 3].EvenWeek.Subject == null)))
+                {
+                    return true;
+                }
+                else return false;
+            }
+            else return false;
         }
     }
 
