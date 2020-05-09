@@ -3,12 +3,53 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:Dashboard1.View"
              xmlns:viewModel="clr-namespace:Dashboard1.ViewModel"
              d:DataContext="{d:DesignInstance viewModel:TimetableViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="IndianRed">
-            
+    <Grid Background="#FFCFCFCF">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Margin="30,0">
+            <!--  Верхняя часть, сюда выпадашку-->
+            <ComboBox
+                    Width="300"
+                    HorizontalAlignment="Left"
+                    materialDesign:HintAssist.Hint="Search"
+                    materialDesign:HintAssist.HintOpacity=".26"
+                    IsEditable="True">
+                <ComboBoxItem>
+                    Apple
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    Banana
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    Pear
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    Orange
+                </ComboBoxItem>
+            </ComboBox>
+            <Button Style="{DynamicResource MaterialDesignRaisedButton}" HorizontalAlignment="Right">
+                <Grid Width="200">
+                    <materialDesign:PackIcon Kind="CloudDownload" HorizontalAlignment="Left"/>
+                    <TextBlock HorizontalAlignment="Right" Text="ВИГРУЗИТИ У EXEL ФАЙЛ"/>
+                </Grid>
+            </Button>
+        </Grid>
+        <Grid Grid.Row="1">
+            <!--  Нижняя часть, сюда динамичную таблице с расписанием. ДИЗАЙН НЕ МЕНЯТЬ РРР :D ! -->
+            <DataGrid Name="datagridTimetable"
+                    Margin="0,0,0,15"
+                    ItemsSource="{Binding TeachersList}"
+                    CanUserDeleteRows="False" 
+                    Grid.IsSharedSizeScope="True"
+                    Width="800"/>
+        </Grid>
     </Grid>
 </UserControl>

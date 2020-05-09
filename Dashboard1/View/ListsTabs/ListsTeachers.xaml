@@ -3,18 +3,48 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:Dashboard1.View.ListsTabs"
              xmlns:viewModel="clr-namespace:Dashboard1.ViewModel.ListsTabsViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              d:DataContext="{d:DesignInstance viewModel:ListsTeachersViewModel}">
-    <Grid Background="Brown">
-        <DataGrid
+    
+    <UserControl.Resources>
+        <Style TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        </Style>
+    </UserControl.Resources>
+    <Grid Background="#FFCFCFCF">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1" >
+            <DataGrid
                   Name="datagridTeachLoad"
                   HorizontalAlignment="Center"
+                  Margin="0,0,0,15"
                   ItemsSource="{Binding TeachersList}"
-                  CanUserDeleteRows="False"
-                  Margin="81,61,65,102" Width="654"/>
-        <Button Command="{Binding LoadToDBCommand}"  Content="Загрузить в базу" HorizontalAlignment="Left" Margin="84,390,0,0" VerticalAlignment="Top" Width="168"/>
+                  CanUserDeleteRows="False" 
+                  Grid.IsSharedSizeScope="True"
+                  Width="800"
+                  >
+            </DataGrid>
+        </Grid>
+        <Grid Grid.Row="0" Margin="100,0">
+            <Button Style="{DynamicResource MaterialDesignRaisedButton}" Command="{Binding LoadToDBCommand}" HorizontalAlignment="Right">
+                <Grid Width="200">
+                    <materialDesign:PackIcon Kind="CloudDownload" HorizontalAlignment="Left"/>
+                    <TextBlock HorizontalAlignment="Right" Text="ЗАВАНТАЖИТИ НА СЕРВЕР"/>
+                </Grid>
+            </Button>
+            <Button HorizontalAlignment="Left" Style="{DynamicResource MaterialDesignFlatButton}">
+                <Grid Width="280">
+                    <materialDesign:PackIcon Kind="DeleteAlert" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                    <TextBlock HorizontalAlignment="Center" Text="ОЧИСТИТИ ДАНІ НАВАНТАЖЕННЯ"/>
+                </Grid>
+            </Button>
+        </Grid>
     </Grid>
 </UserControl>

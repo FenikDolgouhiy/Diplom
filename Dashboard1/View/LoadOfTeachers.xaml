@@ -38,19 +38,19 @@
                   Name="datagridTeachLoad"
                   HorizontalAlignment="Center"
                   ItemsSource="{Binding LoadList}"
-                  SelectedItem="{Binding SelectedLOF, Mode=TwoWay}" Width="800"/>
+                  SelectedItem="{Binding SelectedLOF, Mode=TwoWay}" Grid.IsSharedSizeScope="True" UseLayoutRounding="False" Width="800"/>
         </Grid>
 
         <Grid Grid.Row="2" Margin="100,0">
             <Button Command="{Binding DeleteAllCommand}" HorizontalAlignment="Left" Style="{DynamicResource MaterialDesignFlatButton}">
                 <Grid Width="250">
-                    <materialDesign:PackIcon Kind="DeleteAlert" VerticalAlignment="Center"/>
+                    <materialDesign:PackIcon Kind="DeleteAlert" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                     <TextBlock HorizontalAlignment="Center" Text="ОЧИСТИТИ ДАНІ НА СЕРВЕРІ"/>
                 </Grid>
             </Button>
             <Button Command="{Binding ImportFromDGToFBCommand}" Style="{DynamicResource MaterialDesignRaisedButton}" HorizontalAlignment="Right">
-                <Grid Width="200">
-                    <materialDesign:PackIcon Kind="CloudDownload" HorizontalAlignment="Left"/>
+                <Grid Width="210">
+                    <materialDesign:PackIcon Kind="CloudDownload" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                     <TextBlock HorizontalAlignment="Right" Text="ЗАВАНТАЖИТИ НА СЕРВЕР"/>
                 </Grid>
             </Button>

@@ -13,27 +13,31 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <DataGrid Grid.Column="0"
+        <Grid Grid.Column="0">
+            <DataGrid 
               Margin="30,30,10,30"
               x:Name="dataGridGroups"
               CanUserDeleteRows="False"
               ItemsSource="{Binding GroupList}"
-              AutoGenerateColumns="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding}" 
+              AutoGenerateColumns="False" Grid.IsSharedSizeScope="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding}" 
                 Header="Groups" IsReadOnly="false" />
-            </DataGrid.Columns>
-        </DataGrid>
-        <DataGrid Grid.Column="1" 
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <Grid Grid.Column="1">
+            <DataGrid
                   Margin="10,30,30,30"
                   x:Name="dataGridSubjects" 
                   CanUserDeleteRows="False"
                   ItemsSource="{Binding SubjectList}"
-                  AutoGenerateColumns="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding}" 
+                  AutoGenerateColumns="False" Grid.IsSharedSizeScope="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding}" 
                     Header="Subjects" IsReadOnly="false" />
-            </DataGrid.Columns>
-        </DataGrid>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
     </Grid>
 </UserControl>

@@ -13,10 +13,10 @@
         xmlns:MetroChart="clr-namespace:De.TorstenMandelkow.MetroChart;assembly=De.TorstenMandelkow.MetroChart"
         xmlns:viewModel="clr-namespace:Dashboard1.ViewModel"
         xmlns:view="clr-namespace:Dashboard1.View"
-        mc:Ignorable="d" Height="600" Width="1024" 
+        mc:Ignorable="d" 
         ResizeMode="CanResizeWithGrip" 
         WindowStartupLocation="CenterScreen" 
-        WindowStyle="None" SizeToContent="WidthAndHeight" MinWidth="1024" MinHeight="600"
+        WindowStyle="None" MinWidth="1024" MinHeight="600"
         >
 
 
