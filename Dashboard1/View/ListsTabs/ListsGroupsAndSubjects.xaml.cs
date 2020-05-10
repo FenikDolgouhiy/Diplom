@@ -25,5 +25,10 @@ namespace Dashboard1.View.ListsTabs
         {
             InitializeComponent();
         }
+
+        private void dataGridSubjects_Sorting(object sender, DataGridSortingEventArgs e)
+        {
+
+        }
     }
 }

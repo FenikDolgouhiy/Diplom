@@ -18,6 +18,8 @@
               Margin="30,30,10,30"
               x:Name="dataGridGroups"
               CanUserDeleteRows="False"
+              IsReadOnly="True"
+              CanUserAddRows="False"
               ItemsSource="{Binding GroupList}"
               AutoGenerateColumns="False" Grid.IsSharedSizeScope="True">
                 <DataGrid.Columns>
@@ -31,6 +33,9 @@
                   Margin="10,30,30,30"
                   x:Name="dataGridSubjects" 
                   CanUserDeleteRows="False"
+                  CanUserSortColumns="True"
+                  IsReadOnly="True"
+                  CanUserAddRows="False"
                   ItemsSource="{Binding SubjectList}"
                   AutoGenerateColumns="False" Grid.IsSharedSizeScope="True">
                 <DataGrid.Columns>

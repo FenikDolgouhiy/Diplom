@@ -39,7 +39,7 @@
                     <TextBlock HorizontalAlignment="Right" Text="ЗАВАНТАЖИТИ НА СЕРВЕР"/>
                 </Grid>
             </Button>
-            <Button HorizontalAlignment="Left" Style="{DynamicResource MaterialDesignFlatButton}">
+            <Button HorizontalAlignment="Left" Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding DeleteAllFromDBCommand}">
                 <Grid Width="280">
                     <materialDesign:PackIcon Kind="DeleteAlert" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                     <TextBlock HorizontalAlignment="Center" Text="ОЧИСТИТИ ДАНІ НАВАНТАЖЕННЯ"/>

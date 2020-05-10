@@ -25,6 +25,7 @@ namespace Dashboard1.Utils
             client = new FireSharp.FirebaseClient(config);
             
         }
+        
         public async Task<List<string>> ReturnGroups()
         {
             List<string> result = new List<string>();
@@ -69,20 +70,32 @@ namespace Dashboard1.Utils
             if (list != null)
                 foreach (var item in list)
                 {
-                        teachersWeeks.Add(new TeachersWeekLoad
-                        {
-                            Teacher = listTeach[i].Teacher,
-                            Monday = item.Monday,
-                            Tuesday = item.Tuesday,
-                            Wednesday = item.Wednesday,
-                            Thursday = item.Thursday,
-                            Friday = item.Friday
-                        });
+                    teachersWeeks.Add(new TeachersWeekLoad
+                    {
+                        Teacher = listTeach[i].Teacher,
+                        Monday = item.Monday,
+                        Tuesday = item.Tuesday,
+                        Wednesday = item.Wednesday,
+                        Thursday = item.Thursday,
+                        Friday = item.Friday
+                    });
                     i++;
                 }
-
-            var res = teachersWeeks;
-            return res;
+            else
+                foreach (var item in listTeach)
+                {
+                    teachersWeeks.Add(new TeachersWeekLoad
+                    {
+                        Teacher = listTeach[i].Teacher,
+                        Monday = null,
+                        Tuesday = null,
+                        Wednesday = null,
+                        Thursday = null,
+                        Friday = null
+                    });
+                    i++;
+                }
+            return teachersWeeks;
         }
     }
 }

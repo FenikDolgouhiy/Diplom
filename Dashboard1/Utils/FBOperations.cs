@@ -26,17 +26,14 @@ namespace Dashboard1.Utils
         public FBOperations()
         {
             client = new FireSharp.FirebaseClient(config);
-            
         }
 
         public async Task<List<LoadDTO>> ExportFromFBToDG()
         {
-            
             List<LoadDTO> result = new List<LoadDTO>();
 
             try
             {
-
                  await client.GetAsync("TeachersLoad/");
             }
             catch (Exception)

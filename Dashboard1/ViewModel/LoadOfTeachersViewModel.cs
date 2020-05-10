@@ -74,6 +74,7 @@ namespace Dashboard1.ViewModel
             if (MessageBox.Show("Вы действительно хотите удалить ВСЁ из Базы данных?", "Подтверждение операции", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 fbOperations.DeleteAllInfoFromFB();
+                LoadList = null;
             }
         }
         
