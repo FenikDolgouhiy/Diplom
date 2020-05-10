@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using Dashboard1.Model;
 using FireSharp.Config;
 using FireSharp.Interfaces;
@@ -22,6 +23,7 @@ namespace Dashboard1.Utils
         public LoadListsTabs()
         { 
             client = new FireSharp.FirebaseClient(config);
+            
         }
         public async Task<List<string>> ReturnGroups()
         {
@@ -56,16 +58,31 @@ namespace Dashboard1.Utils
         public async Task<List<TeachersWeekLoad>> ReturnTeachers()
         {
             List<TeachersWeekLoad> teachersWeeks = new List<TeachersWeekLoad>();
-            var responce = await client.GetAsync("TeachersLoad/");
-            var list = responce.ResultAs<List<LoadDTO>>();
+            List<LoadDTO> loadDTO = new List<LoadDTO>();
+            var resp = await client.GetAsync("TeachersLoad/");
+            var responce = await client.GetAsync("TeachersWeekLoad/");
+            var listTeach = resp.ResultAs<List<LoadDTO>>();
+            var list = responce.ResultAs<List<TeachersWeekLoad>>();
+
+            listTeach = listTeach.GroupBy(a => a.Teacher).Select(g => g.First()).ToList();
+            int i = 0;
             if (list != null)
                 foreach (var item in list)
-                    teachersWeeks.Add(new TeachersWeekLoad {Teacher = item.Teacher });
+                {
+                        teachersWeeks.Add(new TeachersWeekLoad
+                        {
+                            Teacher = listTeach[i].Teacher,
+                            Monday = item.Monday,
+                            Tuesday = item.Tuesday,
+                            Wednesday = item.Wednesday,
+                            Thursday = item.Thursday,
+                            Friday = item.Friday
+                        });
+                    i++;
+                }
 
-
-            var res = teachersWeeks.GroupBy(a => a.Teacher).Select(g => g.First()).ToList();
+            var res = teachersWeeks;
             return res;
-
         }
     }
 }

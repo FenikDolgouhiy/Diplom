@@ -6,6 +6,7 @@ using FireSharp.Interfaces;
 using FireSharp.Response;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,11 +26,25 @@ namespace Dashboard1.Utils
         public FBOperations()
         {
             client = new FireSharp.FirebaseClient(config);
+            
         }
 
         public async Task<List<LoadDTO>> ExportFromFBToDG()
         {
+            
             List<LoadDTO> result = new List<LoadDTO>();
+
+            try
+            {
+
+                 await client.GetAsync("TeachersLoad/");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Что-то пошло не так со связью с БД, проверьте подключение к инетрнету");
+
+                Process.GetCurrentProcess().Kill();
+            }
             var response = await client.GetAsync("TeachersLoad/");
             var list = response.ResultAs<List<LoadDTO>>();
             if (list != null)

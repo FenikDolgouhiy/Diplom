@@ -1,6 +1,7 @@
 ﻿using Dashboard1.Model;
 using Dashboard1.Utils;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows;
 
 namespace Dashboard1.ViewModel
@@ -44,7 +45,7 @@ namespace Dashboard1.ViewModel
             }
         }
         private async void UploadFromFB() // Загрузка из БД в таблицу
-        {
+        {   
             var loads = await fbOperations.ExportFromFBToDG();
             if (loads != null)
             {
@@ -73,8 +74,6 @@ namespace Dashboard1.ViewModel
             if (MessageBox.Show("Вы действительно хотите удалить ВСЁ из Базы данных?", "Подтверждение операции", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 fbOperations.DeleteAllInfoFromFB();
-
-                MessageBox.Show("База данных была полностью очищенна");
             }
         }
         
