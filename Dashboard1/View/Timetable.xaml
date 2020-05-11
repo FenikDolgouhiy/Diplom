@@ -21,24 +21,22 @@
                     HorizontalAlignment="Left"
                     materialDesign:HintAssist.Hint="Search"
                     materialDesign:HintAssist.HintOpacity=".26"
+                    Name="cbxSalesPeriods"
+                    ItemsSource="{Binding TimeTableGroupGrid}"
+                    SelectedItem="{Binding SelectedItem}"
+                    IsSynchronizedWithCurrentItem="True"
                     IsEditable="True">
-                <ComboBoxItem>
-                    Apple
-                </ComboBoxItem>
-                <ComboBoxItem>
-                    Banana
-                </ComboBoxItem>
-                <ComboBoxItem>
-                    Pear
-                </ComboBoxItem>
-                <ComboBoxItem>
-                    Orange
-                </ComboBoxItem>
             </ComboBox>
             <Button Style="{DynamicResource MaterialDesignRaisedButton}" HorizontalAlignment="Right">
                 <Grid Width="200">
                     <materialDesign:PackIcon Kind="CloudDownload" HorizontalAlignment="Left"/>
                     <TextBlock HorizontalAlignment="Right" Text="ВИГРУЗИТИ У EXEL ФАЙЛ"/>
+                </Grid>
+            </Button>
+            <Button Style="{DynamicResource MaterialDesignRaisedButton}" Command="{Binding ShowTimeTCommand}" HorizontalAlignment="Right" Margin="0,7,258,11" Width="145">
+                <Grid Width="200">
+                    <materialDesign:PackIcon Kind="CloudDownload" HorizontalAlignment="Left"/>
+                    <TextBlock HorizontalAlignment="Right" Text="Показать"/>
                 </Grid>
             </Button>
         </Grid>
@@ -49,6 +47,7 @@
                     ItemsSource="{Binding TeachersList}"
                     CanUserDeleteRows="False" 
                     Grid.IsSharedSizeScope="True"
+                    CanUserAddRows="False"
                     Width="800"/>
         </Grid>
     </Grid>

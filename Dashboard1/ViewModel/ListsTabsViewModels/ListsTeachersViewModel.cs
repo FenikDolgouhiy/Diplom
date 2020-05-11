@@ -41,7 +41,7 @@ namespace Dashboard1.ViewModel.ListsTabsViewModels
                 TeachersList = loads;
             }
         }
-        private void DeleteAllFromDB(object obj) //Удаление нагрузок с бд
+        private void DeleteAllFromDB(object obj) //Удаление нагрузок с Грида
         {
             if (MessageBox.Show("Вы действительно хотите удалить нагрузки из таблицы полностью?\nВ БД сохранится.", "Подтверждение операции", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {

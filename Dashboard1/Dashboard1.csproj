@@ -54,6 +54,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\DataTableFromDB.cs" />
+    <Compile Include="Model\FullTimeTable.cs" />
     <Compile Include="Model\LoadDTO.cs" />
     <Compile Include="Model\TeachersWeekLoad.cs" />
     <Compile Include="Utils\Command.cs" />
@@ -65,6 +67,7 @@
     <Compile Include="Utils\NavigationKeys.cs" />
     <Compile Include="Utils\NavigationManager.cs" />
     <Compile Include="Utils\NavigationUtils.cs" />
+    <Compile Include="Utils\TimeTableOperations.cs" />
     <Compile Include="ViewModel\ListsTabsViewModels\ListsCabinetsViewModel.cs" />
     <Compile Include="ViewModel\ListsTabsViewModels\ListsGroupsAndSubjectsViewModel.cs" />
     <Compile Include="ViewModel\ListsTabsViewModels\ListsTeachersViewModel.cs" />
