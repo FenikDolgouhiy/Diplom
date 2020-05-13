@@ -27,7 +27,7 @@
                     IsSynchronizedWithCurrentItem="True"
                     IsEditable="True">
             </ComboBox>
-            <Button Style="{DynamicResource MaterialDesignRaisedButton}" HorizontalAlignment="Right">
+            <Button Style="{DynamicResource MaterialDesignRaisedButton}" Command="{Binding ExportToExcelCommand}" HorizontalAlignment="Right">
                 <Grid Width="200">
                     <materialDesign:PackIcon Kind="CloudDownload" HorizontalAlignment="Left"/>
                     <TextBlock HorizontalAlignment="Right" Text="ВИГРУЗИТИ У EXEL ФАЙЛ"/>
@@ -46,6 +46,7 @@
                     Margin="0,0,0,15"
                     ItemsSource="{Binding TeachersList}"
                     CanUserDeleteRows="False" 
+                    IsReadOnly="True"
                     Grid.IsSharedSizeScope="True"
                     CanUserAddRows="False"
                     Width="800"/>

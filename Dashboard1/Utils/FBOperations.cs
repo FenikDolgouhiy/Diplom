@@ -32,16 +32,7 @@ namespace Dashboard1.Utils
         {
             List<LoadDTO> result = new List<LoadDTO>();
 
-            try
-            {
-                 await client.GetAsync("TeachersLoad/");
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Что-то пошло не так со связью с БД, проверьте подключение к инетрнету");
-
-                Process.GetCurrentProcess().Kill();
-            }
+            
             var response = await client.GetAsync("TeachersLoad/");
             var list = response.ResultAs<List<LoadDTO>>();
             if (list != null)

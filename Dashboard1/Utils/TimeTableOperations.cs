@@ -5,6 +5,14 @@ using Microsoft.Office.Interop.Word;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.IO;
+
+using Microsoft.Office.Interop.Excel;
+
+using Application = Microsoft.Office.Interop.Excel.Application;
+using System.Windows;
+using System;
+using System.Diagnostics;
 
 namespace Dashboard1.Utils
 {
@@ -22,6 +30,16 @@ namespace Dashboard1.Utils
         }
         public async Task<List<string>> LoadGroupsToComboBox()
         {
+            try
+            {
+                await client.GetAsync("TeachersLoad/");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Что-то пошло не так со связью с БД, проверьте подключение к интернету");
+
+                Process.GetCurrentProcess().Kill();
+            }
             List<LoadDTO> loadDTO = new List<LoadDTO>();
             List<string> result = new List<string>();
             var responce = await client.GetAsync("TeachersLoad/");
@@ -83,7 +101,6 @@ namespace Dashboard1.Utils
 
                 }
             }
-            fromDBs.Count();
 
             foreach (var item in fromDBs)
             {
@@ -144,6 +161,52 @@ namespace Dashboard1.Utils
                 });
             }
             return res;
+        }
+
+        public async void ListToExcel(List<FullTimeTable> list, string SelectedGroup)
+        {
+            List<DataTableFromDB> dataTableFromDBs = new List<DataTableFromDB>();
+
+            var responce = await client.GetAsync("GroupsTimetable/");
+            var LoadTimeTableCourse = responce.ResultAs<List<DataTableFromDB>>();
+
+            LoadTimeTableCourse = LoadTimeTableCourse.GroupBy(a => a.Group).Select(g => g.First()).ToList();
+            
+            Microsoft.Office.Interop.Excel.Application exApp = new Microsoft.Office.Interop.Excel.Application();
+            exApp.Workbooks.Add();
+
+            for (int i = 0; i < LoadTimeTableCourse.Count; i++)
+            {
+                if (LoadTimeTableCourse[i].Group == SelectedGroup)
+                {
+                    dataTableFromDBs = LoadTimeTableCourse;
+                }
+            }
+
+            Worksheet workSheet = (Worksheet)exApp.ActiveSheet;
+            workSheet.Cells[1, "A"] = "№ пары";
+            for (int i = 0; i < 6; i++)
+            {
+                workSheet.Cells[i + 2, "A"] = i;
+            }
+
+            workSheet.Cells[1, "B"] = "Monday";
+            workSheet.Cells[1, "C"] = "Tuedsday";
+            workSheet.Cells[1, "D"] = "Wendesday";
+            workSheet.Cells[1, "E"] = "Thursday";
+            workSheet.Cells[1, "F"] = "Friday";
+
+            for (int i = 0; i < list.Count; i++)
+            {
+                workSheet.Cells[i+2, "B"] = list[i].Monday;
+                workSheet.Cells[i + 2, "C"] = list[i].Tuesday;
+                workSheet.Cells[i + 2, "D"] = list[i].Wednesday;
+                workSheet.Cells[i + 2, "E"] = list[i].Thursday;
+                workSheet.Cells[i + 2, "F"] = list[i].Friday;
+            }
+            workSheet.SaveAs(@"C:\Users\"+SelectedGroup+"TimeTable.xlsx");
+            MessageBox.Show("Данные были загружены");
+            exApp.Quit();
         }
     }
 }

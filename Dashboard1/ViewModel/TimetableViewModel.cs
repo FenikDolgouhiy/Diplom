@@ -16,6 +16,7 @@ namespace Dashboard1.ViewModel
     {
         private List<string> _timeTableGroup = new List<string>();
         public Command ShowTimeTCommand  { get; }
+        public Command ExportToExcelCommand { get; }
         private List<FullTimeTable> _fullTimeTable = new List<FullTimeTable>();
         public string SelectedItem { get; set; }
         TimeTableOperations timeTableOp = new TimeTableOperations();
@@ -41,10 +42,11 @@ namespace Dashboard1.ViewModel
         {
             LoadGroups();
             ShowTimeTCommand = new Command(LoadGroupTimetable);
+            ExportToExcelCommand = new Command(ExportToExcel);
         }
         private async void LoadGroups()
         {
-            TimeTableGroupGrid = await timeTableOp.LoadGroupsToComboBox();
+            TimeTableGroupGrid = await timeTableOp.LoadGroupsToComboBox();//
         }
         private async void LoadGroupTimetable(object obj)// Загрузка расписания по выбранной группе
         {
@@ -55,6 +57,13 @@ namespace Dashboard1.ViewModel
             }
             else
                 MessageBox.Show("Вы ничего не выбрали");
+        }
+        private void ExportToExcel(object obj)
+        {
+            if (TeachersList != null)
+            {
+                timeTableOp.ListToExcel(TeachersList, SelectedItem);
+            }
         }
         #region Implementation of INavigationAware
         public void OnNavigatingFrom()
