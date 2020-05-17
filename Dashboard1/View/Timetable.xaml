@@ -14,10 +14,28 @@
             <RowDefinition Height="50"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Margin="30,0">
-            <!--  Верхняя часть, сюда выпадашку-->
-            <ComboBox
-                    Width="300"
+        <Grid Grid.Row="0" Margin="15,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="0" HorizontalAlignment="Left" Margin="10,0">
+                <Button Style="{StaticResource MaterialDesignRaisedButton}"
+                    materialDesign:ButtonProgressAssist.Value="-1"
+                    materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
+                    materialDesign:ButtonProgressAssist.IsIndeterminate="True"
+                    Command="{Binding ExportToExcelCommand}" 
+                    VerticalAlignment="Center">
+                    <Grid Width="170">
+                        <materialDesign:PackIcon Kind="CalendarPlus" Height="20" Width="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <TextBlock HorizontalAlignment="Right" Text="СТВОРИТИ РОЗКЛАД" VerticalAlignment="Center"/>
+                    </Grid>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="1" Width="250">
+                <ComboBox
+                    Width="200"
                     HorizontalAlignment="Left"
                     materialDesign:HintAssist.Hint="Search"
                     materialDesign:HintAssist.HintOpacity=".26"
@@ -26,19 +44,25 @@
                     SelectedItem="{Binding SelectedItem}"
                     IsSynchronizedWithCurrentItem="True"
                     IsEditable="True">
-            </ComboBox>
-            <Button Style="{DynamicResource MaterialDesignRaisedButton}" Command="{Binding ExportToExcelCommand}" HorizontalAlignment="Right">
-                <Grid Width="200">
-                    <materialDesign:PackIcon Kind="CloudDownload" HorizontalAlignment="Left"/>
-                    <TextBlock HorizontalAlignment="Right" Text="ВИГРУЗИТИ У EXEL ФАЙЛ"/>
-                </Grid>
-            </Button>
-            <Button Style="{DynamicResource MaterialDesignRaisedButton}" Command="{Binding ShowTimeTCommand}" HorizontalAlignment="Right" Margin="0,7,258,11" Width="145">
-                <Grid Width="200">
-                    <materialDesign:PackIcon Kind="CloudDownload" HorizontalAlignment="Left"/>
-                    <TextBlock HorizontalAlignment="Right" Text="Показать"/>
-                </Grid>
-            </Button>
+                </ComboBox>
+                <Button Command="{Binding ShowTimeTCommand}"
+                    Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+                    ToolTip="MaterialDesignFloatingActionMiniButton"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center">
+                    <materialDesign:PackIcon Kind="CloudDownload" Height="20" Width="20"/>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="2" HorizontalAlignment="Right" Margin="10,0">
+                <Button Style="{DynamicResource MaterialDesignRaisedButton}" 
+                        Command="{Binding ExportToExcelCommand}" 
+                        VerticalAlignment="Center">
+                    <Grid Width="200">
+                        <materialDesign:PackIcon Kind="ArchiveArrowDown" Height="20" Width="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="ВИГРУЗИТИ У EXEL ФАЙЛ"/>
+                    </Grid>
+                </Button>
+            </Grid>
         </Grid>
         <Grid Grid.Row="1">
             <!--  Нижняя часть, сюда динамичную таблице с расписанием. ДИЗАЙН НЕ МЕНЯТЬ РРР :D ! -->
