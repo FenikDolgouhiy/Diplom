@@ -12,66 +12,7 @@ namespace TestConsole
     {
         static void Main()
         {
-            //ЗАГРУЗКА ТЕСТОВЫХ ДАННЫХ ИЗ ЭКСЕЛЯ
-            /*
-            Excel.Application excelApp = new Excel.Application
-            {
-                Visible = true
-            };
-
-            string path = @"C:\OAO\data.xlsx";
-
-            Excel.Workbook workbook = excelApp.Workbooks.Open(path, Type.Missing, true, Type.Missing, Type.Missing,
-            Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-            Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-            Type.Missing, Type.Missing);
-
-            Excel.Worksheet sheet = workbook.Sheets[1]; //ПРЕПОДЫ-УСЛОВИЯ
-            Excel.Range SRange;
-
-            SRange = sheet.UsedRange.Columns[1];
-            System.Array myvalues = (System.Array)SRange.Cells.Value2;
-            string[] P_Prepods = myvalues.OfType<object>().Select(o => o.ToString()).ToArray(); //ПРЕПОДЫ
-
-            SRange = sheet.UsedRange.Columns[2];
-            myvalues = (System.Array)SRange.Cells.Value2;
-            string[] P_Opps = myvalues.OfType<object>().Select(o => o.ToString()).ToArray(); //УСЛОВИЯ
-
-
-            sheet = (Excel.Worksheet)workbook.Sheets[2]; //ПРЕПОДЫ-ГРУППА-ПРЕДМЕТ-В НЕДЕЛЮ - ВСЕГО
-            SRange = sheet.UsedRange.Columns[1];
-            myvalues = (System.Array)SRange.Cells.Value2;
-            string[] N_Prepods = myvalues.OfType<object>().Select(o => o.ToString()).ToArray();//ПРЕПОДЫ
-
-            SRange = sheet.UsedRange.Columns[2];
-            myvalues = (System.Array)SRange.Cells.Value2;
-            string[] N_Groups = myvalues.OfType<object>().Select(o => o.ToString()).ToArray();//ГРУППА
-
-            SRange = sheet.UsedRange.Columns[3];
-            myvalues = (System.Array)SRange.Cells.Value2;
-            string[] N_Subjects = myvalues.OfType<object>().Select(o => o.ToString()).ToArray();//ПРЕДМЕТ
-
-            SRange = sheet.UsedRange.Columns[4];
-            myvalues = (System.Array)SRange.Cells.Value2;
-            string[] N_PerWeek = myvalues.OfType<object>().Select(o => o.ToString()).ToArray();//В НЕДЕЛЮ 
-
-            SRange = sheet.UsedRange.Columns[5];
-            myvalues = (System.Array)SRange.Cells.Value2;
-            string[] N_Total = myvalues.OfType<object>().Select(o => o.ToString()).ToArray();//ВСЕГО
-
-            sheet = (Excel.Worksheet)workbook.Sheets[3];//ГРУППЫ-ПРАКТИКА-НЕДЕЛЬ
-            SRange = sheet.UsedRange.Columns[1];
-            myvalues = (System.Array)SRange.Cells.Value2;
-            string[] G_Groups = myvalues.OfType<object>().Select(o => o.ToString()).ToArray();//ГРУППЫ
-
-            SRange = sheet.UsedRange.Columns[2];
-            myvalues = (System.Array)SRange.Cells.Value2;
-            string[] G_Practice = myvalues.OfType<object>().Select(o => o.ToString()).ToArray();//ПРАКТИКА
-
-            SRange = sheet.UsedRange.Columns[3];
-            myvalues = (System.Array)SRange.Cells.Value2;
-            string[] G_Weeks = myvalues.OfType<object>().Select(o => o.ToString()).ToArray();//НЕДЕЛЬ8
-            */
+           
             DBLoad a = new DBLoad();
             Console.OutputEncoding = Encoding.UTF8;
             a.UploadFromFB();
@@ -106,10 +47,7 @@ namespace TestConsole
                             a.TeachersOppList[i].Thursday +
                             a.TeachersOppList[i].Friday;
             }
-            for (int i = 0; i < P_Opps.Length; i++) //Вывод для проверки 
-            {
-                Console.WriteLine(P_Prepods[i] + " " + P_Opps[i]);
-            }
+            
             int Number_of_prep = P_Prepods.Length;//Количество преподавателей для инициализации 
 
             TeacherList[] Prep_okkt; //список преподов
@@ -166,7 +104,8 @@ namespace TestConsole
                 }
             }
             Group temp2;
-                for (int i = 0; i < okkt.Length - 1; i++)//Сортировка групп по количеству часов. Почему-то не работает (наверное(я не знаю))
+            
+            for (int i = 0; i < okkt.Length - 1; i++)//Сортировка групп по количеству часов. Почему-то не работает (наверное(я не знаю))
                 {
                     for (int j = i + 1; j < okkt.Length; j++)
                     {
@@ -178,26 +117,8 @@ namespace TestConsole
                         }
                     }
                 }
-                for (int i = 0; i < Prep_okkt.Length; i++) //вывод для проверки
-                {
-                    Console.WriteLine(Prep_okkt[i].teacherName + " " + Prep_okkt[i].subjectsCount + " ");
-                    for (int n = 0; n < 5; n++)
-                    {
-                        for (int m = 0; m < 4; m++)
-                        {
-                            if (Prep_okkt[i].opportunities[n, m] == true)
-                                Console.Write('+');
-                            else Console.Write('-');
-                        }
-
-                    }
-                    Console.Write(" " + Prep_okkt[i].possibilitiesCount + " ");
-                    for (int j = 0; j < Prep_okkt[i].subjects.Length; j++)
-                    {
-                        Console.WriteLine("Предмет " + Prep_okkt[i].subjects[j].Subject + " " + Prep_okkt[i].subjects[j].hoursSum + " " + Prep_okkt[i].subjects[j].hoursPerWeek + " ");
-                    }
-                }
-                for (int i = 0; i < okkt.Length; i++)//Создание расписания погруппно
+            
+            for (int i = 0; i < okkt.Length; i++)//Создание расписания погруппно
                 {
                     okkt[i] = AdeptMech.CreatRoz(ref Prep_okkt, okkt[i]);
                 }

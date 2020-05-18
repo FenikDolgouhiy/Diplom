@@ -25,8 +25,6 @@ namespace Logic
                     if (opportunitiesString[k] == '+')
                     {
                         opportunities[i, j] = true;
-                    Console.WriteLine(i);
-                    Console.WriteLine(teacherName);
                     }
                     else opportunities[i, j] = false;
             }

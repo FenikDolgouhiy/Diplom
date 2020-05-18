@@ -107,8 +107,8 @@ namespace Logic
                                         (OKKT.TimeTable[k, l].OddWeek.Subject == null) &&
                                         (Gr[i].TOpp[k, l, 1] && Gr[i].TOpp[k, l, 0]))  //ставим пару предмета в свободный день 
                                     {
-                                        if (IsWindow(k, l, OKKT.TimeTable, 0) == false) //Условия по закрытию без окон. Функция неработоспособна, но пусть будет.
-                                        {
+                                       
+                                        
                                             OKKT.TimeTable[k, l].EvenWeek.Subject = Gr[i].subjects[j].Subject;
                                             OKKT.TimeTable[k, l].OddWeek.Subject = Gr[i].subjects[j].Subject;
                                             OKKT.TimeTable[k, l].EvenWeek.Teacher = Gr[i].teacherName;
@@ -117,30 +117,30 @@ namespace Logic
                                             Gr[i].subjects[j].hoursPerWeek -= 2;
                                             Gr[i].TOpp[k, l, 1] = false;
                                             Gr[i].TOpp[k, l, 0] = false;
-                                        }
+                                        
                                     }
                                     else if ((Gr[i].subjects[j].hoursPerWeek > 0) && ((OKKT.TimeTable[k, l].EvenWeek.Subject == null) && (Gr[i].TOpp[k, l, 0] == true)) && ((OKKT.TimeTable[k, l].OddWeek.Subject != null) || (Gr[i].TOpp[k, l, 1] == false) || (Gr[i].subjects[j].hoursPerWeek == 1)))
                                     {
-                                        if (IsWindow(k, l, OKKT.TimeTable, 1) == false)
-                                        {
+                                        
+                                        
                                             OKKT.TimeTable[k, l].EvenWeek.Subject = Gr[i].subjects[j].Subject;
                                             OKKT.TimeTable[k, l].EvenWeek.Teacher = Gr[i].teacherName;
 
 
                                             Gr[i].subjects[j].hoursPerWeek -= 1;
                                             Gr[i].TOpp[k, l, 0] = false;
-                                        }
+                                        
                                     }
                                     else if ((Gr[i].subjects[j].hoursPerWeek > 0) && ((OKKT.TimeTable[k, l].OddWeek.Subject == null) && (Gr[i].TOpp[k, l, 1] == true)) && ((OKKT.TimeTable[k, l].EvenWeek.Subject != null) || (Gr[i].TOpp[k, l, 0] == false) || (Gr[i].subjects[j].hoursPerWeek == 1)))
                                     {
-                                        if (IsWindow(k, l, OKKT.TimeTable, 2) == false)
-                                        {
+                                        
+                                        
                                             OKKT.TimeTable[k, l].OddWeek.Subject = Gr[i].subjects[j].Subject;
                                             OKKT.TimeTable[k, l].OddWeek.Teacher = Gr[i].teacherName;
 
                                             Gr[i].subjects[j].hoursPerWeek -= 1;
                                             Gr[i].TOpp[k, l, 1] = false;
-                                        }
+                                        
                                     }
                                 }
 
@@ -148,13 +148,31 @@ namespace Logic
                         }
                     }
                 }
-                PermutateArr(ref Gr, N);// Перестановка массива в случае незакрытия предметов
-                if (id == 60)
+                for (int DayInWeek = 0; DayInWeek < 5; DayInWeek++)
                 {
-                    Console.WriteLine("Группа Зависла " + OK.Name);//ЧТобы я мог понять, что что-то пошло не так
-                    break;
+                    if (HasWindows(DayInWeek, OKKT.TimeTable))
+                    {
+                        Console.WriteLine("Окно");
+    
+                        LicWindow(OKKT.TimeTable, Gr, DayInWeek);
+                    }
+                }
+
+                for (int DayInWeek = 0; DayInWeek < 5; DayInWeek++)
+                {
+                    if (HasWindows(DayInWeek, OKKT.TimeTable))
+                    {
+                        Console.WriteLine("окно\n");
+                        Console.WriteLine(OKKT.Name);
+                        for (int i = 0; i <= 5; i++)
+                        {
+                            Console.WriteLine(OKKT.TimeTable[DayInWeek, i].EvenWeek.Subject + " " + OKKT.TimeTable[DayInWeek, i].EvenWeek.Teacher + "|" + OKKT.TimeTable[DayInWeek, i].OddWeek.Subject + " " + OKKT.TimeTable[DayInWeek, i].OddWeek.Teacher);
+                        }
+                        Console.WriteLine();
+                    }
                 }
             }
+
             return OKKT;
         }
         static public int OccHours(TeacherList Prep_OKKT)//Подсчёт количества пар в неделю.
@@ -205,18 +223,268 @@ namespace Logic
             return counter / 2;
         }
 
-        static void PermutateArr(ref TeacherList[] arr, int n)//Метод перемешивания массива.
+        static bool HasWindows(int kW, Rozklad[,] TimetableWindow)
         {
-
-            TeacherList temp = arr[n - 1];
-            for (var j = n - 1; j > 0; j--)
+            bool pointer1;
+            bool pointer2;
+            int counter1;
+            int counter2;
+            int l;
+            for (l = 0, counter1 = 0, counter2 = 0, pointer1 = false, pointer2 = false; l <= 5; l++)
             {
-                arr[j] = arr[j - 1];
+
+                if (pointer1 == false && TimetableWindow[kW, l].EvenWeek.Subject != null)
+                {
+                    counter1++;
+                    pointer1 = true;
+                }
+                else if (pointer1 == true && TimetableWindow[kW, l].EvenWeek.Subject == null)
+                {
+                    counter1++;
+                    pointer1 = false;
+                }
+                if (pointer2 == false && TimetableWindow[kW, l].OddWeek.Subject != null)
+                {
+                    counter2++;
+                    pointer2 = true;
+                }
+                else if (pointer2 == true && TimetableWindow[kW, l].OddWeek.Subject == null)
+                {
+                    counter2++;
+                    pointer2 = false;
+                }
             }
-            arr[0] = temp;
+            if (counter1 > 2 || counter2 > 2)
+                return true;
+            else return false;
+        }
+        static public void LicWindow(Rozklad[,] Roz_LW, TeacherList[] Prep_LW, int day)
+        {
+            for (int pair = 0; pair < 5; pair++)
+            {
+
+                if (Roz_LW[day, pair].EvenWeek.Subject == null && IsWindow(day, pair, Roz_LW, 3))
+                {
+
+                    ChngWindow(Roz_LW, Prep_LW, day, pair, 1);
+                }
+                if (Roz_LW[day, pair].OddWeek.Subject == null && IsWindow(day, pair, Roz_LW, 4))
+                {
+
+                    ChngWindow(Roz_LW, Prep_LW, day, pair, 2);
+                }
+
+            }
+        }
+        static public void ChngWindow(Rozklad[,] Roz_CW, TeacherList[] Prep_CW, int day, int pair, int cs)
+        {
+            for (int Pairz = 0; Pairz < 6; Pairz++)
+            {
+                for (int Dayz = 0; Dayz < 5; Dayz++)
+                {
+                    if (cs == 1)
+                    {
+                        if (Roz_CW[Dayz, Pairz].EvenWeek.Subject != null)
+                        {
+                            if (LastPair(Pairz, Dayz, Roz_CW, 1) == true || FirstPair(Pairz, Dayz, Roz_CW, 1) == true)
+                            {
+
+
+
+                                if (Prep_CW[CurrTeacher(Roz_CW[Dayz, Pairz].EvenWeek.Teacher, Prep_CW)].TOpp[day, pair, 0] == true)
+                                {
+                                    Roz_CW[day, pair].EvenWeek.Subject = Roz_CW[Dayz, Pairz].EvenWeek.Subject;
+                                    Roz_CW[day, pair].EvenWeek.Teacher = Roz_CW[Dayz, Pairz].EvenWeek.Teacher;
+                                    Prep_CW[CurrTeacher(Roz_CW[Dayz, Pairz].EvenWeek.Teacher, Prep_CW)].TOpp[day, pair, 0] = false;
+                                    Prep_CW[CurrTeacher(Roz_CW[Dayz, Pairz].EvenWeek.Teacher, Prep_CW)].TOpp[Dayz, Pairz, 0] = true;
+                                    Roz_CW[Dayz, Pairz].EvenWeek.Subject = null;
+                                    Roz_CW[Dayz, Pairz].EvenWeek.Teacher = null;
+
+
+                                    return;
+                                }
+                            }
+
+                        }
+                        if (Roz_CW[Dayz, Pairz].OddWeek.Subject != null)
+                        {
+                            if (LastPair(Pairz, Dayz, Roz_CW, 2) == true || FirstPair(Pairz, Dayz, Roz_CW, 2) == true)
+                            {
+                                if (Prep_CW[CurrTeacher(Roz_CW[day, pair].OddWeek.Teacher, Prep_CW)].TOpp[day, pair, 0] == true)
+                                {
+                                    Roz_CW[day, pair].EvenWeek.Subject = Roz_CW[Dayz, Pairz].OddWeek.Subject;
+                                    Roz_CW[day, pair].EvenWeek.Teacher = Roz_CW[Dayz, Pairz].OddWeek.Teacher;
+                                    Prep_CW[CurrTeacher(Roz_CW[Dayz, Pairz].OddWeek.Teacher, Prep_CW)].TOpp[day, pair, 0] = false;
+                                    Prep_CW[CurrTeacher(Roz_CW[Dayz, Pairz].OddWeek.Teacher, Prep_CW)].TOpp[Dayz, Pairz, 1] = true;
+                                    Roz_CW[Dayz, Pairz].OddWeek.Subject = null;
+                                    Roz_CW[Dayz, Pairz].OddWeek.Teacher = null;
+
+
+                                    return;
+                                }
+                            }
+                        }
+                    }
+                    if (cs == 2)
+                    {
+                        if (Roz_CW[Dayz, Pairz].EvenWeek.Subject != null)
+                        {
+
+                            if (LastPair(Pairz, Dayz, Roz_CW, 1) == true || FirstPair(Pairz, Dayz, Roz_CW, 1) == true)
+                            {
+
+                                if (Prep_CW[CurrTeacher(Roz_CW[Dayz, Pairz].EvenWeek.Teacher, Prep_CW)].TOpp[day, pair, 1] == true)
+                                {
+                                    Roz_CW[day, pair].OddWeek.Subject = Roz_CW[Dayz, Pairz].EvenWeek.Subject;
+                                    Roz_CW[day, pair].OddWeek.Teacher = Roz_CW[Dayz, Pairz].EvenWeek.Teacher;
+                                    Prep_CW[CurrTeacher(Roz_CW[Dayz, Pairz].EvenWeek.Teacher, Prep_CW)].TOpp[day, pair, 1] = false;
+                                    Prep_CW[CurrTeacher(Roz_CW[Dayz, Pairz].EvenWeek.Teacher, Prep_CW)].TOpp[Dayz, Pairz, 0] = true;
+                                    Roz_CW[Dayz, Pairz].EvenWeek.Subject = null;
+                                    Roz_CW[Dayz, Pairz].EvenWeek.Teacher = null;
+
+
+                                    return;
+                                }
+                            }
+
+                        }
+                        if (Roz_CW[Dayz, Pairz].OddWeek.Subject != null)
+                        {
+                            if (LastPair(Pairz, Dayz, Roz_CW, 2) == true || FirstPair(Pairz, Dayz, Roz_CW, 2) == true)
+                            {
+                                if (Prep_CW[CurrTeacher(Roz_CW[day, pair].OddWeek.Teacher, Prep_CW)].TOpp[day, pair, 1] == true)
+                                {
+                                    Roz_CW[day, pair].OddWeek.Subject = Roz_CW[Dayz, Pairz].OddWeek.Subject;
+                                    Roz_CW[day, pair].OddWeek.Teacher = Roz_CW[Dayz, Pairz].OddWeek.Teacher;
+                                    Prep_CW[CurrTeacher(Roz_CW[Dayz, Pairz].OddWeek.Teacher, Prep_CW)].TOpp[day, pair, 1] = false;
+                                    Prep_CW[CurrTeacher(Roz_CW[Dayz, Pairz].OddWeek.Teacher, Prep_CW)].TOpp[Dayz, Pairz, 1] = true;
+                                    Roz_CW[Dayz, Pairz].OddWeek.Subject = null;
+                                    Roz_CW[Dayz, Pairz].OddWeek.Teacher = null;
+
+
+                                    return;
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
 
         }
-        
+        static int CurrTeacher(string TeacherName, TeacherList[] ListofTeachers)
+        {
+            for (int i = 0; i < ListofTeachers.Length; i++)
+            {
+                if (ListofTeachers[i].teacherName == TeacherName)
+                {
+
+                    return i;
+                }
+            }
+
+            return 0;
+        }
+        static bool FirstPair(int CurPair, int CurDay, Rozklad[,] TimetableWindow, int cs)
+        {
+            bool pointer1;
+            bool pointer2;
+            int counter1;
+            int counter2;
+            int l;
+
+            for (l = 0, counter1 = 0, counter2 = 0, pointer1 = false, pointer2 = false; l <= 5; l++)
+            {
+                if (l == CurPair)
+                {
+                    if (pointer1 == false && counter1 < 1)
+                    {
+                        pointer1 = true;
+                    }
+                    if (pointer2 == false && counter2 < 1)
+                    {
+                        pointer2 = true;
+                    }
+                    if (pointer1 == true && cs == 1 && counter1 < 1)
+                        return true;
+                    else if (pointer2 == true && cs == 2 && counter2 < 2)
+                        return true;
+                }
+                if (pointer1 == false && TimetableWindow[CurDay, l].EvenWeek.Subject != null)
+                {
+                    counter1++;
+                    pointer1 = true;
+                }
+                else if (pointer1 == true && TimetableWindow[CurDay, l].EvenWeek.Subject == null)
+                {
+                    counter1++;
+                    pointer1 = false;
+                }
+                if (pointer2 == false && TimetableWindow[CurDay, l].OddWeek.Subject != null)
+                {
+                    counter2++;
+                    pointer2 = true;
+                }
+                else if (pointer2 == true && TimetableWindow[CurDay, l].OddWeek.Subject == null)
+                {
+                    counter2++;
+                    pointer2 = false;
+                }
+
+
+            }
+            return false;
+        }
+        static bool LastPair(int CurPair, int CurDay, Rozklad[,] TimetableWindow, int cs)
+        {
+            bool pointer1;
+            bool pointer2;
+            int counter1;
+            int counter2;
+            int l;
+
+            for (l = 5, counter1 = 0, counter2 = 0, pointer1 = false, pointer2 = false; l >= 0; l--)
+            {
+                if (l == CurPair)
+                {
+                    if (pointer1 == false && counter1 < 1)
+                    {
+                        pointer1 = true;
+                    }
+                    if (pointer2 == false && counter2 < 1)
+                    {
+                        pointer2 = true;
+                    }
+                    if (pointer1 == true && cs == 1 && counter1 < 1)
+                        return true;
+                    else if (pointer2 == true && cs == 2 && counter2 < 2)
+                        return true;
+                }
+                if (pointer1 == false && TimetableWindow[CurDay, l].EvenWeek.Subject != null)
+                {
+                    counter1++;
+                    pointer1 = true;
+                }
+                else if (pointer1 == true && TimetableWindow[CurDay, l].EvenWeek.Subject == null)
+                {
+                    counter1++;
+                    pointer1 = false;
+                }
+                if (pointer2 == false && TimetableWindow[CurDay, l].OddWeek.Subject != null)
+                {
+                    counter2++;
+                    pointer2 = true;
+                }
+                else if (pointer2 == true && TimetableWindow[CurDay, l].OddWeek.Subject == null)
+                {
+                    counter2++;
+                    pointer2 = false;
+                }
+
+
+            }
+            return false;
+        }
         public static void UploadTimetable(Group[] OKKT)
         {
             List<TimetablesList> timetableOKKT = new List<TimetablesList>();
@@ -270,6 +538,10 @@ namespace Logic
             int counter1;
             int counter2;
             int l;
+            bool BeforeCheck1 = false;
+            bool BeforeCheck2 = false;
+            bool AfterCheck1 = false;
+            bool AfterCheck2 = false;
             if (Cs == 0)
             {
                 for (l = 0, counter1 = 0, counter2 = 0, pointer1 = false, pointer2 = false; l <= lW; l++)
@@ -288,22 +560,22 @@ namespace Logic
                         }
                         break;
                     }
-                    if (pointer1 == false && TimetableWindow[kW, l].OddWeek.Subject != null)
+                    if (pointer1 == false && TimetableWindow[kW, l].EvenWeek.Subject != null)
                     {
                         counter1++;
                         pointer1 = true;
                     }
-                    else if (pointer1 == true && TimetableWindow[kW, l].OddWeek.Subject == null)
+                    else if (pointer1 == true && TimetableWindow[kW, l].EvenWeek.Subject == null)
                     {
                         counter1++;
                         pointer1 = false;
                     }
-                    if (pointer2 == false && TimetableWindow[kW, l].EvenWeek.Subject != null)
+                    if (pointer2 == false && TimetableWindow[kW, l].OddWeek.Subject != null)
                     {
                         counter2++;
                         pointer2 = true;
                     }
-                    else if (pointer1 == true && TimetableWindow[kW, l].EvenWeek.Subject == null)
+                    else if (pointer2 == true && TimetableWindow[kW, l].OddWeek.Subject== null)
                     {
                         counter2++;
                         pointer2 = false;
@@ -312,64 +584,12 @@ namespace Logic
                 if (counter1 > 2 || counter2 > 2)
                     return true;
                 else return false;
-                    /*
-                    if (lW == 3 && (RW[kW, 1].OddWeek.Subject != null && RW[kW, 1].EvenWeek.Subject != null) && ((RW[kW, 2].OddWeek.Subject == null || RW[kW, 2].EvenWeek.Subject == null)))
-                    {
-                    return true;
-                    }
-                    if (lW == 3 && (RW[kW, 1].OddWeek.Subject != null && RW[kW, 1].EvenWeek.Subject == null) && (RW[kW, 2].OddWeek.Subject == null && RW[kW, 2].EvenWeek.Subject != null) 
-                            || (RW[kW, 1].OddWeek.Subject == null && RW[kW, 1].EvenWeek.Subject != null) && (RW[kW, 2].OddWeek.Subject != null && RW[kW, 2].EvenWeek.Subject == null))
-                    {
-                        return true;
-                    }
-                    else if (lW == 4 && (RW[kW, 1].OddWeek.Subject == null && RW[kW, 1].EvenWeek.Subject == null) && (RW[kW, 2].OddWeek.Subject != null && RW[kW, 2].EvenWeek.Subject != null) && (RW[kW, 3].OddWeek.Subject == null && RW[kW, 3].EvenWeek.Subject == null))
-                    {
-                     return true;
-                    }
-                    else if (lW == 4 && (RW[kW, 1].OddWeek.Subject != null && RW[kW, 1].EvenWeek.Subject != null) && ((RW[kW, 2].OddWeek.Subject == null && RW[kW, 2].EvenWeek.Subject == null) || (RW[kW, 3].OddWeek.Subject == null && RW[kW, 3].EvenWeek.Subject == null)))
-                    {
-                        return true;
-                    }
-                    else if (lW == 4 && (RW[kW, 2].OddWeek.Subject == null && RW[kW, 2].EvenWeek.Subject != null) && (RW[kW, 3].OddWeek.Subject != null && RW[kW, 3].EvenWeek.Subject == null))
-                    {
-                        return true;
-                    }   
-                    else if (lW == 4 && (RW[kW, 2].OddWeek.Subject != null && RW[kW, 2].EvenWeek.Subject == null) && (RW[kW, 3].OddWeek.Subject == null && RW[kW, 3].EvenWeek.Subject != null))
-                    {
-                        return true;
-                    }
-                    else return false;
-                    */
-                
+
+
             }
             else if (Cs == 1)
             {
-                /*if (lW == 3 && (RW[kW, 1].OddWeek.Subject != null) && (RW[kW, 2].OddWeek.Subject == null))
-                {
-                    return true;
-                }
-                else if (lW == 3 && (RW[kW, 1].OddWeek.Subject != null) && (RW[kW, 1].EvenWeek.Subject != null) && (RW[kW, 2].OddWeek.Subject == null) && (RW[kW, 2].EvenWeek.Subject != null))
-                {
-                    return true;
-                }
 
-                else if (lW == 4 && (RW[kW, 2].OddWeek.Subject != null) && (RW[kW, 3].OddWeek.Subject == null))
-                {
-                    return true;
-                }
-                else if (lW == 4 && (RW[kW, 2].OddWeek.Subject != null) && (RW[kW, 2].EvenWeek.Subject != null) && (RW[kW, 3].OddWeek.Subject == null) && (RW[kW, 3].EvenWeek.Subject != null))
-                {
-                    return true;
-                }
-                else if (lW == 4 && (RW[kW, 1].OddWeek.Subject != null) && ((RW[kW, 2].OddWeek.Subject == null) || (RW[kW, 3].OddWeek.Subject == null)))
-                {
-                    return true;
-                }
-                else if (lW == 4 && (RW[kW, 2].OddWeek.Subject != null && RW[kW, 2].EvenWeek.Subject == null) && (RW[kW, 3].OddWeek.Subject == null && RW[kW, 3].EvenWeek.Subject != null))
-                {
-                    return true;
-                }
-                else return false;*/
                 for (l = 0, counter1 = 0, counter2 = 0, pointer1 = false, pointer2 = false; l <= lW; l++)
                 {
                     if (l == lW)
@@ -386,22 +606,22 @@ namespace Logic
                         }
                         break;
                     }
-                    if (pointer1 == false && TimetableWindow[kW, l].OddWeek.Subject != null)
+                    if (pointer1 == false && TimetableWindow[kW, l].EvenWeek.Subject != null)
                     {
                         counter1++;
                         pointer1 = true;
                     }
-                    else if (pointer1 == true && TimetableWindow[kW, l].OddWeek.Subject == null)
+                    else if (pointer1 == true && TimetableWindow[kW, l].EvenWeek.Subject == null)
                     {
                         counter1++;
                         pointer1 = false;
                     }
-                    if (pointer2 == false && TimetableWindow[kW, l].EvenWeek.Subject != null)
+                    if (pointer2 == false && TimetableWindow[kW, l].OddWeek.Subject != null)
                     {
                         counter2++;
                         pointer2 = true;
                     }
-                    else if (pointer1 == true && TimetableWindow[kW, l].EvenWeek.Subject == null)
+                    else if (pointer2 == true && TimetableWindow[kW, l].OddWeek.Subject == null)
                     {
                         counter2++;
                         pointer2 = false;
@@ -413,28 +633,8 @@ namespace Logic
             }
             else if (Cs == 2)
             {
-                /* if (lW == 3 && RW[kW, 1].EvenWeek.Subject != null && (RW[kW, 2].EvenWeek.Subject == null))
-                {
-                    return true;
-                }
-                else if (lW == 4 && (RW[kW, 2].EvenWeek.Subject != null)  && (RW[kW, 3].EvenWeek.Subject == null))
-                {
-                    return true;
-                }
-                else if (lW == 4 && (RW[kW, 2].EvenWeek.Subject != null) && (RW[kW, 2].OddWeek.Subject != null) && (RW[kW, 3].EvenWeek.Subject == null) && (RW[kW, 3].OddWeek.Subject != null))
-                {
-                    return true;
-                }
-                else if (lW == 4 && (RW[kW, 1].EvenWeek.Subject != null) && ((RW[kW, 2].EvenWeek.Subject == null) || (RW[kW, 3].EvenWeek.Subject == null)))
-                {
-                    return true;
-                }
-                else if (lW == 4 && (RW[kW, 2].OddWeek.Subject == null && RW[kW, 2].EvenWeek.Subject != null) && (RW[kW, 3].OddWeek.Subject != null && RW[kW, 3].EvenWeek.Subject == null))
-                {
-                    return true;
-                }
-                else return false;
-                */
+
+
                 for (l = 0, counter1 = 0, counter2 = 0, pointer1 = false, pointer2 = false; l <= lW; l++)
                 {
                     if (l == lW)
@@ -451,28 +651,136 @@ namespace Logic
                         }
                         break;
                     }
-                    if (pointer1 == false && TimetableWindow[kW, l].OddWeek.Subject != null)
+                    if (pointer1 == false && TimetableWindow[kW, l].EvenWeek.Subject != null)
                     {
                         counter1++;
                         pointer1 = true;
                     }
-                    else if (pointer1 == true && TimetableWindow[kW, l].OddWeek.Subject == null)
+                    else if (pointer1 == true && TimetableWindow[kW, l].EvenWeek.Subject == null)
                     {
                         counter1++;
                         pointer1 = false;
                     }
-                    if (pointer2 == false && TimetableWindow[kW, l].EvenWeek.Subject != null)
+                    if (pointer2 == false && TimetableWindow[kW, l].OddWeek.Subject != null)
                     {
                         counter2++;
                         pointer2 = true;
                     }
-                    else if (pointer1 == true && TimetableWindow[kW, l].EvenWeek.Subject == null)
+                    else if (pointer2 == true && TimetableWindow[kW, l].OddWeek.Subject == null)
                     {
                         counter2++;
                         pointer2 = false;
                     }
                 }
                 if (counter1 > 2 || counter2 > 2)
+                    return true;
+                else return false;
+            }
+            else if (Cs == 3)
+            {
+
+                for (l = 0, counter1 = 0, counter2 = 0, pointer1 = false, pointer2 = false; l <= 5; l++)
+                {
+                    if (l == lW)
+                    {
+                        if (pointer1 == true && counter1 > 0)
+                        {
+                            BeforeCheck1 = true;
+                        }
+                        if (pointer2 == true && counter1 > 0)
+                        {
+                            BeforeCheck2 = true;
+                        }
+                    }
+                    if (l > lW && (AfterCheck1 != true || AfterCheck2 != true))
+                    {
+                        if (TimetableWindow[kW, l].EvenWeek.Subject != null)
+                        {
+                            AfterCheck1 = true;
+                        }
+                        if (TimetableWindow[kW, l].OddWeek.Subject != null)
+                        {
+                            AfterCheck2 = true;
+                        }
+                    }
+                    if (pointer1 == false && TimetableWindow[kW, l].EvenWeek.Subject != null)
+                    {
+                        counter1++;
+                        pointer1 = true;
+                    }
+                    else if (pointer1 == true && TimetableWindow[kW, l].EvenWeek.Subject == null)
+                    {
+                        counter1++;
+                        pointer1 = false;
+                    }
+                    if (pointer2 == false && TimetableWindow[kW, l].OddWeek.Subject != null)
+                    {
+                        counter2++;
+                        pointer2 = true;
+                    }
+                    else if (pointer2 == true && TimetableWindow[kW, l].OddWeek.Subject == null)
+                    {
+                        counter2++;
+                        pointer2 = false;
+                    }
+
+
+                }
+                if (BeforeCheck1 == true && AfterCheck1 == true && counter1 > 2)
+                    return true;
+                else return false;
+            }
+            else if (Cs == 4)
+            {
+
+                for (l = 0, counter1 = 0, counter2 = 0, pointer1 = false, pointer2 = false; l <= 5; l++)
+                {
+                    if (l == lW)
+                    {
+                        if (pointer1 == true && counter1 > 0)
+                        {
+                            BeforeCheck1 = true;
+                        }
+                        if (pointer2 == true && counter1 > 0)
+                        {
+                            BeforeCheck2 = true;
+                        }
+                    }
+                    if (l > lW && (AfterCheck1 != true || AfterCheck2 != true))
+                    {
+                        if (TimetableWindow[kW, l].EvenWeek.Subject!= null)
+                        {
+                            AfterCheck1 = true;
+                        }
+                        if (TimetableWindow[kW, l].OddWeek.Subject != null)
+                        {
+                            AfterCheck2 = true;
+                        }
+                    }
+                    if (pointer1 == false && TimetableWindow[kW, l].EvenWeek.Subject != null)
+                    {
+                        counter1++;
+                        pointer1 = true;
+                    }
+                    else if (pointer1 == true && TimetableWindow[kW, l].EvenWeek.Subject == null)
+                    {
+                        counter1++;
+                        pointer1 = false;
+                    }
+                    if (pointer2 == false && TimetableWindow[kW, l].OddWeek.Subject != null)
+                    {
+                        counter2++;
+                        pointer2 = true;
+                    }
+                    else if (pointer2 == true && TimetableWindow[kW, l].OddWeek.Subject == null)
+                    {
+                        counter2++;
+                        pointer2 = false;
+                    }
+
+
+                }
+                if (BeforeCheck2 == true && AfterCheck2 == true && counter2 > 2)
                     return true;
                 else return false;
             }
