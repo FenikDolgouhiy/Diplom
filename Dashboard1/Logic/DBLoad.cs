@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Dashboard1.Utils;
 namespace Dashboard1.Logic
 {
     public class DBLoad
     {
-        List<LoadDTO> _loadList = new List<LoadDTO>();
-        public List<LoadDTO> LoadList
+        List<LoadDTOBD> _loadList = new List<LoadDTOBD>();
+        public List<LoadDTOBD> LoadList
         {
             get { return _loadList; }
             set
@@ -20,16 +20,16 @@ namespace Dashboard1.Logic
         }
 
         public FBOperations fbOperations = new FBOperations();
-        public async void UploadFromFB()
+        public async void UploadFromFBBD()
         {
-            var loads = await fbOperations.ExportFromFBToDG();
+            var loads = await fbOperations.ExportFromFBToDGBD();
             if (loads != null)
             {
                 UploadList = loads;
             }
             Console.WriteLine("Загрузка завершена.");
         }
-        public List<LoadDTO> UploadList
+        public List<LoadDTOBD> UploadList
         {
             get { return _loadList; }
             set

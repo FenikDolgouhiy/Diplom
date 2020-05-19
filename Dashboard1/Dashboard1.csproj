@@ -57,10 +57,9 @@
     <Compile Include="Logic\AdeptMech.cs" />
     <Compile Include="Logic\AlgoLogic.cs" />
     <Compile Include="Logic\DBLoad.cs" />
-    <Compile Include="Logic\FBOperations.cs" />
     <Compile Include="Logic\Group.cs" />
     <Compile Include="Logic\Lesson.cs" />
-    <Compile Include="Logic\LoadDTO.cs" />
+    <Compile Include="Logic\LoadDTOBD.cs" />
     <Compile Include="Logic\Rozklad.cs" />
     <Compile Include="Logic\Subjects.cs" />
     <Compile Include="Logic\TeacherList.cs" />
