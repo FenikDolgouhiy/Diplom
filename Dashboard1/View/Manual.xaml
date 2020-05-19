@@ -3,12 +3,58 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:Dashboard1.View"
              xmlns:viewModel="clr-namespace:Dashboard1.ViewModel"
              d:DataContext="{d:DesignInstance viewModel:ManualViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="#FFCFCFCF">
-        <TextBlock Text="MANUAL"></TextBlock>
+        <TextBlock Text="ІНСТРУКЦІЯ КОРИСТУВАЧА"></TextBlock>
+        <materialDesign:Card Background="{DynamicResource MaterialDesignBackground}">
+            <StackPanel>
+                <Expander HorizontalAlignment="Stretch" 
+                          Header="Крок 1 Навантаження викладачів ">
+                    <StackPanel Orientation="Vertical"
+                                TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
+                                Margin="24,8,24,16">
+                        <TextBlock Text="Як імпортувати навантаження з Exel" />
+                        <TextBlock Opacity=".68"
+                                   Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                                   TextWrapping="Wrap" />
+                    </StackPanel>
+                </Expander>
+                <Border Background="{DynamicResource MaterialDesignDivider}" 
+                        Height="1"
+                        HorizontalAlignment="Stretch"
+                        SnapsToDevicePixels="True" />
+                <Expander HorizontalAlignment="Stretch"
+                          Header="Крок 2 Час роботи викладачів">
+                    <StackPanel Orientation="Vertical" 
+                                TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
+                                Margin="24,8,24,16">
+                        <TextBlock Text="Як змінити час роботи викладачів" />
+                        <TextBlock Opacity=".68"
+                                   Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                                   TextWrapping="Wrap" />
+                    </StackPanel>
+                </Expander>
+                <Border Background="{DynamicResource MaterialDesignDivider}"
+                        Height="1"
+                        HorizontalAlignment="Stretch"
+                        SnapsToDevicePixels="True" /> 
+                <Expander HorizontalAlignment="Stretch"
+                          Header="Крок 3 Створюємо розклад">
+                    <StackPanel Orientation="Vertical"
+                                TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
+                                Margin="24,8,24,16">
+                        <TextBlock Text="Як створити розклад?" />
+                        <TextBlock Opacity=".68"
+                                   Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                                    TextWrapping="Wrap" />
+                    </StackPanel>
+                </Expander>
+            </StackPanel>
+        </materialDesign:Card>
     </Grid>
 </UserControl>

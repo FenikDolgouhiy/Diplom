@@ -56,7 +56,7 @@
                         <DropShadowEffect BlurRadius="20" Color="#FF5D87B0" RenderingBias="Quality" ShadowDepth="1"/>
                     </Image.Effect>
                 </Image>
-                <TextBlock Text="ОККТ ОДЄКУ" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,10" Foreground="White"/>
+                <TextBlock Text="ОККТ ОДЕКУ" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,10" Foreground="White"/>
                 <Grid.Effect>
                     <DropShadowEffect BlurRadius="20" Color="#FF5D87B0" RenderingBias="Quality" ShadowDepth="1"/>
                 </Grid.Effect>
