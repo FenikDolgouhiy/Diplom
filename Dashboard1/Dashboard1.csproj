@@ -54,6 +54,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Logic\AlgoLogic.cs" />
     <Compile Include="Model\DataTableFromDB.cs" />
     <Compile Include="Model\FullTimeTable.cs" />
     <Compile Include="Model\LoadDTO.cs" />
