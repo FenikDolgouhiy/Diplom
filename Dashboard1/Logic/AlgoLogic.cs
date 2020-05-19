@@ -6,16 +6,14 @@ using System.Threading.Tasks;
 
 namespace Dashboard1.Logic
 {
-    class AlgoLogic
+    public class AlgoLogic
     {
-        static void LogicRun()
+        public static void LogicRun()
         {
 
             DBLoad a = new DBLoad();
-            Console.OutputEncoding = Encoding.UTF8;
             a.UploadFromFB();
-            Console.ReadKey();
-            Console.WriteLine("Загрузка завершена");
+            
             string[] N_Prepods = new string[a.UploadList.Count];
             string[] N_Groups = new string[a.UploadList.Count];
             string[] N_Subjects = new string[a.UploadList.Count];
@@ -32,8 +30,7 @@ namespace Dashboard1.Logic
                 N_Total[i] = Convert.ToInt32(a.UploadList[i].TotalHours);
             }
             a.UploadTeachersOpp();
-            Console.ReadKey();
-            Console.WriteLine("Загрузка завершена. Элементов списка " + a.TeachersOppList.Count);
+            
             string[] P_Prepods = new string[a.TeachersOppList.Count];
             string[] P_Opps = new string[a.TeachersOppList.Count];
             for (int i = 0; i < a.TeachersOppList.Count; i++)
@@ -125,33 +122,30 @@ namespace Dashboard1.Logic
             String[] Workout = { "Понедельник", "Вторник", "Среда", "Четверг", "Пятница" }; //вывод расписания
             for (int d = 0; d < okkt.Length; d++)
             {
-                Console.WriteLine(okkt[d].Name);
+                
                 for (int i = 0; i < 5; i++)
                 {
-                    Console.WriteLine(Workout[i]);
+                    
                     for (int k = 0; k < 6; k++)
                     {
 
                         if (okkt[d].TimeTable[i, k].EvenWeek.Subject == okkt[d].TimeTable[i, k].OddWeek.Subject)
                         {
                             okkt[d].TotalTimetable[i, k] = okkt[d].TimeTable[i, k].EvenWeek.Subject + " " + okkt[d].TimeTable[i, k].EvenWeek.Teacher;
-                            Console.WriteLine(k + ". " + okkt[d].TimeTable[i, k].EvenWeek.Subject + " " + okkt[d].TimeTable[i, k].EvenWeek.Teacher);
+                            
                         }
                         else
                         {
                             okkt[d].TotalTimetable[i, k] = okkt[d].TimeTable[i, k].EvenWeek.Subject + " " + okkt[d].TimeTable[i, k].EvenWeek.Teacher + "|" + okkt[d].TimeTable[i, k].OddWeek.Subject + " " + okkt[d].TimeTable[i, k].OddWeek.Teacher;
-                            Console.WriteLine(k + ". " + okkt[d].TimeTable[i, k].EvenWeek.Subject + " " + okkt[d].TimeTable[i, k].EvenWeek.Teacher + "|" + okkt[d].TimeTable[i, k].OddWeek.Subject + " " + okkt[d].TimeTable[i, k].OddWeek.Teacher);
+                            
                         }
                     }
                 }
             }
-            Console.WriteLine("Загрузить данные в бд? (y/n)");
-            string ch = Console.ReadLine();
-            if (ch == "y")
-            {
-                AdeptMech.UploadTimetable(okkt);
-            }
-            Console.ReadKey();
+            
+            
+            AdeptMech.UploadTimetable(okkt);
+            
 
         }
 

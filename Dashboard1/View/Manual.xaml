@@ -10,8 +10,21 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="#FFCFCFCF">
-        <TextBlock Text="ІНСТРУКЦІЯ КОРИСТУВАЧА"></TextBlock>
-        <materialDesign:Card Background="{DynamicResource MaterialDesignBackground}">
+        <materialDesign:ColorZone
+  Mode="PrimaryMid"
+  Padding="16"
+  CornerRadius="3"
+  materialDesign:ShadowAssist.ShadowDepth="Depth3"
+  Margin="2">
+            <TextBlock FontSize="20"
+      VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+      Margin="16 0 0 0">
+    Інструкція користувача
+            </TextBlock>
+        </materialDesign:ColorZone>
+        <materialDesign:Card Background="{DynamicResource MaterialDesignBackground}"
+                             Margin="0,50,0,0">
             <StackPanel>
                 <Expander HorizontalAlignment="Stretch" 
                           Header="Крок 1 Навантаження викладачів ">

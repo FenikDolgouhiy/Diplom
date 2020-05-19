@@ -9,6 +9,7 @@ using Dashboard1.Model;
 using Dashboard1.Utils;
 using Dashboard1.View;
 using Remotion.Data.Linq.Collections;
+using Dashboard1.Logic;
 
 namespace Dashboard1.ViewModel
 {
@@ -17,6 +18,9 @@ namespace Dashboard1.ViewModel
         private List<string> _timeTableGroup = new List<string>();
         public Command ShowTimeTCommand  { get; }
         public Command ExportToExcelCommand { get; }
+
+        public Command CreateTimetableCommand { get; }
+
         private List<FullTimeTable> _fullTimeTable = new List<FullTimeTable>();
         public string SelectedItem { get; set; }
         TimeTableOperations timeTableOp = new TimeTableOperations();
@@ -43,7 +47,14 @@ namespace Dashboard1.ViewModel
             LoadGroups();
             ShowTimeTCommand = new Command(LoadGroupTimetable);
             ExportToExcelCommand = new Command(ExportToExcel);
+            CreateTimetableCommand = new Command(CreateTimetable);
         }
+
+        private void CreateTimetable(object obj)
+        {
+            AlgoLogic.LogicRun();
+        }
+
         private async void LoadGroups()
         {
             TimeTableGroupGrid = await timeTableOp.LoadGroupsToComboBox();//

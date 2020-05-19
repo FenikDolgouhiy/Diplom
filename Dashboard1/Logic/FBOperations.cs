@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FireSharp.Config;
+using FireSharp.Interfaces;
 
 namespace Dashboard1.Logic
 {
@@ -17,7 +19,7 @@ namespace Dashboard1.Logic
         public FBOperations()
         {
             client = new FireSharp.FirebaseClient(config);
-            Console.WriteLine("Подключения к Базе данных успешно");
+            
         }
 
         public async Task<List<LoadDTO>> ExportFromFBToDG()
@@ -85,7 +87,7 @@ namespace Dashboard1.Logic
             {
                 await client.SetAsync("GroupsTimetable/", GroupsTimetable);
 
-                Console.WriteLine("Данные в Базу данных были загружены");
+                
             }
         }
 

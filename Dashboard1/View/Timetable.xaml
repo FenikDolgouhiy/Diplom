@@ -22,10 +22,10 @@
             </Grid.ColumnDefinitions>
             <Grid Grid.Row="0" HorizontalAlignment="Left" Margin="10,0">
                 <Button Style="{StaticResource MaterialDesignRaisedButton}"
+                    Command="{Binding CreateTimetableCommand}"
                     materialDesign:ButtonProgressAssist.Value="-1"
                     materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
                     materialDesign:ButtonProgressAssist.IsIndeterminate="True"
-                    Command="{Binding ExportToExcelCommand}" 
                     VerticalAlignment="Center">
                     <Grid Width="170">
                         <materialDesign:PackIcon Kind="CalendarPlus" Height="20" Width="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
