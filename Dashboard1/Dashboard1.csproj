@@ -54,7 +54,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Logic\AdeptMech.cs" />
     <Compile Include="Logic\AlgoLogic.cs" />
+    <Compile Include="Logic\DBLoad.cs" />
+    <Compile Include="Logic\FBOperations.cs" />
+    <Compile Include="Logic\Group.cs" />
+    <Compile Include="Logic\Lesson.cs" />
+    <Compile Include="Logic\LoadDTO.cs" />
+    <Compile Include="Logic\Rozklad.cs" />
+    <Compile Include="Logic\Subjects.cs" />
+    <Compile Include="Logic\TeacherList.cs" />
+    <Compile Include="Logic\TeachersOpp.cs" />
+    <Compile Include="Logic\TimetableList.cs" />
     <Compile Include="Model\DataTableFromDB.cs" />
     <Compile Include="Model\FullTimeTable.cs" />
     <Compile Include="Model\LoadDTO.cs" />
