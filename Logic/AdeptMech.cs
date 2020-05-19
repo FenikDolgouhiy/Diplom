@@ -152,25 +152,13 @@ namespace Logic
                 {
                     if (HasWindows(DayInWeek, OKKT.TimeTable))
                     {
-                        Console.WriteLine("Окно");
+                        
     
                         LicWindow(OKKT.TimeTable, Gr, DayInWeek);
                     }
                 }
 
-                for (int DayInWeek = 0; DayInWeek < 5; DayInWeek++)
-                {
-                    if (HasWindows(DayInWeek, OKKT.TimeTable))
-                    {
-                        Console.WriteLine("окно\n");
-                        Console.WriteLine(OKKT.Name);
-                        for (int i = 0; i <= 5; i++)
-                        {
-                            Console.WriteLine(OKKT.TimeTable[DayInWeek, i].EvenWeek.Subject + " " + OKKT.TimeTable[DayInWeek, i].EvenWeek.Teacher + "|" + OKKT.TimeTable[DayInWeek, i].OddWeek.Subject + " " + OKKT.TimeTable[DayInWeek, i].OddWeek.Teacher);
-                        }
-                        Console.WriteLine();
-                    }
-                }
+                
             }
 
             return OKKT;
