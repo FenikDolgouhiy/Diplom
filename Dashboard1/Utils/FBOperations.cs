@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using Dashboard1.Logic;
 
 namespace Dashboard1.Utils
 {
@@ -79,6 +80,77 @@ namespace Dashboard1.Utils
                 await client.SetAsync("TeachersWeekLoad/", teachersWeekLoad);
 
                 MessageBox.Show("Данные в Базу данных были загружены");
+            }
+        }
+        //Я ТУТ
+        public async Task<List<LoadDTOBD>> ExportFromFBToDGBD()
+        {
+            List<LoadDTOBD> result = new List<LoadDTOBD>();
+            var response = await client.GetAsync("TeachersLoad/");
+            System.Threading.Thread.Sleep(5000);
+            var list = response.ResultAs<List<LoadDTOBD>>();
+
+            if (list != null)
+            {
+                foreach (var item in list)
+                {
+                    result.Add(new LoadDTOBD
+                    {
+                        Id = item.Id,
+                        Teacher = item.Teacher,
+                        Subject = item.Subject,
+                        Group = item.Group,
+                        TotalHours = item.TotalHours,
+                        Weeks = item.Weeks,
+                        HoursPerWeek = item.HoursPerWeek,
+                        DaysOfPractice = item.DaysOfPractice
+                    });
+                }
+            }
+            return result;
+        }
+
+        public async Task LoadTeachersListToDb(List<TeachersOpp> teachersWeekLoad)
+        {
+            if (teachersWeekLoad != null)
+            {
+                await client.SetAsync("TeachersWeekLoad/", teachersWeekLoad);
+
+                Console.WriteLine("Данные в Базу данных были загружены");
+            }
+        }
+
+        public async Task<List<TeachersOpp>> ExportTeachersOpp()
+        {
+            List<TeachersOpp> result = new List<TeachersOpp>();
+            var response = await client.GetAsync("TeachersWeekLoad/");
+            var list = response.ResultAs<List<TeachersOpp>>();
+            if (list != null)
+            {
+                foreach (var item in list)
+                {
+                    result.Add(new TeachersOpp
+                    {
+
+                        Teacher = item.Teacher,
+                        Monday = item.Monday,
+                        Tuesday = item.Tuesday,
+                        Wednesday = item.Wednesday,
+                        Thursday = item.Thursday,
+                        Friday = item.Friday
+
+                    }); ;
+                }
+            }
+            return result;
+        }
+        public async Task LoadTimetableToFB(List<TimetablesList> GroupsTimetable)
+        {
+            if (GroupsTimetable != null)
+            {
+                await client.SetAsync("GroupsTimetable/", GroupsTimetable);
+
+
             }
         }
     }

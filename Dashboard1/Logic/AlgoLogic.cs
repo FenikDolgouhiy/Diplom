@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Dashboard1.Utils; 
 
 namespace Dashboard1.Logic
 {
@@ -12,7 +13,7 @@ namespace Dashboard1.Logic
         {
 
             DBLoad a = new DBLoad();
-            a.UploadFromFB();
+            a.UploadFromFBBD();
             
             string[] N_Prepods = new string[a.UploadList.Count];
             string[] N_Groups = new string[a.UploadList.Count];

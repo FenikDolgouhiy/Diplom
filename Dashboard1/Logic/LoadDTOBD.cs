@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dashboard1.Logic
 {
-    public class LoadDTO
+    public class LoadDTOBD
     {
         public string Id { get; set; }
         public string Teacher { get; set; }
