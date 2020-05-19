@@ -13,14 +13,10 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Margin="15,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid Grid.Row="0" HorizontalAlignment="Left" Margin="10,0">
+            <Grid HorizontalAlignment="Left" Margin="10,0">
                 <Button Style="{StaticResource MaterialDesignRaisedButton}"
                     Command="{Binding CreateTimetableCommand}"
                     materialDesign:ButtonProgressAssist.Value="-1"
@@ -33,9 +29,9 @@
                     </Grid>
                 </Button>
             </Grid>
-            <Grid Grid.Column="1" Width="250">
+            <Grid HorizontalAlignment="Right" Width="500">
                 <ComboBox
-                    Width="200"
+                    Width="450"
                     HorizontalAlignment="Left"
                     materialDesign:HintAssist.Hint="Search"
                     materialDesign:HintAssist.HintOpacity=".26"
@@ -43,7 +39,8 @@
                     ItemsSource="{Binding TimeTableGroupGrid}"
                     SelectedItem="{Binding SelectedItem}"
                     IsSynchronizedWithCurrentItem="True"
-                    IsEditable="True">
+                    IsEditable="True"
+                    >
                 </ComboBox>
                 <Button Command="{Binding ShowTimeTCommand}"
                     Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
@@ -53,27 +50,33 @@
                     <materialDesign:PackIcon Kind="CloudDownload" Height="20" Width="20"/>
                 </Button>
             </Grid>
-            <Grid Grid.Column="2" HorizontalAlignment="Right" Margin="10,0">
-                <Button Style="{DynamicResource MaterialDesignRaisedButton}" 
-                        Command="{Binding ExportToExcelCommand}" 
-                        VerticalAlignment="Center">
-                    <Grid Width="200">
-                        <materialDesign:PackIcon Kind="ArchiveArrowDown" Height="20" Width="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="ВИГРУЗИТИ У EXEL ФАЙЛ"/>
-                    </Grid>
-                </Button>
-            </Grid>
         </Grid>
         <Grid Grid.Row="1">
             <!--  Нижняя часть, сюда динамичную таблице с расписанием. ДИЗАЙН НЕ МЕНЯТЬ РРР :D ! -->
             <DataGrid Name="datagridTimetable"
-                    Margin="0,0,0,15"
                     ItemsSource="{Binding TeachersList}"
                     CanUserDeleteRows="False" 
                     IsReadOnly="True"
                     Grid.IsSharedSizeScope="True"
                     CanUserAddRows="False"
                     Width="800"/>
+        </Grid>
+        <Grid Grid.Row="2" Margin="15,0">
+            <Button  HorizontalAlignment="Left" Style="{DynamicResource MaterialDesignFlatButton}">
+                <Grid Width="270">
+                    <materialDesign:PackIcon Kind="DeleteAlert" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                    <TextBlock HorizontalAlignment="Center" Text="ОЧИСТИТИ РОЗКЛАД НА СЕРВЕРІ"/>
+                </Grid>
+            </Button>
+            <Button Style="{DynamicResource MaterialDesignRaisedButton}" 
+                        Command="{Binding ExportToExcelCommand}" 
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Right">
+                <Grid Width="180">
+                    <materialDesign:PackIcon Kind="ArchiveArrowDown" Height="20" Width="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="ЗАВАНТАЖИТИ У EXEL"/>
+                </Grid>
+            </Button>
         </Grid>
     </Grid>
 </UserControl>
