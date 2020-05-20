@@ -64,7 +64,19 @@ namespace Dashboard1.Utils
             var responce = await client.GetAsync("TeachersWeekLoad/");
             var listTeach = resp.ResultAs<List<LoadDTO>>();
             var list = responce.ResultAs<List<TeachersWeekLoad>>();
-
+            if (listTeach == null)
+            {
+                teachersWeeks.Add(new TeachersWeekLoad
+                {
+                    Teacher = null,
+                    Monday = null,
+                    Tuesday = null,
+                    Wednesday = null,
+                    Thursday = null,
+                    Friday = null
+                });
+                return teachersWeeks;
+            }
             listTeach = listTeach.GroupBy(a => a.Teacher).Select(g => g.First()).ToList();
             int i = 0;
             if (list != null)

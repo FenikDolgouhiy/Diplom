@@ -18,7 +18,7 @@ namespace Dashboard1.ViewModel
         private List<string> _timeTableGroup = new List<string>();
         public Command ShowTimeTCommand  { get; }
         public Command ExportToExcelCommand { get; }
-
+        public Command DeleteTimeTableCommand { get; }
         public Command CreateTimetableCommand { get; }
 
         private List<FullTimeTable> _fullTimeTable = new List<FullTimeTable>();
@@ -44,30 +44,32 @@ namespace Dashboard1.ViewModel
         }
         internal TimetableViewModel()
         {
-            LoadGroups();
             ShowTimeTCommand = new Command(LoadGroupTimetable);
             ExportToExcelCommand = new Command(ExportToExcel);
             CreateTimetableCommand = new Command(CreateTimetable);
+            DeleteTimeTableCommand = new Command(DeleteTimeTable);
+
+            LoadGroupTimetable(SelectedItem);
+        }
+        private void DeleteTimeTable(object obj)
+        {
+             timeTableOp.DeleteTimeTableFromFB();
         }
 
         private void CreateTimetable(object obj)
         {
             AlgoLogic.LogicRun();
+            MessageBox.Show("Расписание загружено!");
         }
 
-        private async void LoadGroups()
-        {
-            TimeTableGroupGrid = await timeTableOp.LoadGroupsToComboBox();//
-        }
         private async void LoadGroupTimetable(object obj)// Загрузка расписания по выбранной группе
         {
+            TimeTableGroupGrid = await timeTableOp.LoadGroupsToComboBox();
             if (SelectedItem != null)
             {
                 TeachersList = null;
                 TeachersList = await timeTableOp.LoadFullTimeTable(SelectedItem);
             }
-            else
-                MessageBox.Show("Вы ничего не выбрали");
         }
         private void ExportToExcel(object obj)
         {

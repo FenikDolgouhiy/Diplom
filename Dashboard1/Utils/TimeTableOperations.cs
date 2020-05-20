@@ -44,6 +44,10 @@ namespace Dashboard1.Utils
             List<string> result = new List<string>();
             var responce = await client.GetAsync("TeachersLoad/");
             var listTeach = responce.ResultAs<List<LoadDTO>>();
+            if (listTeach == null)
+            {
+                return result;
+            }
             listTeach = listTeach.GroupBy(a => a.Group).Select(g => g.First()).ToList();
             if (listTeach != null)
             {
@@ -60,6 +64,10 @@ namespace Dashboard1.Utils
             List<DataTableFromDB> fromDBs = new List<DataTableFromDB>();
             var responce = await client.GetAsync("GroupsTimetable/");
             var ListTeach = responce.ResultAs<List<DataTableFromDB>>();
+            if (ListTeach == null)
+            {
+                return res;
+            }
             foreach (var item in ListTeach)
             {
                 if (selItem == item.Group)
@@ -163,6 +171,11 @@ namespace Dashboard1.Utils
             return res;
         }
 
+        public async void DeleteTimeTableFromFB()
+        {
+            await client.DeleteAsync("GroupsTimetable");
+            MessageBox.Show("База данных была полностью очищенна");
+        }
         public async void ListToExcel(List<FullTimeTable> list, string SelectedGroup)
         {
             List<DataTableFromDB> dataTableFromDBs = new List<DataTableFromDB>();

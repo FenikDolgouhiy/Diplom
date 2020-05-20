@@ -27,7 +27,6 @@ namespace Dashboard1.Utils
         public FBOperations()
         {
             client = new FireSharp.FirebaseClient(config);
-            MessageBox.Show("Подключение к БД успешно");
         }
 
         public async Task<List<LoadDTO>> ExportFromFBToDG()

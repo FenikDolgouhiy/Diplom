@@ -13,6 +13,7 @@ namespace Dashboard1.ViewModel.ListsTabsViewModels
     public class ListsTeachersViewModel: ViewModelBase, INavigationAware
     {
         public List<TeachersWeekLoad> _teachersWeekLoad = new List<TeachersWeekLoad>();
+        
         public Command LoadToDBCommand { get; }
         public Command DeleteAllFromDBCommand { get; }
         private LoadListsTabs loadListsTabs = new LoadListsTabs();

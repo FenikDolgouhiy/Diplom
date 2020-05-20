@@ -62,7 +62,8 @@
                     Width="800"/>
         </Grid>
         <Grid Grid.Row="2" Margin="15,0">
-            <Button  HorizontalAlignment="Left" Style="{DynamicResource MaterialDesignFlatButton}">
+            <Button  HorizontalAlignment="Left" Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding DeleteTimeTableCommand}">
+                
                 <Grid Width="270">
                     <materialDesign:PackIcon Kind="DeleteAlert" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                     <TextBlock HorizontalAlignment="Center" Text="ОЧИСТИТИ РОЗКЛАД НА СЕРВЕРІ"/>
