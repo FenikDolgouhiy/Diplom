@@ -10,64 +10,73 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="#FFCFCFCF">
-        <materialDesign:ColorZone
-  Mode="PrimaryMid"
-  Padding="16"
-  CornerRadius="3"
-  materialDesign:ShadowAssist.ShadowDepth="Depth3"
-  Margin="2">
-            <TextBlock FontSize="20"
-      VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-      Margin="16 0 0 0">
-    Інструкція користувача
-            </TextBlock>
-        </materialDesign:ColorZone>
-        <materialDesign:Card Background="{DynamicResource MaterialDesignBackground}"
-                             Margin="0,50,0,0">
-            <StackPanel>
-                <Expander HorizontalAlignment="Stretch" 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <materialDesign:ColorZone Mode="PrimaryMid"
+                                      Padding="16"
+                                      CornerRadius="3"
+                                      materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                <TextBlock FontSize="20"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center">
+                       Інструкція користувача
+                </TextBlock>
+            </materialDesign:ColorZone>
+        </Grid>
+        <Grid Grid.Row="1">
+            <materialDesign:Card Background="#FFCFCFCF">
+                <StackPanel>
+                    <Expander HorizontalAlignment="Stretch" 
                           Header="Крок 1 Навантаження викладачів ">
-                    <StackPanel Orientation="Vertical"
+                        <StackPanel Orientation="Vertical"
                                 TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
                                 Margin="24,8,24,16">
-                        <TextBlock Text="Як імпортувати навантаження з Exel" />
-                        <TextBlock Opacity=".68"
-                                   Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                            <TextBlock Text="Як імпортувати навантаження з Exel" />
+                            <TextBlock Opacity=".68"
+                                   Text="У вкладці навантаження натискаємо на кнопку Імпорт та загружаємо потрібний файл
+                                       стандартизованого типу. Натискаємо завантажити у базу"
                                    TextWrapping="Wrap" />
-                    </StackPanel>
-                </Expander>
-                <Border Background="{DynamicResource MaterialDesignDivider}" 
+                            <TextBlock Text="Як імпортувати навантаження з Exel" />
+                            <TextBlock Opacity=".68"
+                                   Text="У вкладці навантаження "
+                                   TextWrapping="Wrap" />
+                        </StackPanel>
+                    </Expander>
+                    <Border Background="{DynamicResource MaterialDesignDivider}" 
                         Height="1"
                         HorizontalAlignment="Stretch"
                         SnapsToDevicePixels="True" />
-                <Expander HorizontalAlignment="Stretch"
+                    <Expander HorizontalAlignment="Stretch"
                           Header="Крок 2 Час роботи викладачів">
-                    <StackPanel Orientation="Vertical" 
+                        <StackPanel Orientation="Vertical" 
                                 TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
                                 Margin="24,8,24,16">
-                        <TextBlock Text="Як змінити час роботи викладачів" />
-                        <TextBlock Opacity=".68"
+                            <TextBlock Text="Як змінити час роботи викладачів" />
+                            <TextBlock Opacity=".68"
                                    Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
                                    TextWrapping="Wrap" />
-                    </StackPanel>
-                </Expander>
-                <Border Background="{DynamicResource MaterialDesignDivider}"
+                        </StackPanel>
+                    </Expander>
+                    <Border Background="{DynamicResource MaterialDesignDivider}"
                         Height="1"
                         HorizontalAlignment="Stretch"
-                        SnapsToDevicePixels="True" /> 
-                <Expander HorizontalAlignment="Stretch"
+                        SnapsToDevicePixels="True" />
+                    <Expander HorizontalAlignment="Stretch"
                           Header="Крок 3 Створюємо розклад">
-                    <StackPanel Orientation="Vertical"
+                        <StackPanel Orientation="Vertical"
                                 TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
                                 Margin="24,8,24,16">
-                        <TextBlock Text="Як створити розклад?" />
-                        <TextBlock Opacity=".68"
+                            <TextBlock Text="Як створити розклад?" />
+                            <TextBlock Opacity=".68"
                                    Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
                                     TextWrapping="Wrap" />
-                    </StackPanel>
-                </Expander>
-            </StackPanel>
-        </materialDesign:Card>
+                        </StackPanel>
+                    </Expander>
+                </StackPanel>
+            </materialDesign:Card>
+        </Grid>
     </Grid>
 </UserControl>

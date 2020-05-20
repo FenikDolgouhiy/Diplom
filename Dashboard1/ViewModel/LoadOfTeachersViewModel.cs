@@ -58,7 +58,7 @@ namespace Dashboard1.ViewModel
         }
         private void DeleteTeachLoadID(object obj) // Удалить элемент из DataGrid
         {
-            if (MessageBox.Show("Вы действительно хотите удалить данную строку?", "Подтверждение операции", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (MessageBox.Show("Ви насправді бажаєте видалити цей рядок?", "Підтвердження операції", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 if (SelectedLOF != null)
                 {
@@ -71,7 +71,7 @@ namespace Dashboard1.ViewModel
         }
         private void DeleteAll(object obj) // Очистить Firebase
         {
-            if (MessageBox.Show("Вы действительно хотите удалить ВСЁ из Базы данных?", "Подтверждение операции", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (MessageBox.Show("Ви насправді бажаєте видалити усі данні навантаження на сервері?", "Підтвердження операції", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 fbOperations.DeleteAllInfoFromFB();
                 LoadList = null;
