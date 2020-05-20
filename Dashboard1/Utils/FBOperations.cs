@@ -27,13 +27,14 @@ namespace Dashboard1.Utils
         public FBOperations()
         {
             client = new FireSharp.FirebaseClient(config);
+            MessageBox.Show("Подключение к БД успешно");
         }
 
         public async Task<List<LoadDTO>> ExportFromFBToDG()
         {
             List<LoadDTO> result = new List<LoadDTO>();
 
-            
+
             var response = await client.GetAsync("TeachersLoad/");
             var list = response.ResultAs<List<LoadDTO>>();
             if (list != null)
@@ -53,6 +54,28 @@ namespace Dashboard1.Utils
                     });
                 }
             }
+            List<TeachersOpp> TeachResult = new List<TeachersOpp>();
+            response = await client.GetAsync("TeachersWeekLoad/");
+            var Teachlist = response.ResultAs<List<TeachersOpp>>();
+            if (Teachlist != null)
+            {
+                foreach (var item in Teachlist)
+                {
+                    TeachResult.Add(new TeachersOpp
+                    {
+
+                        Teacher = item.Teacher,
+                        Monday = item.Monday,
+                        Tuesday = item.Tuesday,
+                        Wednesday = item.Wednesday,
+                        Thursday = item.Thursday,
+                        Friday = item.Friday
+
+                    }); ;
+                }
+            }
+            AlgoLogic.BData = result;
+            AlgoLogic.TeachersUpload = TeachResult;
             return result;
         }
         public async Task ExportDGToFB(List<LoadDTO> loadList)

@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dashboard1.Utils;
+using Dashboard1.Model;
 namespace Dashboard1.Logic
 {
     public class DBLoad
     {
-        List<LoadDTOBD> _loadList = new List<LoadDTOBD>();
-        public List<LoadDTOBD> LoadList
+        List<LoadDTO> _loadList = new List<LoadDTO>();
+        public List<LoadDTO> LoadList
         {
             get { return _loadList; }
             set
@@ -20,16 +21,17 @@ namespace Dashboard1.Logic
         }
 
         public FBOperations fbOperations = new FBOperations();
-        public async void UploadFromFBBD()
+        public  void UploadFromFBBD()
         {
-            var loads = await fbOperations.ExportFromFBToDGBD();
+
+        var loads = AlgoLogic.BData;
             if (loads != null)
             {
                 UploadList = loads;
             }
             Console.WriteLine("Загрузка завершена.");
         }
-        public List<LoadDTOBD> UploadList
+        public List<LoadDTO> UploadList
         {
             get { return _loadList; }
             set
@@ -51,9 +53,9 @@ namespace Dashboard1.Logic
 
             }
         }
-        public async void UploadTeachersOpp()
+        public  void UploadTeachersOpp()
         {
-            var loads = await fbOperations.ExportTeachersOpp();
+            var loads = AlgoLogic.TeachersUpload;
             if (loads != null)
             {
                 TeachersOppList = loads;

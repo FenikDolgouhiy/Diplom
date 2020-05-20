@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Dashboard1.Utils; 
+using Dashboard1.Utils;
+using Dashboard1.Model;
 
 namespace Dashboard1.Logic
 {
@@ -149,6 +150,7 @@ namespace Dashboard1.Logic
             
 
         }
-
+        public static List<LoadDTO> BData;
+        public static List<TeachersOpp> TeachersUpload;
     }
 }
