@@ -217,7 +217,7 @@ namespace Dashboard1.Utils
                 workSheet.Cells[i + 2, "E"] = list[i].Thursday;
                 workSheet.Cells[i + 2, "F"] = list[i].Friday;
             }
-            workSheet.SaveAs(@"C:\Users\"+SelectedGroup+"TimeTable.xlsx");
+            workSheet.SaveAs(@"C:\Users\Victor\"+SelectedGroup+"TimeTable.xlsx");
             MessageBox.Show("Данные были загружены");
             exApp.Quit();
         }

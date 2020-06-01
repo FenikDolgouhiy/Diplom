@@ -4,11 +4,35 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Dashboard1.View.ListsTabs"
-             xmlns:viewModel="clr-namespace:Dashboard1.ViewModel.ListsTabsViewModels"
+             xmlns:viewModel="clr-namespace:Dashboard1.ViewModel.ListsTabsViewModels" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              d:DataContext="{d:DesignInstance viewModel:ListsCabinetsViewModel}">
     <Grid Background="#FFCFCFCF">
-            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="19*"/>
+            <ColumnDefinition Width="61*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid
+            Name="datagridCabinets"
+                  HorizontalAlignment="Center"
+                  Margin="87,51,390,56"
+                  ItemsSource="{Binding CabinetsList}"
+                  CanUserDeleteRows="True" 
+                  Grid.IsSharedSizeScope="True"
+                  Width="323"
+                    CanUserAddRows="True" Grid.ColumnSpan="2">
+
+        </DataGrid>
+        <Button Style="{DynamicResource MaterialDesignRaisedButton}" Command="{Binding LoadToDBCommand}" HorizontalAlignment="Right" Grid.Column="1" Margin="0,360,120,58">
+            <Grid Width="200">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="19*"/>
+                    <RowDefinition Height="41*"/>
+                </Grid.RowDefinitions>
+                <materialDesign:PackIcon Kind="CloudDownload" HorizontalAlignment="Left" Height="22" Margin="0,0,0,-9" Grid.RowSpan="2"/>
+                <TextBlock HorizontalAlignment="Right" Text="ЗАВАНТАЖИТИ НА СЕРВЕР" Margin="0,-3,-4,-6" Grid.RowSpan="2"/>
+            </Grid>
+        </Button>
     </Grid>
 </UserControl>

@@ -109,5 +109,55 @@ namespace Dashboard1.Utils
                 }
             return teachersWeeks;
         }
+        public async Task<List<Cabinets>> GetTeacherAndCabs()
+        {
+            List<Cabinets> teachersWeeks = new List<Cabinets>();
+            List<LoadDTO> loadDTO = new List<LoadDTO>();
+            var resp = await client.GetAsync("TeachersLoad/");
+            var responce = await client.GetAsync("Cabinets/");
+            var listTeach = resp.ResultAs<List<LoadDTO>>();
+            var list = responce.ResultAs<List<Cabinets>>();
+            if (listTeach == null)
+            {
+                teachersWeeks.Add(new Cabinets
+                {
+                    TeacherName = null,
+                    Cabinet = null
+                });
+                return teachersWeeks;
+            }
+            listTeach = listTeach.GroupBy(a => a.Teacher).Select(g => g.First()).ToList();
+            int i = 0;
+            if (list!=null)
+                foreach (var item in list)
+                {
+                    teachersWeeks.Add(new Cabinets
+                    {
+                        TeacherName = listTeach[i].Teacher,
+                        Cabinet = item.Cabinet
+                    });
+                    i++;
+                }
+            else
+                foreach (var item in listTeach)
+                {
+                    teachersWeeks.Add(new Cabinets
+                    {
+                        TeacherName = listTeach[i].Teacher,
+                        Cabinet = null
+                    });
+                    i++;
+                }
+            return teachersWeeks;
+        }
+        public async Task LoadCabinetsToDB(List<Cabinets> cabinets)
+        {
+            if (cabinets != null)
+            {
+                await client.SetAsync("Cabinets/", cabinets);
+
+                MessageBox.Show("Данные в Базу данных были загружены");
+            }
+        }
     }
 }

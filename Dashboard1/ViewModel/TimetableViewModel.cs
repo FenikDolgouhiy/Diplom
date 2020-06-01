@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows;
 using Dashboard1.Model;
 using Dashboard1.Utils;
-using Dashboard1.View;
-using Remotion.Data.Linq.Collections;
 using Dashboard1.Logic;
 
 namespace Dashboard1.ViewModel
