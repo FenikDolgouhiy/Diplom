@@ -65,6 +65,7 @@
     <Compile Include="Logic\TeacherList.cs" />
     <Compile Include="Logic\TeachersOpp.cs" />
     <Compile Include="Logic\TimetableList.cs" />
+    <Compile Include="Model\Cabinets.cs" />
     <Compile Include="Model\DataTableFromDB.cs" />
     <Compile Include="Model\FullTimeTable.cs" />
     <Compile Include="Model\LoadDTO.cs" />
@@ -187,13 +188,13 @@
       <Version>1.1.0</Version>
     </PackageReference>
     <PackageReference Include="LinqToExcel">
-      <Version>1.11.0</Version>
+      <Version>2.0.0-PRERELEASE-2</Version>
     </PackageReference>
     <PackageReference Include="MaterialDesignColors">
-      <Version>1.2.4</Version>
+      <Version>1.2.6</Version>
     </PackageReference>
     <PackageReference Include="MaterialDesignThemes">
-      <Version>3.1.1</Version>
+      <Version>3.2.0-ci1494</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Bcl">
       <Version>1.1.10</Version>
