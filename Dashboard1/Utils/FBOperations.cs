@@ -70,11 +70,27 @@ namespace Dashboard1.Utils
                         Thursday = item.Thursday,
                         Friday = item.Friday
 
-                    }); ;
+                    }); 
+                }
+            }
+            List<CabinetList> CabResult = new List<CabinetList>();
+            response = await client.GetAsync("Cabinets/");
+            var CabList = response.ResultAs<List<CabinetList>>();
+            if (CabList != null)
+            {
+                foreach (var item in CabList)
+                {
+                    CabResult.Add(new CabinetList
+                    {
+
+                        TeacherName = item.TeacherName,
+                        Cabinet = item.Cabinet,
+                    });
                 }
             }
             AlgoLogic.BData = result;
             AlgoLogic.TeachersUpload = TeachResult;
+            AlgoLogic.CabLoad = CabResult;
             return result;
         }
         public async Task ExportDGToFB(List<LoadDTO> loadList)

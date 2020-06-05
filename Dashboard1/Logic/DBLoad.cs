@@ -62,6 +62,26 @@ namespace Dashboard1.Logic
             }
             Console.WriteLine("Загрузка завершена");
         }
+        List<CabinetList> _cablist = new List<CabinetList>();
+        public List<CabinetList> CabList
+        {
+            get { return _cablist; }
+            set
+            {
+
+                _cablist = value;
+
+            }
+        }
+        public void UploadCabinets()
+        {
+            var loads = AlgoLogic.CabLoad;
+            if (loads != null)
+            {
+                CabList = loads;
+            }
+            Console.WriteLine("Загрузка завершена");
+        }
         List<TimetablesList> _groupsTimetableList = new List<TimetablesList>();
         public async void ImportTimetableToFB()
         {

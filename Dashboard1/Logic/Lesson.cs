@@ -12,9 +12,11 @@ namespace Dashboard1.Logic
         {
             Teacher = null;
             Subject = null;
+            Cabinet = null;
         }
         public string Teacher;
         public string Subject;
+        public string Cabinet;
 
     }
 
