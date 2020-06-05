@@ -56,6 +56,7 @@
     </ApplicationDefinition>
     <Compile Include="Logic\AdeptMech.cs" />
     <Compile Include="Logic\AlgoLogic.cs" />
+    <Compile Include="Logic\CabinetList.cs" />
     <Compile Include="Logic\DBLoad.cs" />
     <Compile Include="Logic\Group.cs" />
     <Compile Include="Logic\Lesson.cs" />

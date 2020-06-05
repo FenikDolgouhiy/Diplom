@@ -55,6 +55,8 @@ namespace Dashboard1.Logic
                                             OKKT.TimeTable[k, l].OddWeek.Subject = Gr[i].subjects[j].Subject;
                                             OKKT.TimeTable[k, l].EvenWeek.Teacher = Gr[i].teacherName;
                                             OKKT.TimeTable[k, l].OddWeek.Teacher = Gr[i].teacherName;
+                                            OKKT.TimeTable[k, l].EvenWeek.Cabinet = Gr[i].Cabinet;
+                                            OKKT.TimeTable[k, l].OddWeek.Cabinet = Gr[i].Cabinet;
 
                                             Gr[i].subjects[j].hoursPerWeek -= 2;
                                             Gr[i].TOpp[k, l, 1] = false;
@@ -67,7 +69,7 @@ namespace Dashboard1.Logic
                                         {
                                             OKKT.TimeTable[k, l].EvenWeek.Subject = Gr[i].subjects[j].Subject;
                                             OKKT.TimeTable[k, l].EvenWeek.Teacher = Gr[i].teacherName;
-
+                                            OKKT.TimeTable[k, l].EvenWeek.Cabinet = Gr[i].Cabinet;
 
                                             Gr[i].subjects[j].hoursPerWeek -= 1;
                                             Gr[i].TOpp[k, l, 0] = false;
@@ -79,6 +81,7 @@ namespace Dashboard1.Logic
                                         {
                                             OKKT.TimeTable[k, l].OddWeek.Subject = Gr[i].subjects[j].Subject;
                                             OKKT.TimeTable[k, l].OddWeek.Teacher = Gr[i].teacherName;
+                                            OKKT.TimeTable[k, l].OddWeek.Cabinet = Gr[i].Cabinet;
 
                                             Gr[i].subjects[j].hoursPerWeek -= 1;
                                             Gr[i].TOpp[k, l, 1] = false;
@@ -108,25 +111,27 @@ namespace Dashboard1.Logic
                                     if ((Gr[i].subjects[j].hoursPerWeek > 1) && (OKKT.TimeTable[k, l].EvenWeek.Subject == null) &&
                                         (OKKT.TimeTable[k, l].OddWeek.Subject == null) &&
                                         (Gr[i].TOpp[k, l, 1] && Gr[i].TOpp[k, l, 0]))  //ставим пару предмета в свободный день 
-                                    {
+                                        {
 
 
                                         OKKT.TimeTable[k, l].EvenWeek.Subject = Gr[i].subjects[j].Subject;
                                         OKKT.TimeTable[k, l].OddWeek.Subject = Gr[i].subjects[j].Subject;
                                         OKKT.TimeTable[k, l].EvenWeek.Teacher = Gr[i].teacherName;
                                         OKKT.TimeTable[k, l].OddWeek.Teacher = Gr[i].teacherName;
-
+                                        OKKT.TimeTable[k, l].EvenWeek.Cabinet = Gr[i].Cabinet;
+                                        OKKT.TimeTable[k, l].OddWeek.Cabinet = Gr[i].Cabinet;
                                         Gr[i].subjects[j].hoursPerWeek -= 2;
                                         Gr[i].TOpp[k, l, 1] = false;
                                         Gr[i].TOpp[k, l, 0] = false;
 
-                                    }
+                                     }
                                     else if ((Gr[i].subjects[j].hoursPerWeek > 0) && ((OKKT.TimeTable[k, l].EvenWeek.Subject == null) && (Gr[i].TOpp[k, l, 0] == true)) && ((OKKT.TimeTable[k, l].OddWeek.Subject != null) || (Gr[i].TOpp[k, l, 1] == false) || (Gr[i].subjects[j].hoursPerWeek == 1)))
                                     {
 
 
                                         OKKT.TimeTable[k, l].EvenWeek.Subject = Gr[i].subjects[j].Subject;
                                         OKKT.TimeTable[k, l].EvenWeek.Teacher = Gr[i].teacherName;
+                                        OKKT.TimeTable[k, l].EvenWeek.Cabinet = Gr[i].Cabinet;
 
 
                                         Gr[i].subjects[j].hoursPerWeek -= 1;
@@ -139,6 +144,7 @@ namespace Dashboard1.Logic
 
                                         OKKT.TimeTable[k, l].OddWeek.Subject = Gr[i].subjects[j].Subject;
                                         OKKT.TimeTable[k, l].OddWeek.Teacher = Gr[i].teacherName;
+                                        OKKT.TimeTable[k, l].OddWeek.Cabinet = Gr[i].Cabinet;
 
                                         Gr[i].subjects[j].hoursPerWeek -= 1;
                                         Gr[i].TOpp[k, l, 1] = false;
@@ -285,11 +291,12 @@ namespace Dashboard1.Logic
                                 {
                                     Roz_CW[day, pair].EvenWeek.Subject = Roz_CW[Dayz, Pairz].EvenWeek.Subject;
                                     Roz_CW[day, pair].EvenWeek.Teacher = Roz_CW[Dayz, Pairz].EvenWeek.Teacher;
+                                    Roz_CW[day, pair].EvenWeek.Cabinet = Roz_CW[Dayz, Pairz].EvenWeek.Cabinet;
                                     Prep_CW[CurrTeacher(Roz_CW[Dayz, Pairz].EvenWeek.Teacher, Prep_CW)].TOpp[day, pair, 0] = false;
                                     Prep_CW[CurrTeacher(Roz_CW[Dayz, Pairz].EvenWeek.Teacher, Prep_CW)].TOpp[Dayz, Pairz, 0] = true;
                                     Roz_CW[Dayz, Pairz].EvenWeek.Subject = null;
                                     Roz_CW[Dayz, Pairz].EvenWeek.Teacher = null;
-
+                                    Roz_CW[Dayz, Pairz].EvenWeek.Cabinet = null;
 
                                     return;
                                 }
@@ -304,10 +311,12 @@ namespace Dashboard1.Logic
                                 {
                                     Roz_CW[day, pair].EvenWeek.Subject = Roz_CW[Dayz, Pairz].OddWeek.Subject;
                                     Roz_CW[day, pair].EvenWeek.Teacher = Roz_CW[Dayz, Pairz].OddWeek.Teacher;
+                                    Roz_CW[day, pair].EvenWeek.Cabinet = Roz_CW[Dayz, Pairz].OddWeek.Cabinet;
                                     Prep_CW[CurrTeacher(Roz_CW[Dayz, Pairz].OddWeek.Teacher, Prep_CW)].TOpp[day, pair, 0] = false;
                                     Prep_CW[CurrTeacher(Roz_CW[Dayz, Pairz].OddWeek.Teacher, Prep_CW)].TOpp[Dayz, Pairz, 1] = true;
                                     Roz_CW[Dayz, Pairz].OddWeek.Subject = null;
                                     Roz_CW[Dayz, Pairz].OddWeek.Teacher = null;
+                                    Roz_CW[Dayz, Pairz].OddWeek.Cabinet = null;
 
 
                                     return;
@@ -327,11 +336,12 @@ namespace Dashboard1.Logic
                                 {
                                     Roz_CW[day, pair].OddWeek.Subject = Roz_CW[Dayz, Pairz].EvenWeek.Subject;
                                     Roz_CW[day, pair].OddWeek.Teacher = Roz_CW[Dayz, Pairz].EvenWeek.Teacher;
+                                    Roz_CW[day, pair].OddWeek.Cabinet = Roz_CW[Dayz, Pairz].EvenWeek.Cabinet;
                                     Prep_CW[CurrTeacher(Roz_CW[Dayz, Pairz].EvenWeek.Teacher, Prep_CW)].TOpp[day, pair, 1] = false;
                                     Prep_CW[CurrTeacher(Roz_CW[Dayz, Pairz].EvenWeek.Teacher, Prep_CW)].TOpp[Dayz, Pairz, 0] = true;
                                     Roz_CW[Dayz, Pairz].EvenWeek.Subject = null;
                                     Roz_CW[Dayz, Pairz].EvenWeek.Teacher = null;
-
+                                    Roz_CW[Dayz, Pairz].EvenWeek.Cabinet = null;
 
                                     return;
                                 }
@@ -346,11 +356,12 @@ namespace Dashboard1.Logic
                                 {
                                     Roz_CW[day, pair].OddWeek.Subject = Roz_CW[Dayz, Pairz].OddWeek.Subject;
                                     Roz_CW[day, pair].OddWeek.Teacher = Roz_CW[Dayz, Pairz].OddWeek.Teacher;
+                                    Roz_CW[day, pair].OddWeek.Cabinet = Roz_CW[Dayz, Pairz].OddWeek.Cabinet;
                                     Prep_CW[CurrTeacher(Roz_CW[Dayz, Pairz].OddWeek.Teacher, Prep_CW)].TOpp[day, pair, 1] = false;
                                     Prep_CW[CurrTeacher(Roz_CW[Dayz, Pairz].OddWeek.Teacher, Prep_CW)].TOpp[Dayz, Pairz, 1] = true;
                                     Roz_CW[Dayz, Pairz].OddWeek.Subject = null;
                                     Roz_CW[Dayz, Pairz].OddWeek.Teacher = null;
-
+                                    Roz_CW[Dayz, Pairz].OddWeek.Cabinet = null;
 
                                     return;
                                 }

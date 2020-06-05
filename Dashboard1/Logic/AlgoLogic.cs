@@ -31,6 +31,7 @@ namespace Dashboard1.Logic
                 N_Weeks[i] = Convert.ToInt32(a.UploadList[i].Weeks);
                 N_Total[i] = Convert.ToInt32(a.UploadList[i].TotalHours);
             }
+
             a.UploadTeachersOpp();
             
             string[] P_Prepods = new string[a.TeachersOppList.Count];
@@ -43,6 +44,16 @@ namespace Dashboard1.Logic
                             a.TeachersOppList[i].Wednesday +
                             a.TeachersOppList[i].Thursday +
                             a.TeachersOppList[i].Friday;
+            }
+
+            a.UploadCabinets();
+
+            string[] C_Prepods = new string[a.CabList.Count];
+            string[] C_cabs = new string[a.CabList.Count];
+            for (int i = 0; i < a.CabList.Count; i++)
+            {
+                C_Prepods[i] = a.CabList[i].TeacherName   ;
+                C_cabs[i] = a.CabList[i].Cabinet;
             }
 
             int Number_of_prep = P_Prepods.Length;//Количество преподавателей для инициализации 
@@ -84,6 +95,17 @@ namespace Dashboard1.Logic
                     {
                         Prep_okkt[i].subjects[k] = new Subjects(N_Subjects[j], N_Total[j], N_Weeks[i], N_Groups[j], okkt);
                         k++;
+                    }
+                }
+            }
+            for(int i =0; i <Prep_okkt.Length;i++)
+            {
+                for(int j=0;j<C_Prepods.Length;j++)
+                {
+                    if(Prep_okkt[i].teacherName == C_Prepods[j])
+                    {
+                        Prep_okkt[i].Cabinet = C_cabs[j];
+                        break;
                     }
                 }
             }
@@ -133,12 +155,12 @@ namespace Dashboard1.Logic
 
                         if (okkt[d].TimeTable[i, k].EvenWeek.Subject == okkt[d].TimeTable[i, k].OddWeek.Subject)
                         {
-                            okkt[d].TotalTimetable[i, k] = okkt[d].TimeTable[i, k].EvenWeek.Subject + " " + okkt[d].TimeTable[i, k].EvenWeek.Teacher;
+                            okkt[d].TotalTimetable[i, k] = okkt[d].TimeTable[i, k].EvenWeek.Subject + " " + okkt[d].TimeTable[i, k].EvenWeek.Teacher + " " + okkt[d].TimeTable[i,k].EvenWeek.Cabinet;
                             
                         }
                         else
                         {
-                            okkt[d].TotalTimetable[i, k] = okkt[d].TimeTable[i, k].EvenWeek.Subject + " " + okkt[d].TimeTable[i, k].EvenWeek.Teacher + "|" + okkt[d].TimeTable[i, k].OddWeek.Subject + " " + okkt[d].TimeTable[i, k].OddWeek.Teacher;
+                            okkt[d].TotalTimetable[i, k] = okkt[d].TimeTable[i, k].EvenWeek.Subject + " " + okkt[d].TimeTable[i, k].EvenWeek.Teacher + " " + okkt[d].TimeTable[i, k].EvenWeek.Cabinet + " | " + okkt[d].TimeTable[i, k].OddWeek.Subject + " " + okkt[d].TimeTable[i, k].OddWeek.Teacher + " " + okkt[d].TimeTable[i, k].OddWeek.Cabinet;
                             
                         }
                     }
@@ -152,5 +174,6 @@ namespace Dashboard1.Logic
         }
         public static List<LoadDTO> BData;
         public static List<TeachersOpp> TeachersUpload;
+        public static List<CabinetList> CabLoad;
     }
 }
