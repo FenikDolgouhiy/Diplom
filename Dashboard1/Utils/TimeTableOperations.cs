@@ -13,6 +13,7 @@ using Application = Microsoft.Office.Interop.Excel.Application;
 using System.Windows;
 using System;
 using System.Diagnostics;
+using Microsoft.Win32;
 
 namespace Dashboard1.Utils
 {
@@ -217,8 +218,12 @@ namespace Dashboard1.Utils
                 workSheet.Cells[i + 2, "E"] = list[i].Thursday;
                 workSheet.Cells[i + 2, "F"] = list[i].Friday;
             }
-            workSheet.SaveAs(@"C:\Users\Victor\"+SelectedGroup+"TimeTable.xlsx");
-            MessageBox.Show("Данные были загружены");
+
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.InitialDirectory = saveFileDialog.FileName;
+
+            workSheet.SaveAs(saveFileDialog.InitialDirectory+SelectedGroup+"TimeTable.xlsx");
+            MessageBox.Show("Данные были загружены.\nСохранено в C:/Users/USERNAME/Documents");
             exApp.Quit();
         }
     }
