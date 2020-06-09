@@ -52,7 +52,7 @@ namespace Dashboard1.ViewModel
         private void CreateTimetable(object obj)
         {
             AlgoLogic.LogicRun();
-            MessageBox.Show("Расписание загружено!");
+            MessageBox.Show("Розклад створен, тепер ви маєте можливість переглянути його!");
         }
 
         private async void LoadGroupTimetable(object obj)// Загрузка расписания по выбранной группе
