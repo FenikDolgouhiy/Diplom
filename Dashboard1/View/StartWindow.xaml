@@ -17,6 +17,8 @@
         ResizeMode="CanResizeWithGrip" 
         WindowStartupLocation="CenterScreen" 
         WindowStyle="None" MinWidth="1024" MinHeight="600"
+        Icon="../Resources/occt.png"
+        Title=" Розклад ОККТ ОДЕКУ"
         >
 
 
