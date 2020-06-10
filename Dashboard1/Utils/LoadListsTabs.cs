@@ -25,7 +25,12 @@ namespace Dashboard1.Utils
             client = new FireSharp.FirebaseClient(config);
             
         }
-        
+        public async void DeleteAllCabinets()
+        {
+
+            await client.DeleteAsync("Cabinets");
+            MessageBox.Show("База данных была полностью очищенна");
+        }
         public async Task<List<string>> ReturnGroups()
         {
             List<string> result = new List<string>();
