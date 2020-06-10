@@ -34,14 +34,25 @@
                         <StackPanel Orientation="Vertical"
                                 TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
                                 Margin="24,8,24,16">
-                            <TextBlock Text="Як імпортувати навантаження з Exel" />
+                            <TextBlock Text="Як імпортувати навантаження з Exel?" />
                             <TextBlock Opacity=".68"
-                                   Text="У вкладці навантаження натискаємо на кнопку Імпорт та загружаємо потрібний файл
-                                       стандартизованого типу. Натискаємо завантажити у базу"
+                                   Text="У вкладці навантаження натискаємо на кнопку Імпорт та загружаємо потрібний файл стандартизованого типу. Натискаємо завантажити у базу"
                                    TextWrapping="Wrap" />
-                            <TextBlock Text="Як імпортувати навантаження з Exel" />
+                            <TextBlock Margin="0,8,0,0" Text="Як редагувати навантаження?" />
                             <TextBlock Opacity=".68"
-                                   Text="У вкладці навантаження "
+                                   Text="У таблиці навантаження натискаємо лівою кнопкою миши два рази на потрібні нам данні які треба змінити та запомнюємо. Не забувайте зберегти у базі даних. "
+                                   TextWrapping="Wrap" />
+                            <TextBlock Margin="0,8,0,0" Text="Як зберегти дані?" />
+                            <TextBlock Opacity=".68"
+                                   Text="Для того щоб зберегти зміни, треба нажати кнопку Завантажити на сервер "
+                                   TextWrapping="Wrap" />
+                            <TextBlock Margin="0,8,0,0" Text="Що робити, якщо треба видалити деякі навантаження?" />
+                            <TextBlock Opacity=".68"
+                                   Text="Якщо потрібно видалити навантаження, мишою виділяємо потрібний рядок та нажимаємо Видалити рядок"
+                                   TextWrapping="Wrap" />
+                            <TextBlock Margin="0,8,0,0" Text="Що робити, якщо треба видалити усе навантаження?" />
+                            <TextBlock Opacity=".68"
+                                   Text="Якщо потрібно видалити усе навантаження, клікаємо Очистити дані на сервері"
                                    TextWrapping="Wrap" />
                         </StackPanel>
                     </Expander>
@@ -54,10 +65,22 @@
                         <StackPanel Orientation="Vertical" 
                                 TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
                                 Margin="24,8,24,16">
-                            <TextBlock Text="Як змінити час роботи викладачів" />
+                            <TextBlock Text="Як змінити час роботи викладачів?" />
                             <TextBlock Opacity=".68"
-                                   Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                                   Text="У вкладці Списки переходимо у вкладку Викладачі. На цій сторінці завантажується список викладачів які є у наватаженні, якщо ви його завантажили. У кожного викладача є дні у які він працює. У день є шість пар. Якщо викладач може працювати наприклад у понеділок з першої по третю пару, то пишемо -+++--. Інший час працювання заповнюємо за прикладом."
                                    TextWrapping="Wrap" />
+                            <TextBlock Margin="0,8,0,0" Text="Як зберегти дані роботи вікладачів?" />
+                            <TextBlock Opacity=".68"
+                                   Text="Для того щоб зберегти зміни, треба нажати кнопку Завантажити на сервер"
+                                   TextWrapping="Wrap"/>
+                            <TextBlock Margin="0,8,0,0" Text="Як видалити дані роботи вікладачів?" />
+                            <TextBlock Opacity=".68"
+                                   Text="Для того щоб видалити час роботи викладачів треба нажати Очистити дані навантаження"
+                                   TextWrapping="Wrap"/>
+                            <TextBlock Margin="0,8,0,0" Text="Як редагувати дані роботи вікладачів?" />
+                            <TextBlock Opacity=".68"
+                                   Text="Редагувати дані можливо так як і у вкладці Навантаження за допомогою двох кліків мишою. Після чого завантажити зміни на сервер."
+                                   TextWrapping="Wrap"/>
                         </StackPanel>
                     </Expander>
                     <Border Background="{DynamicResource MaterialDesignDivider}"
@@ -65,7 +88,64 @@
                         HorizontalAlignment="Stretch"
                         SnapsToDevicePixels="True" />
                     <Expander HorizontalAlignment="Stretch"
-                          Header="Крок 3 Створюємо розклад">
+                          Header="Крок 3 Кабінети">
+                        <StackPanel Orientation="Vertical"
+                                TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
+                                Margin="24,8,24,16">
+                            <TextBlock Text="Як змінити аудиторії?" />
+                            <TextBlock Opacity=".68"
+                                   Text="У вкладці Списки переходимо у вкладку Аудиторії. На цій сторінці завантажується список викладачів які є у наватаженні, якщо ви його завантажили. У кожного викладача є аудиторія у якій він працює постійно. Заповнюємо кабінети як нам потрібно за допомогою подвійного кліку миши."
+                                   TextWrapping="Wrap" />
+                            <TextBlock Margin="0,8,0,0" Text="Як зберегти дані аудиторій?" />
+                            <TextBlock Opacity=".68"
+                                   Text="Для того щоб зберегти зміни, треба нажати кнопку Завантажити на сервер"
+                                   TextWrapping="Wrap"/>
+                            <TextBlock Margin="0,8,0,0" Text="Як видалити дані аудиторій?" />
+                            <TextBlock Opacity=".68"
+                                   Text="Для того щоб видалити час роботи викладачів треба нажати Очистити дані аудиторій"
+                                   TextWrapping="Wrap"/>
+                            <TextBlock Margin="0,8,0,0" Text="Як редагувати аудиторії?" />
+                            <TextBlock Opacity=".68"
+                                   Text="Редагувати дані можливо так як і у вкладці Навантаження за допомогою двох кліків мишою. Після цього завантажити зміни на сервер."
+                                   TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Expander>
+                    <Border Background="{DynamicResource MaterialDesignDivider}"
+                        Height="1"
+                        HorizontalAlignment="Stretch"
+                        SnapsToDevicePixels="True" />
+                    <Expander HorizontalAlignment="Stretch"
+                          Header="Крок 4 Створюємо розклад">
+                        <StackPanel Orientation="Vertical"
+                                TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
+                                Margin="24,8,24,16">
+                            <TextBlock Text="Як створити розклад?" />
+                            <TextBlock Opacity=".68"
+                                   Text="Якщо усі списки та навантаження завантажені до серверу переходимо до створення розкладу. Нажимаємо Створити розклад та чекаємо повідомлення, що розклад створен."
+                                    TextWrapping="Wrap" />
+                        </StackPanel>
+                    </Expander>
+                    <Border Background="{DynamicResource MaterialDesignDivider}"
+                        Height="1"
+                        HorizontalAlignment="Stretch"
+                        SnapsToDevicePixels="True" />
+                    <Expander HorizontalAlignment="Stretch"
+                          Header="Додаткова інформація та зауваження">
+                        <StackPanel Orientation="Vertical"
+                                TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
+                                Margin="24,8,24,16">
+                            <TextBlock Text="Як створити розклад?" />
+                            <TextBlock Opacity=".68"
+                                   Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                                    TextWrapping="Wrap" />
+                        </StackPanel>
+                    </Expander>
+                    <Border Background="{DynamicResource MaterialDesignDivider}"
+                        Height="1"
+                        HorizontalAlignment="Stretch"
+                        SnapsToDevicePixels="True" />
+                    <Expander HorizontalAlignment="Stretch"
+                          Header="Інформація про додаток та розробників">
                         <StackPanel Orientation="Vertical"
                                 TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
                                 Margin="24,8,24,16">

@@ -44,7 +44,7 @@ namespace Dashboard1.ViewModel.ListsTabsViewModels
         }
         private void DeleteAllFromDB(object obj) //Удаление нагрузок с Грида
         {
-            if (MessageBox.Show("Вы действительно хотите удалить нагрузки из таблицы полностью?\nВ БД сохранится.", "Подтверждение операции", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (MessageBox.Show("Ви бажаєте видалити увісь час роботи викладачів з серверу? ", "Підтвердження", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 var loads = TeachersList;
                 foreach (var item in loads)
