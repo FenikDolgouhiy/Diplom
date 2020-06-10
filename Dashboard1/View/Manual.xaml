@@ -8,7 +8,7 @@
              xmlns:viewModel="clr-namespace:Dashboard1.ViewModel"
              d:DataContext="{d:DesignInstance viewModel:ManualViewModel}"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" >
     <Grid Background="#FFCFCFCF">
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
@@ -123,6 +123,18 @@
                             <TextBlock Opacity=".68"
                                    Text="Якщо усі списки та навантаження завантажені до серверу переходимо до створення розкладу. Нажимаємо Створити розклад та чекаємо повідомлення, що розклад створен."
                                     TextWrapping="Wrap" />
+                            <TextBlock Margin="0,8,0,0" Text="Як переглянути розклад?" />
+                            <TextBlock Opacity=".68"
+                                   Text="Після створення розкладу відкриваємо меню груп та обираємо потрібну групу. Нажимаємо Загрузити розклад з хмари (кругла кнопка) та чекаємо загрузки. Тепер можемо переглянути розклад будь-якої групи з понеділка по п'ятницю та аудиторії де проводяться заняття."
+                                    TextWrapping="Wrap" />
+                            <TextBlock Margin="0,8,0,0" Text="Як імпортувати розклад?" />
+                            <TextBlock Opacity=".68"
+                                   Text="Якщо на сервері є створений розклад, нажимаємо Завантажити у Exel та бачимо повідомлення о зберіганні файлу у документах."
+                                    TextWrapping="Wrap" />
+                            <TextBlock Margin="0,8,0,0" Text="Як видалити розклад?" />
+                            <TextBlock Opacity=".68"
+                                   Text="Якщо на сервері є створений розклад, нажимаємо Очистити розклад на сервері. Після чого можна створювати новий розклад."
+                                    TextWrapping="Wrap" />
                         </StackPanel>
                     </Expander>
                     <Border Background="{DynamicResource MaterialDesignDivider}"
@@ -134,9 +146,17 @@
                         <StackPanel Orientation="Vertical"
                                 TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
                                 Margin="24,8,24,16">
-                            <TextBlock Text="Як створити розклад?" />
+                            <TextBlock Text="Чому мій розклад не створюється?" />
                             <TextBlock Opacity=".68"
-                                   Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                                   Text="Розклад створюється з даних о навантаженні, часів роботи викладачів та аудиторій. Тому якщо ціх даних на сервері нема розклад або створюється з тих даних що є, або не створюється взагалі. Тому перед створенням розкладу повинно перевірити заповнення даних, та у випадку помилок завантижити зміни навантаження та списків на хмарне сховище."
+                                    TextWrapping="Wrap" />
+                            <TextBlock Margin="0,8,0,0" Text="Що робити якщо я хочу новий розклад?" />
+                            <TextBlock Opacity=".68"
+                                   Text="Якщо на сервері є створений розклад, його треба видалити (нажимаємо Очистити розклад на сервері). Після чого перевірити дані навантажень на списків на помилки та створювати новий розклад."
+                                    TextWrapping="Wrap" />
+                            <TextBlock Margin="0,8,0,0" Text="Чому при старті додатку в ньому вже є дані?" />
+                            <TextBlock Opacity=".68"
+                                   Text="Якщо на сервері є створений розклад, списки або навантаження вони завантажуються у додаток. Це ті дані які ви зеберегли у хмарі у останній раз."
                                     TextWrapping="Wrap" />
                         </StackPanel>
                     </Expander>
@@ -149,10 +169,13 @@
                         <StackPanel Orientation="Vertical"
                                 TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
                                 Margin="24,8,24,16">
-                            <TextBlock Text="Як створити розклад?" />
+                            <TextBlock Text="Ким і навіщо створений додаток?" />
                             <TextBlock Opacity=".68"
-                                   Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                                    TextWrapping="Wrap" />
+                                   Text="Додаток створений студентами колледжу ОККТ ОДЕКУ гр. 16ПР2 Козловою А., Можаруом В. та Параскєвим Г. для спрощення роботи працівників колледжу. Додаток існує у якості випускного дипломного проекту цих студентів."
+                                       TextWrapping="Wrap" />
+                            <TextBlock Text="Козлова - Створення клієнтської частини додатку, архітектури проекту, навігації, менеджмент проекту, управління" />
+                            <TextBlock Text="Параскєв - Створення алгоритму для складання розкладу, пошук інформації, мотиваційна складова команди" />
+                            <TextBlock Text="Можарук - Створення серверної частини додатку, з'єднання з клієнтською частиною, найупевненішна частина команди" />
                         </StackPanel>
                     </Expander>
                 </StackPanel>
